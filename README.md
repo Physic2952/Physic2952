@@ -1,4 +1,5 @@
-<h1>Physics Portfolio <br/><a>Programmer</a>, <a>Game Developer</a>
+<h1>Physics Portfolio</h1>
+<h6>#Programmer, Game Developer</h6>
 
 
 <h2>About me:</h2>
@@ -21,15 +22,32 @@ I have worked with Java using Eclipse IDE and VSC(Visual Studio Code), where I d
 Additionally, I have spent time working with C# in Unity(Using Visual Studio), focusing on basic gameplay programming, system logic, and understanding how game engines handle real-time interactions.
 This cross-platform experience has strengthened my understanding of programming fundamentals and helped me adapt quickly to new tools and technologies.</b>
 
+<h2>Technical Skills</h2>
+<ul>
+  <li>Languages:Lua,Luau,Java,C#</li>
+  <li>Tools that I often use in my Project: VS,VSC,Roblox Studio, Rojo</li>
+  <li>Additional Skills: Game Design,Security Management</li>
+</ul>
 
-<h2>👨‍💻 Game Development  Projects:</h2>
+
+<h2>👨‍💻 Game Development Projects:</h2>
 
 - <b>Quest System</b>
-  - [QuestSystem](https://github.com/joshmadakor1/Algorithms-Practice)
+  - [QuestSystem]()
 - <b>OOP Luau(Superclass,Inheritance,Contructor and simulating public,private and protected Methods/Variables)</b>
-  - [Image Analysis Middleware](https://github.com/joshmadakor1/4chan-Image-Analysis-Middleware-C964) 
+  - [Image Analysis Middleware]() 
 
 <h2> How to contact me?</h2>
+
+<p>
+  <b>Discord:</b> 
+  <a href="http://discordapp.com/users/1029011048793112657">Physic91</a> 
+  <span>(fast reply)</span>
+</p>
+<p>
+  <b>Email:</b> 
+  <a href="mailto:Physiclover13244@gmail.com">Physiclover13244@gmail.com</a>
+</p>
 
 [<img align="left" alt="Discord" width="22px" src="https://cdn.simpleicons.org/discord/5865F2" />](http://discordapp.com/users/1029011048793112657)
 &nbsp;
