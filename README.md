@@ -1,42 +1,41 @@
-<h1>Hi I'm Physic or as well as known as "Physic91" <br/><a>Programmer</a>, <a>Game Developer</a>
+<h1>Physics Portfolio <br/><a>Programmer</a>, <a>Game Developer</a>
 
-<h2>👨‍💻 Software Development Projects:</h2>
 
-- <b>Data Structures and Algorithms Practice (AlgoExpert)</b>
-  - [Praciting DS & Algos in Python](https://github.com/joshmadakor1/Algorithms-Practice)
-- <b>Full Stack Web App (React, NodeJS, Azure, and Machine Learning Components)</b>
-  - [Image Analysis Middleware](https://github.com/joshmadakor1/4chan-Image-Analysis-Middleware-C964) <b><i>(Potentially NSFW)</b></i>
-- <b>PowerShell</b>
-  - [Windows EventLog: Failed RDP Logins Source IP to full GeoData Conversion](https://github.com/joshmadakor1/Sentinel-Lab)
-  - [JWipe (Disk Wiping Utility)](https://github.com/joshmadakor1/Jwipe.PowerShell)
-  - [Active Directory Bulk User Creation](https://github.com/joshmadakor1/AD_PS)
-  - [FIM (File Integrity Monitor)](https://github.com/joshmadakor1/PowerShell-Integrity-FIM)
-- <b>C# (.NET Desktop Applications)</b>
-  - [Ransomware Proof of Concept (Encrypter)](https://github.com/joshmadakor1/EncrypterPOC)
-  - [Ransomware Proof of Concept (Decrypter)](https://github.com/joshmadakor1/DecrypterPOC)
-  - [Keylogger with Email Capability](https://github.com/joshmadakor1/Key-Logger-With-Email)
-- <b>Python</b>
-  - [Package Delivery Application (Datastructures and Algorithms Demo)](https://github.com/joshmadakor1/Package-Delivery-Pathfinding-Algorithm)
+<h2>About me:</h2>
 
-<h2>📺 Popular YouTube Videos</h2>
+<b>Hi! I'm Physic, also known as "Physic91".
 
-- [How to get into Cybersecurity Starting From Zero](https://www.youtube.com/watch?v=a83ASGn_V_s)
-- [A Day in the Life of a Cybersecurity Anayst](https://www.youtube.com/watch?v=uHy3oM7NnoU)
-- [How to Create a KeyLogger (C#)](https://www.youtube.com/watch?v=N-L9hklSlNk)
-- [Ransomware Demonstration (C#)](https://www.youtube.com/watch?v=OfvdQeh79s0)
-- [Is WGU Legit?](https://www.youtube.com/watch?v=E2MwRWxDBkA)
+In my free time, I enjoy watching movies, doing interesting activities, or simply looking into the air and thinking about nothing.
+ I also love listening to music, playing games, and thinking about how they are programmed behind the scenes.</b>
 
-<h2> 🤳 Connect with me:</h2>
+<h2>Where it all started</h2> 
+<b>My programming journey began with a deep curiosity about how games work behind the scenes.
+Playing games on Roblox inspired me to explore scripting and game development.
+In 2024, I started learning Lua and quickly became passionate about creating systems, preventing exploits and optimizing game performance.
+Since then, I have continued to build projects, debug complex problems, and improve my skills every day.
+I’m excited to keep pushing my limits and learn about more new stuffs.</b>
 
-[<img align="left" alt="JoshMadakor | YouTube" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/youtube.svg" />][youtube]
-[<img align="left" alt="JoshMadakor | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />][twitter]
-[<img align="left" alt="JoshMadakor | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="JoshMadakor | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+<h2>Beyond Roblox Development</h2>
+<b>Besides working extensively with Roblox Studio and Lua scripting, I have also gained experience with other development environments and languages.
+I have worked with Java using Eclipse IDE and VSC(Visual Studio Code), where I developed small applications and learned important concepts like object-oriented programming and clean code structure.
+Additionally, I have spent time working with C# in Unity(Using Visual Studio), focusing on basic gameplay programming, system logic, and understanding how game engines handle real-time interactions.
+This cross-platform experience has strengthened my understanding of programming fundamentals and helped me adapt quickly to new tools and technologies.</b>
 
-[twitter]: https://twitter.com/joshmadakor
-[youtube]: https://www.youtube.com/c/joshmadakor
-[instagram]: https://www.instagram.com/joshmadakor/
-[linkedin]: https://linkedin.com/in/joshmadakor
+
+<h2>👨‍💻 Game Development  Projects:</h2>
+
+- <b>Quest System</b>
+  - [QuestSystem](https://github.com/joshmadakor1/Algorithms-Practice)
+- <b>OOP Luau(Superclass,Inheritance,Contructor and simulating public,private and protected Methods/Variables)</b>
+  - [Image Analysis Middleware](https://github.com/joshmadakor1/4chan-Image-Analysis-Middleware-C964) 
+
+<h2> How to contact me?</h2>
+
+[<img align="left" alt="Discord" width="22px" src="https://cdn.simpleicons.org/discord/5865F2" />](http://discordapp.com/users/1029011048793112657)
+&nbsp;
+[<img align="left" alt="Email" width="22px" src="https://cdn.simpleicons.org/gmail/EA4335" />](mailto:Physic13244@email.com)
+
+
 
 <!--
 **joshmadakor1/joshmadakor1** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
