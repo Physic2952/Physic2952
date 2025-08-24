@@ -33,7 +33,7 @@ This cross-platform experience has strengthened my understanding of programming 
 
 - <b>Quest System</b>
   - [QuestSystem]()
-- <b>OOP Luau(Superclass,Inheritance,Contructor and simulating public,private and protected Methods/Variables)</b>
+- <b>OOP Luau(Include Superclass,Inheritance,Contructor, simulating public,private and protected Methods/Variables)</b>
   - [OOP Luau Summary]() 
 
 <h2> How to contact me?</h2>
