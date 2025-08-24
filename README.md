@@ -34,7 +34,9 @@ This cross-platform experience has strengthened my understanding of programming 
 - <b>Quest System</b>
   - [QuestSystem](https://github.com/Physic2952/Quest-System)
 - <b>OOP Luau(Include Superclass,Inheritance,Contructor, simulating public,private and protected Methods/Variables)</b>
-  - [OOP Luau Summary](https://github.com/Physic2952/OOP-Resources) 
+  - [OOP Luau Summary](https://github.com/Physic2952/OOP-Resources)
+  - There are of course lots of projects that I have done(either in VSC or in Roblox Studio). I will kepp uploading this on as the time goes on! Feel free to DM me on Discord to see Projects instantly!
+  -
 
 <h2> How to contact me?</h2>
 
