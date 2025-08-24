@@ -34,7 +34,7 @@ This cross-platform experience has strengthened my understanding of programming 
 - <b>Quest System</b>
   - [QuestSystem](https://github.com/Physic2952/Quest-System)
 - <b>OOP Luau(Include Superclass,Inheritance,Contructor, simulating public,private and protected Methods/Variables)</b>
-  - [OOP Luau Summary]() 
+  - [OOP Luau Summary](https://github.com/Physic2952/OOP-Resources) 
 
 <h2> How to contact me?</h2>
 
