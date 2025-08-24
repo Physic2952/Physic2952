@@ -1,7 +1,6 @@
 <h1>Physics Portfolio</h1>
 <h6>#Programmer, Game Developer</h6>
 
-
 <h2>About me:</h2>
 
 <b>Hi! I'm Physic, also known as "Physic91".
@@ -24,7 +23,7 @@ This cross-platform experience has strengthened my understanding of programming 
 
 <h2>Technical Skills</h2>
 <ul>
-  <li>Languages:Lua,Luau,Java,C#</li>
+  <li>Languages: Lua,Luau,Java,C# </li>
   <li>Tools that I often use in my Project: VS,VSC,Roblox Studio, Rojo</li>
   <li>Additional Skills: Game Design,Security Management</li>
 </ul>
@@ -35,7 +34,7 @@ This cross-platform experience has strengthened my understanding of programming 
 - <b>Quest System</b>
   - [QuestSystem]()
 - <b>OOP Luau(Superclass,Inheritance,Contructor and simulating public,private and protected Methods/Variables)</b>
-  - [Image Analysis Middleware]() 
+  - [OOP Luau Summary]() 
 
 <h2> How to contact me?</h2>
 
