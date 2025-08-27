@@ -29,7 +29,7 @@ This cross-platform experience has strengthened my understanding of programming 
 </ul>
 
 
-<h2>👨‍💻 Game Development Projects/Resources that I studied/Contributions:</h2>
+<h2>👨‍💻 Game Development Projects/Resources that I studied:</h2>
 
 - <b>Quest System</b>
   - [QuestSystem](https://github.com/Physic2952/Quest-System)
