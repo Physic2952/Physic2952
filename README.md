@@ -24,8 +24,8 @@ This cross-platform experience has strengthened my understanding of programming 
 <h2>Technical Skills</h2>
 <ul>
   <li>Languages: Lua,Luau,Java,C# </li>
-  <li>Tools that I often use in my Project: VS,VSC,Roblox Studio, Rojo</li>
-  <li>Additional Skills: Game Design,Security Management</li>
+  <li>Tools that I often use in my Project: VS,VSC,Roblox Studio, Rojo, ProfileService/ProfileStore</li>
+  <li>Additional Skills: Game Design,Security Management, Project Management</li>
 </ul>
 
 
