@@ -36,7 +36,18 @@ This cross-platform experience has strengthened my understanding of programming 
 - <b>OOP Luau(Include Superclass,Inheritance,Contructor, simulating public,private and protected Methods/Variables)[Resources]</b>
   - [OOP Luau Summary](https://github.com/Physic2952/OOP-Resources)
   - There are of course lots of projects that I have done(either in VSC or in Roblox Studio). I will kepp uploading this on as the time goes on! Feel free to DM me on Discord to see Projects instantly!
-  
+
+ <h2>Past Work:</h2>
+
+<div class="Project">
+  <h3>Emergency Bristol</h3>
+  <ul>
+    <li><b>Project Name:</b> Emergency Bristol</li>
+    <li><b>Job Title:</b> Programmer</li>
+    <li><b>Timeline:</b> 5/2025 - 7/2025</li>
+    <li><b>Description:</b> My contributions include programming the bank system as well as the phone system for this roleplay game. I have also developed various GUI features.</li>
+  </ul>
+</div>
 
 <h2> How to contact me?</h2>
 
