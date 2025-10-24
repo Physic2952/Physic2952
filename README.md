@@ -50,7 +50,21 @@ Besides Roblox Studio and Lua, I have experience with Java (Eclipse & VS Code) a
 
 ---
 ## Contact
-- <img src="https://cdn.simpleicons.org/discord/5865F2" width="20" height="20" /> Discord: [Physic91](http://discordapp.com/users/1029011048793112657)  
-- <img src="https://cdn.simpleicons.org/gmail/EA4335" width="20" height="20" /> Email: [Physiclover13244@gmail.com](mailto:Physiclover13244@gmail.com)
+<p>
+  <b>Discord:</b> 
+  <a href="http://discordapp.com/users/1029011048793112657">Physic91</a> 
+  <span>(fast reply)</span>  
+  <a href="http://discordapp.com/users/1029011048793112657">
+    <img alt="Discord" src="https://cdn.simpleicons.org/discord/22/5865F2" width="22" height="22" style="vertical-align: middle; margin-left: 5px;" />
+  </a>
+</p>
+
+<p>
+  <b>Email:</b> 
+  <a href="mailto:Physiclover13244@gmail.com">Physiclover13244@gmail.com</a>  
+  <a href="mailto:Physiclover13244@gmail.com">
+    <img alt="Email" src="https://cdn.simpleicons.org/gmail/22/EA4335" width="22" height="22" style="vertical-align: middle; margin-left: 5px;" />
+  </a>
+</p>
 
 
