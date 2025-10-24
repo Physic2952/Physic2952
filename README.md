@@ -29,7 +29,7 @@ This cross-platform experience has strengthened my understanding of programming 
 </ul>
 
 
-<h2>👨‍💻 Game Development Projects/Resources that I studied:</h2>
+<h2>👨‍💻 Game Development Projects/Resources that I have studied:</h2>
 
 - <b>Quest System</b>
   - [QuestSystem](https://github.com/Physic2952/Quest-System)
@@ -48,6 +48,18 @@ This cross-platform experience has strengthened my understanding of programming 
     <li><b>Description:</b> My contributions include programming the bank system as well as the phone system for this roleplay game. I have also developed various GUI features.</li>
   </ul>
 </div>
+
+<div class="Project">
+  <h3>Waffle Incremental🧇</h3>
+  <ul>
+    <li><b>Project Name:</b> <a href="https://www.roblox.com/de/games/73359353145399/Waffle-Incremental" target="_blank">Waffle Incremental</a></li>
+    <li><b>Job Title:</b> Programmer</li>
+    <li><b>Timeline:</b> 25/10/2025 - ~20/11/2025</li>
+    <li><b>Description:</b> I was hired to develop the game entirely from scratch.Since I am the only Scripter there, I am responsible for designing and implementing all systems, mechanics, and features to deliver a fully functional incremental game.  </li>
+      <li><b>Game Link:</b> https://www.roblox.com/de/games/73359353145399/Waffle-Incremental</li>
+  </ul>
+</div>
+
 
 <h2> How to contact me?</h2>
 
