@@ -21,9 +21,9 @@ Besides Roblox Studio and Lua, I have experience with Java (Eclipse & VS Code) a
 ---
 
 ## Technical Skills
-- **Languages:** Lua, Luau, Java, C#  
-- **Tools:** VS, VS Code, Roblox Studio, Rojo, ProfileService/ProfileStore  
-- **Other Skills:** Game Design, Security Management, Project Management  
+- **Languages:** Lua, Luau, Java, C# , a little bit of TypeScript
+- **Tools:** VS, VS Code, Roblox Studio, Rojo, Eclipse
+- **Other Skills:** Game Design, Security Management, Project Management 
 
 ---
 
@@ -44,7 +44,7 @@ Besides Roblox Studio and Lua, I have experience with Java (Eclipse & VS Code) a
 
 ### Waffle Incremental 🧇
 - **Role:** Programmer  
-- **Timeline:** 25/10/2025 – ~20/11/2025  
+- **Timeline:** 25/10/2025 – now
 - **Description:** Developed the game entirely from scratch. Responsible for designing and implementing all systems, mechanics, and features as the sole scripter.  
 - **Game Link:** [Play Waffle Incremental](https://www.roblox.com/de/games/73359353145399/Waffle-Incremental)
 
