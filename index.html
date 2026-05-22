@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physic91 – Roblox Luau Programmer & Game Developer</title>
+  <meta name="description" content="Portfolio of Physic91 – Roblox Luau Programmer, Game Developer, and OOP Systems Engineer. Specializing in anti-exploit, performance optimization, and scalable game architecture." />
+  <meta property="og:title" content="Physic91 – Roblox Luau Programmer" />
+  <meta property="og:description" content="Portfolio of Physic91 – Roblox Luau Programmer & Game Developer." />
+  <meta name="theme-color" content="#0a0a0f" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --bg:        #080810;
+      --bg2:       #0e0e1a;
+      --bg3:       #13131f;
+      --surface:   #161624;
+      --surface2:  #1d1d2e;
+      --border:    rgba(255,255,255,0.07);
+      --border2:   rgba(0,230,200,0.2);
+      --accent:    #00e6c8;
+      --accent2:   #005e54;
+      --accent-glow: rgba(0,230,200,0.18);
+      --text:      #e8e8f0;
+      --text2:     #9898b0;
+      --text3:     #5a5a7a;
+      --red:       #ff4d6d;
+      --yellow:    #ffd166;
+      --mono:      'Space Mono', monospace;
+      --sans:      'Sora', sans-serif;
+      --r:         10px;
+      --r2:        16px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Scanline texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--mono); line-height: 1.15; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); font-weight: 700; }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 700; }
+    h3 { font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; }
+    p  { font-family: var(--sans); font-weight: 300; color: var(--text2); font-size: 0.975rem; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .accent  { color: var(--accent); }
+    .dim     { color: var(--text3); font-family: var(--mono); font-size: 0.78rem; }
+    .tag-line { font-family: var(--mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ─── LAYOUT HELPERS ─────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 100px 0; }
+    .section-sm { padding: 64px 0; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: '//'; color: var(--text3);
+    }
+    .section-title { margin-bottom: 14px; }
+    .section-sub   { max-width: 540px; color: var(--text2); font-size: 1.02rem; margin-bottom: 56px; }
+
+    /* ─── NAVIGATION ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,16,0.72);
+      backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--mono); font-size: 1rem; font-weight: 700;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono); font-size: 0.78rem; color: var(--text2);
+      letter-spacing: 0.05em; transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* mobile nav */
+    .mobile-menu {
+      display: none; position: fixed; top: 60px; left: 0; right: 0;
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      z-index: 99; padding: 20px 24px; flex-direction: column; gap: 16px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--mono); font-size: 0.9rem; color: var(--text2);
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── BUTTONS ────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.08em; padding: 12px 24px; border-radius: var(--r);
+      border: none; cursor: pointer; transition: all var(--transition);
+      text-decoration: none; white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent); color: #080810;
+    }
+    .btn-primary:hover {
+      background: #fff; box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border2);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(0,230,200,0.06); transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--text2);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--text3); color: var(--text); transform: translateY(-1px);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 60px;
+    }
+
+    /* Mesh gradient background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 900px; height: 900px;
+      background: radial-gradient(ellipse, rgba(0,230,200,0.07) 0%, transparent 70%);
+      top: -200px; right: -200px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center; position: relative; z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.75rem;
+      color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--accent);
+    }
+
+    .hero h1 { margin-bottom: 20px; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+
+    .hero-desc {
+      font-size: 1.05rem; color: var(--text2); margin-bottom: 40px;
+      max-width: 480px; line-height: 1.8;
+    }
+
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Hero visual: terminal card */
+    .hero-terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,230,200,0.06);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface2); padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .terminal-dot:nth-child(1) { background: #ff5f56; }
+    .terminal-dot:nth-child(2) { background: #febc2e; }
+    .terminal-dot:nth-child(3) { background: #28c840; }
+    .terminal-title {
+      margin-left: 8px; font-family: var(--mono); font-size: 0.72rem;
+      color: var(--text3);
+    }
+    .terminal-body { padding: 28px; font-family: var(--mono); font-size: 0.82rem; line-height: 2; }
+    .t-comment { color: var(--text3); }
+    .t-kw   { color: #c792ea; }
+    .t-str  { color: #c3e88d; }
+    .t-fn   { color: #82aaff; }
+    .t-acc  { color: var(--accent); }
+    .t-num  { color: var(--yellow); }
+    .t-cursor {
+      display: inline-block; width: 8px; height: 1em;
+      background: var(--accent); margin-left: 2px;
+      animation: blink 1s step-end infinite; vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; color: var(--text3);
+      font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.1em; animation: float 2.4s ease-in-out infinite;
+    }
+    .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text3), transparent); }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px;
+      align-items: start;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 32px; position: relative;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; border-radius: var(--r2) var(--r2) 0 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .about-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 1.6rem; font-weight: 700;
+      color: #080810; margin-bottom: 20px;
+    }
+
+    .about-name {
+      font-family: var(--mono); font-size: 1.35rem; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .about-handle {
+      font-family: var(--mono); font-size: 0.78rem; color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .about-stat {
+      border-top: 1px solid var(--border);
+      padding-top: 16px; margin-top: 16px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .stat-item label {
+      display: block; font-family: var(--mono); font-size: 0.65rem;
+      color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .stat-item value {
+      font-family: var(--mono); font-size: 0.88rem; color: var(--text);
+    }
+
+    .about-text p { margin-bottom: 18px; font-size: 1.01rem; line-height: 1.85; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ─── JOURNEY ────────────────────────────────────────────── */
+    .journey { background: var(--bg2); }
+
+    .timeline {
+      position: relative; padding-left: 32px; max-width: 700px;
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+
+    .tl-item {
+      position: relative; margin-bottom: 48px;
+      opacity: 0; transform: translateX(-20px);
+      animation: slideIn 0.6s forwards;
+    }
+    .tl-item:nth-child(1) { animation-delay: 0.1s; }
+    .tl-item:nth-child(2) { animation-delay: 0.25s; }
+    .tl-item:nth-child(3) { animation-delay: 0.4s; }
+    .tl-item:nth-child(4) { animation-delay: 0.55s; }
+
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -36px; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .tl-year {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
+      letter-spacing: 0.15em; margin-bottom: 6px;
+    }
+    .tl-item h3 { margin-bottom: 8px; color: var(--text); }
+    .tl-item p  { color: var(--text2); }
+
+    /* ─── BEYOND ─────────────────────────────────────────────── */
+    .beyond-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .beyond-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 28px; position: relative; overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .beyond-card:hover {
+      border-color: var(--border2); transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .beyond-icon {
+      width: 44px; height: 44px; border-radius: var(--r);
+      background: rgba(0,230,200,0.08); border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 18px;
+    }
+    .beyond-card h3 { margin-bottom: 8px; }
+    .beyond-card p  { font-size: 0.92rem; }
+
+    /* ─── SKILLS ─────────────────────────────────────────────── */
+    .skills { background: var(--bg2); }
+
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .skill-category {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 28px;
+    }
+    .skill-category-label {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .skill-category-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .skill-tag {
+      font-family: var(--mono); font-size: 0.76rem;
+      padding: 6px 14px; border-radius: 6px;
+      border: 1px solid var(--border); color: var(--text2);
+      background: var(--surface2); white-space: nowrap;
+      transition: all var(--transition); cursor: default;
+    }
+    .skill-tag:hover { border-color: var(--border2); color: var(--accent); }
+    .skill-tag.primary {
+      border-color: rgba(0,230,200,0.35); color: var(--accent);
+      background: rgba(0,230,200,0.06);
+    }
+
+    /* ─── PROJECTS ───────────────────────────────────────────── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all var(--transition);
+    }
+    .project-card:hover {
+      border-color: var(--border2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent2);
+    }
+    .project-card-top {
+      padding: 28px 28px 0;
+    }
+    .project-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .project-type {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .project-lang {
+      font-family: var(--mono); font-size: 0.7rem; color: var(--text3);
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .project-card h3 { margin-bottom: 10px; }
+    .project-card p  { font-size: 0.9rem; flex: 1; }
+
+    .project-card-bottom {
+      padding: 20px 28px 28px;
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--text2); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 6px;
+      transition: all var(--transition);
+    }
+    .project-link:hover {
+      color: var(--accent); border-color: var(--border2);
+      background: rgba(0,230,200,0.06);
+    }
+    .project-link svg { width: 12px; height: 12px; }
+
+    /* DM card */
+    .project-card.dm-card {
+      border-style: dashed; border-color: var(--border2);
+      background: linear-gradient(135deg, var(--surface), rgba(0,94,84,0.12));
+    }
+    .dm-card .project-card-top {
+      display: flex; flex-direction: column; align-items: flex-start; flex: 1;
+    }
+
+    /* ─── EXPERIENCE ─────────────────────────────────────────── */
+    .experience { background: var(--bg2); }
+
+    .exp-grid { display: grid; gap: 20px; }
+
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 32px;
+      display: grid; grid-template-columns: auto 1fr; gap: 24px;
+      align-items: start; transition: all var(--transition);
+    }
+    .exp-card:hover {
+      border-color: var(--border2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .exp-index {
+      font-family: var(--mono); font-size: 1.8rem; font-weight: 700;
+      color: var(--surface2); line-height: 1; user-select: none;
+      min-width: 48px;
+    }
+
+    .exp-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+    }
+    .exp-title { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; }
+    .exp-badge {
+      font-family: var(--mono); font-size: 0.68rem;
+      color: var(--accent); background: rgba(0,230,200,0.08);
+      border: 1px solid rgba(0,230,200,0.25);
+      padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+    }
+    .exp-meta {
+      font-family: var(--mono); font-size: 0.75rem; color: var(--text3);
+      margin-bottom: 14px;
+    }
+    .exp-meta span { color: var(--text2); }
+    .exp-desc { font-size: 0.95rem; }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 18px 20px;
+      transition: all var(--transition); cursor: default;
+    }
+    .contact-item:hover {
+      border-color: var(--border2); background: var(--surface2);
+    }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(0,230,200,0.08); border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-item-text label {
+      display: block; font-family: var(--mono); font-size: 0.65rem;
+      color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .contact-item-text span {
+      font-family: var(--mono); font-size: 0.88rem; color: var(--text);
+    }
+    .copy-btn {
+      margin-left: auto; background: none; border: 1px solid var(--border);
+      color: var(--text3); font-family: var(--mono); font-size: 0.65rem;
+      padding: 4px 10px; border-radius: 4px; cursor: pointer;
+      transition: all var(--transition); white-space: nowrap;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Contact form */
+    .contact-form {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 36px; position: relative;
+    }
+    .contact-form::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px; border-radius: var(--r2) var(--r2) 0 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .form-title {
+      font-family: var(--mono); font-size: 0.72rem;
+      color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block; font-family: var(--mono); font-size: 0.7rem;
+      color: var(--text2); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%; background: var(--bg);
+      border: 1px solid var(--border); border-radius: var(--r);
+      color: var(--text); font-family: var(--sans); font-size: 0.92rem;
+      padding: 12px 16px; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,230,200,0.1);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    ::placeholder { color: var(--text3); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-status {
+      margin-top: 14px; padding: 12px 16px; border-radius: var(--r);
+      font-family: var(--mono); font-size: 0.78rem; display: none;
+    }
+    .form-status.success {
+      display: block; background: rgba(0,230,200,0.08);
+      border: 1px solid rgba(0,230,200,0.3); color: var(--accent);
+    }
+    .form-status.error {
+      display: block; background: rgba(255,77,109,0.08);
+      border: 1px solid rgba(255,77,109,0.3); color: var(--red);
+    }
+
+    /* honeypot */
+    .hp-field { display: none; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--mono); font-size: 0.9rem; color: var(--text2);
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--text3);
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────────── */
+    .hr {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid  { grid-template-columns: 1fr; }
+      .hero-terminal { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .exp-card   { grid-template-columns: 1fr; }
+      .exp-index  { display: none; }
+      .form-grid  { grid-template-columns: 1fr; }
+      .nav-links  { display: none; }
+      .hamburger  { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 72px 0; }
+      .hero { min-height: 90vh; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1; transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────── -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#home">Physic<span>91</span>.dev</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Open navigation" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="menu">
+    <a href="#about" role="menuitem">About</a>
+    <a href="#journey" role="menuitem">Journey</a>
+    <a href="#skills" role="menuitem">Skills</a>
+    <a href="#projects" role="menuitem">Projects</a>
+    <a href="#experience" role="menuitem">Experience</a>
+    <a href="#contact" role="menuitem">Contact</a>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-eyebrow">Roblox Luau Programmer &amp; Game Developer</div>
+          <h1>Hello,<br>I'm <em>Physic</em>.</h1>
+          <p class="hero-desc">
+            I build scalable game systems, craft clean Luau architecture,
+            and optimize everything from performance to anti-exploit security.
+            Code that runs well and holds up.
+          </p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary" aria-label="View my projects">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              View Projects
+            </a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+            <a href="https://github.com/Physic91" target="_blank" rel="noopener" class="btn btn-ghost" aria-label="GitHub profile (opens in new tab)">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal Code Preview -->
+        <div class="hero-terminal" role="presentation" aria-hidden="true">
+          <div class="terminal-bar">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <span class="terminal-title">QuestSystem.luau</span>
+          </div>
+          <div class="terminal-body">
+            <div><span class="t-comment">-- QuestSystem | Physic91</span></div>
+            <div><span class="t-comment">-- OOP Architecture · Luau</span></div>
+            <div>&nbsp;</div>
+            <div><span class="t-kw">local</span> <span class="t-acc">QuestSystem</span> = {}</div>
+            <div><span class="t-acc">QuestSystem</span>.__index = <span class="t-acc">QuestSystem</span></div>
+            <div>&nbsp;</div>
+            <div><span class="t-kw">function</span> <span class="t-fn">QuestSystem.new</span>(data)</div>
+            <div>&nbsp;&nbsp;<span class="t-kw">local</span> self = <span class="t-fn">setmetatable</span>({}, <span class="t-acc">QuestSystem</span>)</div>
+            <div>&nbsp;&nbsp;self._quests = data.quests <span class="t-kw">or</span> {}</div>
+            <div>&nbsp;&nbsp;self._active = {}</div>
+            <div>&nbsp;&nbsp;<span class="t-kw">return</span> self</div>
+            <div><span class="t-kw">end</span></div>
+            <div>&nbsp;</div>
+            <div><span class="t-kw">function</span> <span class="t-fn">QuestSystem:assign</span>(id)</div>
+            <div>&nbsp;&nbsp;<span class="t-kw">local</span> q = self._quests[id]</div>
+            <div>&nbsp;&nbsp;<span class="t-kw">if not</span> q <span class="t-kw">then return</span> <span class="t-kw">false</span> <span class="t-kw">end</span></div>
+            <div>&nbsp;&nbsp;self._active[id] = { progress = <span class="t-num">0</span> }</div>
+            <div>&nbsp;&nbsp;<span class="t-kw">return</span> <span class="t-kw">true</span></div>
+            <div><span class="t-kw">end</span><span class="t-cursor"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Profile card -->
+        <div class="about-card fade-up">
+          <div class="about-avatar" aria-hidden="true">P</div>
+          <div class="about-name">Physic</div>
+          <div class="about-handle">@Physic91</div>
+          <div class="about-stat">
+            <div class="stat-item">
+              <label>Started</label>
+              <value>2024</value>
+            </div>
+            <div class="stat-item">
+              <label>Focus</label>
+              <value>Luau / OOP</value>
+            </div>
+            <div class="stat-item">
+              <label>Platform</label>
+              <value>Roblox</value>
+            </div>
+            <div class="stat-item">
+              <label>Contact</label>
+              <value>Discord</value>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="about-text fade-up">
+          <div class="section-label">About Me</div>
+          <h2 class="section-title" id="about-title">Who I Am</h2>
+          <p>
+            Hey, I'm Physic — a Roblox Luau programmer and game developer
+            who genuinely enjoys figuring out how things work. When I'm
+            not writing scripts, you'll find me watching movies, diving
+            into new interests, or just thinking.
+          </p>
+          <p>
+            I love music, gaming, and especially the engineering side of
+            games — the systems, the logic, the architecture beneath the
+            surface. That curiosity is what pushed me into programming in
+            the first place, and it still drives everything I build.
+          </p>
+          <p>
+            My work focuses on clean, maintainable Luau code: OOP-based
+            systems, anti-exploit security, and performance optimization.
+            I care about code that's not just functional, but thoughtfully
+            designed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── JOURNEY ────────────────────────────────────────────────── -->
+  <section class="section journey" id="journey" aria-labelledby="journey-title">
+    <div class="container">
+      <div class="section-label">Where It All Started</div>
+      <h2 class="section-title" id="journey-title">The Journey</h2>
+      <p class="section-sub">From playing games to building them — a continuous evolution driven by curiosity.</p>
+
+      <div class="timeline" role="list">
+        <div class="tl-item" role="listitem">
+          <div class="tl-year">ORIGIN</div>
+          <h3>Curiosity Sparked</h3>
+          <p>It started with a simple question: how are games actually built?
+             Playing Roblox planted the seed — watching systems in action made me
+             want to understand the mechanics beneath.</p>
+        </div>
+        <div class="tl-item" role="listitem">
+          <div class="tl-year">2024</div>
+          <h3>First Lines of Lua</h3>
+          <p>I picked up Lua and quickly fell into it. The ability to create
+             interactive systems, control game logic, and build real features
+             from scratch was immediately addictive.</p>
+        </div>
+        <div class="tl-item" role="listitem">
+          <div class="tl-year">2024 → 2025</div>
+          <h3>Systems, Security &amp; OOP</h3>
+          <p>I became passionate about building proper architecture — OOP patterns
+             in Luau, anti-exploit measures, and performance optimization.
+             Complex bugs became puzzles I actively sought out.</p>
+        </div>
+        <div class="tl-item" role="listitem">
+          <div class="tl-year">TODAY</div>
+          <h3>Shipping Real Projects</h3>
+          <p>From quest systems to full game builds, I ship real work, collaborate
+             on live Roblox games, and keep improving every day.
+             The learning never stops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── BEYOND ROBLOX ─────────────────────────────────────────── -->
+  <section class="section" id="beyond" aria-labelledby="beyond-title">
+    <div class="container">
+      <div class="section-label">Beyond Roblox</div>
+      <h2 class="section-title" id="beyond-title">More Than Luau</h2>
+      <p class="section-sub">My experience extends beyond Roblox Studio — other platforms and languages have shaped my fundamentals.</p>
+
+      <div class="beyond-grid">
+        <div class="beyond-card fade-up">
+          <div class="beyond-icon" aria-hidden="true">☕</div>
+          <h3>Java Development</h3>
+          <p>Built small applications in Java using Eclipse and VS Code. Working with a
+             statically typed language strengthened my grasp of object-oriented principles
+             and program structure.</p>
+        </div>
+        <div class="beyond-card fade-up">
+          <div class="beyond-icon" aria-hidden="true">◈</div>
+          <h3>C# &amp; Unity</h3>
+          <p>Developed gameplay systems in Unity with C#. Understanding a professional
+             game engine expanded my perspective on how game logic is structured
+             at a higher level.</p>
+        </div>
+        <div class="beyond-card fade-up">
+          <div class="beyond-icon" aria-hidden="true">⬡</div>
+          <h3>Cross-Platform Thinking</h3>
+          <p>Switching between Roblox/Luau, Unity/C#, and Java/Eclipse taught me
+             adaptability. Core programming concepts transfer — the environment changes,
+             the fundamentals stay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── SKILLS ────────────────────────────────────────────────── -->
+  <section class="section skills" id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <div class="section-label">Technical Skills</div>
+      <h2 class="section-title" id="skills-title">What I Work With</h2>
+      <p class="section-sub">Languages, tools, and domains I work across — organized by category.</p>
+
+      <div class="skills-grid">
+        <div class="skill-category fade-up">
+          <div class="skill-category-label">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">Lua</span>
+            <span class="skill-tag primary">Luau</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">TypeScript (basic)</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-label">Tools &amp; Environments</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">Roblox Studio</span>
+            <span class="skill-tag primary">Rojo</span>
+            <span class="skill-tag">VS Code</span>
+            <span class="skill-tag">Visual Studio</span>
+            <span class="skill-tag">Eclipse</span>
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">GitHub</span>
+          </div>
+        </div>
+        <div class="skill-category fade-up">
+          <div class="skill-category-label">Specializations</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">OOP Architecture</span>
+            <span class="skill-tag primary">Anti-Exploit / Security</span>
+            <span class="skill-tag primary">Performance Optimization</span>
+            <span class="skill-tag">Game Design</span>
+            <span class="skill-tag">System Design</span>
+            <span class="skill-tag">Project Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── PROJECTS ──────────────────────────────────────────────── -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-label">Projects &amp; Resources</div>
+      <h2 class="section-title" id="projects-title">What I've Built</h2>
+      <p class="section-sub">Open-source systems, reusable Luau modules, and game development resources.</p>
+
+      <div class="projects-grid">
+
+        <!-- Quest System -->
+        <article class="project-card fade-up">
+          <div class="project-card-top">
+            <div class="project-meta">
+              <span class="project-type">Game System</span>
+              <span class="project-lang">Luau</span>
+            </div>
+            <h3>Quest System</h3>
+            <p>A complete, OOP-based quest management system for Roblox. Supports
+               quest assignment, progress tracking, completion callbacks, and clean
+               state management across server and client.</p>
+          </div>
+          <div class="project-card-bottom">
+            <a href="https://github.com/Physic91" target="_blank" rel="noopener"
+               class="project-link" aria-label="View QuestSystem on GitHub (opens in new tab)">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- OOP Luau -->
+        <article class="project-card fade-up">
+          <div class="project-card-top">
+            <div class="project-meta">
+              <span class="project-type">Resource / Reference</span>
+              <span class="project-lang">Luau</span>
+            </div>
+            <h3>OOP Luau Summary</h3>
+            <p>A comprehensive OOP reference for Luau: superclasses, inheritance,
+               constructors, and simulated access modifiers (public / private /
+               protected). A practical guide for writing scalable game architecture.</p>
+          </div>
+          <div class="project-card-bottom">
+            <a href="https://github.com/Physic91" target="_blank" rel="noopener"
+               class="project-link" aria-label="View OOP Luau Summary on GitHub (opens in new tab)">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </article>
+
+        <!-- More projects DM card -->
+        <article class="project-card dm-card fade-up" aria-label="More projects available on request">
+          <div class="project-card-top">
+            <div class="project-meta">
+              <span class="project-type">More Work</span>
+              <span class="project-lang">Various</span>
+            </div>
+            <h3>More Projects</h3>
+            <p>There are plenty more projects — VS Code tools, Roblox Studio systems,
+               and game-specific modules. I keep uploading them over time.
+               DM me on Discord for instant access to everything.</p>
+          </div>
+          <div class="project-card-bottom">
+            <a href="#contact" class="project-link">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Discord DM
+            </a>
+            <a href="https://github.com/Physic91" target="_blank" rel="noopener" class="project-link" aria-label="GitHub profile (opens in new tab)">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="12" height="12"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── EXPERIENCE ────────────────────────────────────────────── -->
+  <section class="section experience" id="experience" aria-labelledby="exp-title">
+    <div class="container">
+      <div class="section-label">Past Work</div>
+      <h2 class="section-title" id="exp-title">Experience</h2>
+      <p class="section-sub">Real projects, real teams, real deadlines.</p>
+
+      <div class="exp-grid">
+
+        <article class="exp-card fade-up">
+          <div class="exp-index" aria-hidden="true">01</div>
+          <div>
+            <div class="exp-header">
+              <div class="exp-title">Emergency Bristol</div>
+              <span class="exp-badge">Programmer</span>
+            </div>
+            <div class="exp-meta">
+              <span>May 2025 – July 2025</span>
+              &nbsp;·&nbsp; Roblox Roleplay Game
+            </div>
+            <p class="exp-desc">
+              Programmed the bank and phone systems for this roleplay game,
+              building feature-rich, reliable gameplay logic from scratch.
+              Also developed various GUI components, ensuring smooth,
+              responsive user interfaces throughout the experience.
+            </p>
+          </div>
+        </article>
+
+        <article class="exp-card fade-up">
+          <div class="exp-index" aria-hidden="true">02</div>
+          <div>
+            <div class="exp-header">
+              <div class="exp-title">Waffle Incremental 🧇</div>
+              <span class="exp-badge">Sole Scripter</span>
+            </div>
+            <div class="exp-meta">
+              <span>Oct 2025 – Present</span>
+              &nbsp;·&nbsp; Roblox Incremental Game
+            </div>
+            <p class="exp-desc">
+              Built the entire game from the ground up as the sole scripter.
+              Responsible for designing and implementing every system, mechanic,
+              and feature — from core loop architecture to UI systems and
+              data persistence. An ongoing project under active development.
+            </p>
+            <div style="margin-top:16px;">
+              <a href="https://www.roblox.com/games" target="_blank" rel="noopener"
+                 class="project-link" aria-label="Play Waffle Incremental on Roblox (opens in new tab)"
+                 style="display:inline-flex;">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                Play on Roblox
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- ─── CONTACT ───────────────────────────────────────────────── -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title" id="contact-title">Get In Touch</h2>
+      <p class="section-sub">Have a project in mind, want to collaborate, or just want to say hi? I'm reachable.</p>
+
+      <div class="contact-grid">
+
+        <!-- Contact info -->
+        <div class="contact-info">
+          <div class="contact-item" tabindex="0">
+            <div class="contact-icon" aria-hidden="true">💬</div>
+            <div class="contact-item-text">
+              <label>Discord (fastest reply)</label>
+              <span>Physic91</span>
+            </div>
+            <button class="copy-btn" onclick="copyText('Physic91', this)" aria-label="Copy Discord username">Copy</button>
+          </div>
+          <div class="contact-item" tabindex="0">
+            <div class="contact-icon" aria-hidden="true">✉️</div>
+            <div class="contact-item-text">
+              <label>Email</label>
+              <span>Physiclover13244@gmail.com</span>
+            </div>
+            <button class="copy-btn" onclick="copyText('Physiclover13244@gmail.com', this)" aria-label="Copy email address">Copy</button>
+          </div>
+          <div class="contact-item" tabindex="0">
+            <div class="contact-icon" aria-hidden="true">⚡</div>
+            <div class="contact-item-text">
+              <label>GitHub</label>
+              <span>github.com/Physic91</span>
+            </div>
+            <a href="https://github.com/Physic91" target="_blank" rel="noopener"
+               class="copy-btn" aria-label="Open GitHub profile (opens in new tab)" style="text-decoration:none;">Open</a>
+          </div>
+
+          <p style="margin-top:8px; font-size:0.85rem;">
+            Discord is the fastest way to reach me. For project inquiries, email works perfectly too.
+          </p>
+        </div>
+
+        <!-- Contact form (Formspree) -->
+        <div class="contact-form">
+          <div class="form-title">// Send a Message</div>
+          <!--
+            SETUP: Replace YOUR_FORM_ID below with your actual Formspree form ID.
+            Sign up free at https://formspree.io — no backend required.
+            Formspree forwards submissions to your email securely.
+          -->
+          <form id="contactForm" novalidate aria-label="Contact form">
+            <!-- Honeypot anti-spam field -->
+            <div class="hp-field" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cf-name">Name</label>
+                <input class="form-input" type="text" id="cf-name" name="name"
+                       placeholder="Your name" required minlength="2" maxlength="80"
+                       autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input class="form-input" type="email" id="cf-email" name="email"
+                       placeholder="your@email.com" required maxlength="200"
+                       autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cf-subject">Subject</label>
+              <input class="form-input" type="text" id="cf-subject" name="subject"
+                     placeholder="Project inquiry, Collaboration, …" required
+                     minlength="3" maxlength="120" />
+            </div>
+
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea class="form-textarea" id="cf-message" name="message"
+                        placeholder="Tell me about your project or question…"
+                        required minlength="10" maxlength="3000"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%; justify-content:center;">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+
+            <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+          </form>
+
+          <p style="margin-top:16px; font-size:0.78rem; color:var(--text3); font-family:var(--mono);">
+            ⚙ Powered by Formspree · No data stored on this server
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Physic<span>91</span>.dev</div>
+        <div class="footer-copy">© 2025 Physic91 · Roblox Luau Programmer</div>
+        <a href="https://github.com/Physic91" target="_blank" rel="noopener"
+           class="btn btn-ghost" style="padding:8px 16px; font-size:0.72rem;"
+           aria-label="GitHub profile (opens in new tab)">
+          <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ──────────────────────────────────────────────── -->
+  <script>
+    /* ── Mobile Nav ─────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── Copy to Clipboard ──────────────────────────────── */
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.color = 'var(--accent)';
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.color = '';
+        }, 2000);
+      }).catch(() => {
+        // Fallback for older browsers
+        const el = document.createElement('textarea');
+        el.value = text;
+        el.style.position = 'fixed'; el.style.opacity = '0';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      });
+    }
+
+    /* ── Contact Form (Formspree) ───────────────────────── */
+    /*
+      SETUP INSTRUCTIONS:
+      1. Go to https://formspree.io and create a free account
+      2. Create a new form, set the email to Physiclover13244@gmail.com
+      3. Copy your form endpoint URL (e.g. https://formspree.io/f/xyzabc123)
+      4. Replace FORMSPREE_ENDPOINT below with that URL
+    */
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+
+    const form    = document.getElementById('contactForm');
+    const status  = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('cf-submit');
+
+    // Client-side rate limiting: max 3 sends per 10 minutes
+    const RATE_KEY = 'cf_sends';
+    const RATE_WINDOW = 10 * 60 * 1000; // 10 minutes
+
+    function getRateLimitData() {
+      try {
+        return JSON.parse(sessionStorage.getItem(RATE_KEY) || '{"count":0,"first":0}');
+      } catch { return { count: 0, first: 0 }; }
+    }
+    function updateRateLimit() {
+      const data = getRateLimitData();
+      const now = Date.now();
+      if (now - data.first > RATE_WINDOW) {
+        sessionStorage.setItem(RATE_KEY, JSON.stringify({ count: 1, first: now }));
+        return true;
+      }
+      if (data.count >= 3) return false;
+      sessionStorage.setItem(RATE_KEY, JSON.stringify({ count: data.count + 1, first: data.first }));
+      return true;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = '';
+
+      // Honeypot check
+      if (form._gotcha && form._gotcha.value) return;
+
+      // Validation
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Rate limit
+      if (!updateRateLimit()) {
+        status.textContent = '⚠ Too many messages. Please wait a few minutes before trying again.';
+        status.className = 'form-status error';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+          status.className = 'form-status success';
+          form.reset();
+        } else {
+          const json = await res.json().catch(() => ({}));
+          status.textContent = '✗ Something went wrong. Try emailing me directly: Physiclover13244@gmail.com';
+          status.className = 'form-status error';
+        }
+      } catch {
+        status.textContent = '✗ Network error. Try emailing me directly: Physiclover13244@gmail.com';
+        status.className = 'form-status error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message`;
+      }
+    });
+
+    /* ── Scroll Fade-Up Animations ──────────────────────── */
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      fadeEls.forEach(el => observer.observe(el));
+    } else {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ── Active nav highlight ────────────────────────────── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current
+          ? 'var(--accent)' : '';
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
