@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Physic91 – Roblox Luau Programmer & Game Developer</title>
+  <title>Physic91 – Roblox Luau Programmer &amp; Game Developer</title>
   <meta name="description" content="Professional Roblox Luau developer specializing in OOP systems, anti-exploit security, and scalable game architecture. Open for commissions." />
   <meta property="og:title" content="Physic91 – Roblox Luau Programmer" />
   <meta property="og:description" content="Professional Roblox Luau developer. Clean architecture, anti-exploit, performance." />
@@ -95,7 +95,6 @@
 
     .nav-right { display: flex; align-items: center; gap: 12px; }
 
-    /* Commission status pill in nav */
     .nav-status {
       display: inline-flex; align-items: center; gap: 6px;
       font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em;
@@ -398,6 +397,7 @@
     .contact-notice ul { padding-left: 16px; margin-top: 6px; }
     .contact-notice ul li { font-size: 0.85rem; color: var(--text2); line-height: 1.7; }
 
+    /* ─── CONTACT FORM ───────────────────────────────────────── */
     .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 36px; position: relative; }
     .contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: var(--r2) var(--r2) 0 0; background: linear-gradient(90deg, var(--accent), transparent); }
     .form-title { font-family: var(--mono); font-size: 0.72rem; color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; }
@@ -405,12 +405,36 @@
     .form-group label { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--text2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
     .form-input, .form-textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); color: var(--text); font-family: var(--sans); font-size: 0.92rem; padding: 12px 16px; outline: none; transition: border-color var(--transition), box-shadow var(--transition); }
     .form-input:focus, .form-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,230,200,0.1); }
+    /* Formspree AJAX aria-invalid styling */
+    .form-input[aria-invalid="true"], .form-textarea[aria-invalid="true"] { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,77,109,0.1); }
     .form-textarea { resize: vertical; min-height: 130px; }
     ::placeholder { color: var(--text3); }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); color: var(--text2); font-family: var(--sans); font-size: 0.92rem; padding: 12px 16px; outline: none; cursor: pointer; }
     .form-select:focus { border-color: var(--accent); }
     .form-select option { background: var(--bg2); }
+
+    /* Formspree SDK data-attribute elements */
+    [data-fs-success] {
+      display: none;
+      background: rgba(0,230,200,0.08);
+      border: 1px solid rgba(0,230,200,0.3);
+      color: var(--accent);
+      border-radius: var(--r);
+      padding: 12px 16px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      margin-top: 14px;
+    }
+    [data-fs-error]:not([data-fs-error=""]) {
+      display: block;
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      margin-top: 5px;
+    }
+    [data-fs-error] { display: none; }
+
     .form-status { margin-top: 14px; padding: 12px 16px; border-radius: var(--r); font-family: var(--mono); font-size: 0.78rem; display: none; }
     .form-status.success { display: block; background: rgba(0,230,200,0.08); border: 1px solid rgba(0,230,200,0.3); color: var(--accent); }
     .form-status.error { display: block; background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.3); color: var(--red); }
@@ -687,7 +711,7 @@
       </div>
       <div>
         <p class="status-note">
-          I am currently available for new commissions and collaborations. Reach out via Discord , via Email or the contact form — include your project details for a fast response.
+          I am currently available for new commissions and collaborations. Reach out via Discord, via Email or the contact form — include your project details for a fast response.
         </p>
         <div class="status-meta" style="margin-top:8px;">
           ⚡ Priority slots available · Typical turnaround 1–30 days depending on scope
@@ -1431,23 +1455,44 @@
         <p style="font-size:0.84rem; color:var(--text3);">Discord is the fastest way to reach me. For project inquiries, the form or email works perfectly too.</p>
       </div>
 
-      <!-- ─── CONTACT FORM (Formspree AJAX) ──────────────────── -->
+      <!-- ═══════════════════════════════════════════════════════
+           CONTACT FORM — Formspree Vanilla JS Ajax (CDN-free)
+           Guide chosen: Vanilla JS Ajax (custom fetch)
+           Endpoint: https://formspree.io/f/meedzqpe
+           - Uses fetch() + FormData with Accept: application/json
+           - Honeypot field (_gotcha) for spam protection
+           - _replyto hidden field so Formspree threads replies
+           - Client-side rate-limit: 1 submission per 24 h
+           - Full Formspree error array parsing
+           ═══════════════════════════════════════════════════════ -->
       <div class="contact-form">
         <div class="form-title">// Send a Message</div>
+
         <form id="contactForm" novalidate>
+
+          <!-- Honeypot — hidden from humans, read by bots -->
           <div class="hp-field" aria-hidden="true">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
           </div>
+
+          <!-- _replyto: Formspree uses this to set Reply-To header -->
+          <input type="hidden" name="_replyto" id="cf-replyto" />
+
           <div class="form-grid">
             <div class="form-group">
               <label for="cf-name">Name</label>
-              <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required minlength="2" maxlength="80" autocomplete="name" />
+              <input class="form-input" type="text" id="cf-name" name="name"
+                     placeholder="Your name" required minlength="2" maxlength="80"
+                     autocomplete="name" />
             </div>
             <div class="form-group">
               <label for="cf-email">Email</label>
-              <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required maxlength="200" autocomplete="email" />
+              <input class="form-input" type="email" id="cf-email" name="email"
+                     placeholder="your@email.com" required maxlength="200"
+                     autocomplete="email" />
             </div>
           </div>
+
           <div class="form-group">
             <label for="cf-type">Project Type</label>
             <select class="form-select" id="cf-type" name="project_type">
@@ -1465,20 +1510,33 @@
               <option>Other</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="cf-subject">Subject</label>
-            <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Project inquiry, Collaboration, …" required minlength="3" maxlength="120" />
+            <input class="form-input" type="text" id="cf-subject" name="subject"
+                   placeholder="Project inquiry, Collaboration, …"
+                   required minlength="3" maxlength="120" />
           </div>
+
           <div class="form-group">
             <label for="cf-message">Project Details</label>
-            <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your project: what system is needed, what changes, known issues, deadlines…" required minlength="20" maxlength="3000"></textarea>
+            <textarea class="form-textarea" id="cf-message" name="message"
+                      placeholder="Describe your project: what system is needed, what changes, known issues, deadlines…"
+                      required minlength="20" maxlength="3000"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%; justify-content:center;">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+
+          <button type="submit" class="btn btn-primary" id="cf-submit"
+                  style="width:100%; justify-content:center;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
             Send Message
           </button>
+
           <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
         </form>
+
         <p style="margin-top:16px; font-size:0.78rem; color:var(--text3); font-family:var(--mono);">
           ⚙ Via Formspree · Max 1 message per day
         </p>
@@ -1550,13 +1608,15 @@
   </div>
 </footer>
 
-<!-- ─── SCRIPTS ──────────────────────────────────────────────── -->
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════════ -->
 <script>
-/* ════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════
    COMMISSION STATUS CONFIGURATION
-   Change COMMISSION_STATUS to: 'open', 'limited', or 'closed'
-   ════════════════════════════════════════════════════════ */
-const COMMISSION_STATUS = 'open'; // 'open' | 'limited' | 'closed'
+   Set COMMISSION_STATUS to: 'open' | 'limited' | 'closed'
+   ════════════════════════════════════════════════════════════ */
+const COMMISSION_STATUS = 'open';
 const STATUS_CONFIG = {
   open:    { icon: '✅', label: 'Open for Work',          note: 'Currently accepting new projects · Response within 24h' },
   limited: { icon: '⚠️', label: 'Limited Availability',   note: 'Limited slots remaining · DM to confirm availability'   },
@@ -1564,7 +1624,7 @@ const STATUS_CONFIG = {
 };
 
 function applyCommissionStatus() {
-  const s = STATUS_CONFIG[COMMISSION_STATUS] || STATUS_CONFIG.open;
+  const s     = STATUS_CONFIG[COMMISSION_STATUS] || STATUS_CONFIG.open;
   const color = COMMISSION_STATUS;
   const navPill = document.getElementById('navStatus');
   const navText = document.getElementById('navStatusText');
@@ -1579,24 +1639,45 @@ function applyCommissionStatus() {
 }
 applyCommissionStatus();
 
-/* ════════════════════════════════════════════════════════
+/* ════════════════════════════════════════════════════════════
    FORMSPREE CONTACT FORM
+   Guide applied: Vanilla JS Ajax (custom fetch — no bundler needed)
    Endpoint: https://formspree.io/f/meedzqpe
-   ════════════════════════════════════════════════════════ */
+
+   Per the Formspree Ajax guide:
+   - POST FormData to the endpoint
+   - Set Accept: application/json to get JSON error responses
+   - On success: res.ok === true
+   - On error:   res.json() → { errors: [{ field, message }] }
+
+   Extra features layered on top:
+   - Honeypot (_gotcha) for bot filtering
+   - _replyto hidden field (mirrors email → Formspree Reply-To)
+   - Client-side 24-hour rate limit via localStorage
+   ════════════════════════════════════════════════════════════ */
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meedzqpe';
 
-const form      = document.getElementById('contactForm');
-const status    = document.getElementById('formStatus');
-const submitBtn = document.getElementById('cf-submit');
+const cfForm      = document.getElementById('contactForm');
+const cfStatus    = document.getElementById('formStatus');
+const cfSubmitBtn = document.getElementById('cf-submit');
 
-// Rate limiting: 1 submission per 24 hours (per browser)
+const SUBMIT_ICON = `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+  <line x1="22" y1="2" x2="11" y2="13"/>
+  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+</svg>`;
+const LOADING_ICON = `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="10"/>
+  <path d="M12 6v6l4 2"/>
+</svg>`;
+
+/* ── Client-side rate limiting (1 submission per 24 hours) ── */
 const RATE_KEY    = 'physic91_cf_last';
-const RATE_WINDOW = 24 * 60 * 60 * 1000;
+const RATE_WINDOW = 24 * 60 * 60 * 1000; // 24h in ms
 
 function canSubmit() {
   try {
     const last = parseInt(localStorage.getItem(RATE_KEY) || '0', 10);
-    return Date.now() - last > RATE_WINDOW;
+    return (Date.now() - last) > RATE_WINDOW;
   } catch { return true; }
 }
 function markSubmit() {
@@ -1605,58 +1686,85 @@ function markSubmit() {
 function getWaitHours() {
   try {
     const last = parseInt(localStorage.getItem(RATE_KEY) || '0', 10);
-    return Math.ceil((RATE_WINDOW - (Date.now() - last)) / 3600000);
+    return Math.ceil((RATE_WINDOW - (Date.now() - last)) / 3_600_000);
   } catch { return 24; }
 }
 
-form.addEventListener('submit', async (e) => {
+/* ── Mirror email into _replyto so Formspree sets Reply-To ── */
+document.getElementById('cf-email').addEventListener('input', function () {
+  document.getElementById('cf-replyto').value = this.value;
+});
+
+/* ── Form submit handler ────────────────────────────────── */
+cfForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  status.className = 'form-status';
-  status.textContent = '';
 
-  // Honeypot check
-  const hp = form.querySelector('input[name="_gotcha"]');
-  if (hp && hp.value) return;
+  // Reset status
+  cfStatus.className  = 'form-status';
+  cfStatus.textContent = '';
 
-  if (!form.checkValidity()) { form.reportValidity(); return; }
+  // Honeypot check — bots fill this, humans don't
+  const honeypot = cfForm.querySelector('input[name="_gotcha"]');
+  if (honeypot && honeypot.value.trim() !== '') return;
 
-  if (!canSubmit()) {
-    status.textContent = `⚠ Only 1 message per day. Try again in ~${getWaitHours()}h, or email Physiclover13244@gmail.com directly.`;
-    status.className = 'form-status error';
+  // HTML5 native validation
+  if (!cfForm.checkValidity()) {
+    cfForm.reportValidity();
     return;
   }
 
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sending…';
+  // Client-side rate limit
+  if (!canSubmit()) {
+    cfStatus.textContent = `⚠ Only 1 message per 24 hours. Try again in ~${getWaitHours()}h, or email Physiclover13244@gmail.com directly.`;
+    cfStatus.className   = 'form-status error';
+    return;
+  }
+
+  // Disable button & show loading state
+  cfSubmitBtn.disabled   = true;
+  cfSubmitBtn.innerHTML  = LOADING_ICON + ' Sending…';
 
   try {
+    // ── Formspree Vanilla JS Ajax submission ──────────────
+    // Per guide: POST FormData, Accept: application/json
     const res = await fetch(FORMSPREE_ENDPOINT, {
-      method: 'POST',
-      body: new FormData(form),
+      method:  'POST',
+      body:    new FormData(cfForm),
       headers: { 'Accept': 'application/json' }
     });
+
     if (res.ok) {
+      // ── Success ──────────────────────────────────────────
       markSubmit();
-      status.textContent = '✓ Message sent! I\'ll get back to you soon.';
-      status.className = 'form-status success';
-      form.reset();
+      cfStatus.textContent = '✓ Message sent! I\'ll get back to you within 24–48 hours.';
+      cfStatus.className   = 'form-status success';
+      cfForm.reset();
+      document.getElementById('cf-replyto').value = '';
     } else {
-      const data = await res.json().catch(() => ({}));
-      const msg = (data.errors || []).map(e => e.message).join(', ') || 'Failed to send.';
-      status.textContent = `✗ ${msg} — email me directly: Physiclover13244@gmail.com`;
-      status.className = 'form-status error';
+      // ── Formspree error — parse errors array ─────────────
+      let errorMsg = 'Submission failed.';
+      try {
+        const data = await res.json();
+        // Formspree returns: { errors: [{ field, message }] }
+        if (Array.isArray(data.errors) && data.errors.length > 0) {
+          errorMsg = data.errors.map(err => err.message).join(' · ');
+        }
+      } catch { /* JSON parse failed — keep default message */ }
+      cfStatus.textContent = `✗ ${errorMsg} — email me directly: Physiclover13244@gmail.com`;
+      cfStatus.className   = 'form-status error';
     }
   } catch {
-    status.textContent = '✗ Network error. Email me: Physiclover13244@gmail.com';
-    status.className = 'form-status error';
+    // ── Network / fetch error ─────────────────────────────
+    cfStatus.textContent = '✗ Network error — please email me directly: Physiclover13244@gmail.com';
+    cfStatus.className   = 'form-status error';
   } finally {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+    cfSubmitBtn.disabled  = false;
+    cfSubmitBtn.innerHTML = SUBMIT_ICON + ' Send Message';
   }
 });
 
 /* ── Testimonials Carousel — duplicate for seamless loop ─── */
-(function() {
+(function () {
   const track = document.getElementById('testimonialsTrack');
   if (!track) return;
   track.innerHTML += track.innerHTML;
@@ -1667,22 +1775,33 @@ const hamburger  = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 hamburger.addEventListener('click', () => {
   const open = mobileMenu.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', open);
+  hamburger.setAttribute('aria-expanded', String(open));
 });
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  hamburger.setAttribute('aria-expanded', 'false');
-}));
+mobileMenu.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  })
+);
 
 /* ── Copy to Clipboard ──────────────────────────────────── */
 function copyText(text, btn) {
   navigator.clipboard.writeText(text).then(() => {
-    const orig = btn.textContent; btn.textContent = 'Copied!'; btn.style.color = 'var(--accent)';
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.color = 'var(--accent)';
     setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
   }).catch(() => {
-    const el = document.createElement('textarea'); el.value = text; el.style.position = 'fixed'; el.style.opacity = '0';
-    document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
-    const orig = btn.textContent; btn.textContent = 'Copied!';
+    // Fallback for older browsers
+    const el = document.createElement('textarea');
+    el.value = text;
+    el.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
     setTimeout(() => { btn.textContent = orig; }, 2000);
   });
 }
@@ -1693,10 +1812,14 @@ function toggleFaq(btn) {
   const answer = item.querySelector('.faq-answer');
   const inner  = answer.querySelector('.faq-answer-inner');
   const isOpen = item.classList.contains('active');
+
+  // Close all open items
   document.querySelectorAll('.faq-item.active').forEach(i => {
     i.classList.remove('active');
     i.querySelector('.faq-answer').style.height = '0';
   });
+
+  // Open the clicked item if it was closed
   if (!isOpen) {
     item.classList.add('active');
     answer.style.height = inner.offsetHeight + 'px';
@@ -1713,7 +1836,9 @@ function closeModal(id) {
   document.body.style.overflow = '';
 }
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
@@ -1723,8 +1848,9 @@ document.addEventListener('keydown', e => {
 
 /* ── Cookie Banner ──────────────────────────────────────── */
 function showCookieBanner() {
-  const consent = localStorage.getItem('physic91_cookie_consent');
-  if (!consent) document.getElementById('cookieBanner').classList.add('visible');
+  if (!localStorage.getItem('physic91_cookie_consent')) {
+    document.getElementById('cookieBanner').classList.add('visible');
+  }
 }
 function acceptCookies() {
   localStorage.setItem('physic91_cookie_consent', 'accepted');
@@ -1740,7 +1866,12 @@ setTimeout(showCookieBanner, 1000);
 const fadeEls = document.querySelectorAll('.fade-up');
 if ('IntersectionObserver' in window) {
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => obs.observe(el));
 } else {
@@ -1753,7 +1884,9 @@ const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => { if (pageYOffset >= s.offsetTop - 90) current = s.id; });
-  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : ''; });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+  });
 }, { passive: true });
 </script>
 
