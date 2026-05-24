@@ -1,57 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ─── SEO & Meta ─────────────────────────────────────────── -->
   <title>Physic91 – Roblox Luau Programmer &amp; Game Developer</title>
   <meta name="description" content="Professional Roblox Luau developer specializing in OOP systems, anti-exploit security, and scalable game architecture. Open for commissions." />
+  <meta name="keywords" content="Roblox, Luau, game developer, OOP, anti-exploit, commission, Physic91, Roblox studio" />
+  <meta name="author" content="Physic91" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://physic91.dev/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Physic91 – Roblox Luau Programmer" />
   <meta property="og:description" content="Professional Roblox Luau developer. Clean architecture, anti-exploit, performance." />
-  <meta name="theme-color" content="#080810" />
+  <meta property="og:url" content="https://physic91.dev/" />
+  <meta property="og:site_name" content="Physic91.dev" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Physic91 – Roblox Luau Programmer" />
+  <meta name="twitter:description" content="Professional Roblox Luau developer. Clean architecture, anti-exploit, performance." />
+
+  <meta name="theme-color" content="#080810" id="metaThemeColor" />
+
+  <!-- ─── Structured Data (JSON-LD) ─────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Physic91",
+    "url": "https://physic91.dev/",
+    "jobTitle": "Roblox Luau Developer",
+    "description": "Professional Roblox Luau developer specializing in OOP systems, anti-exploit security, and scalable game architecture.",
+    "email": "Physiclover13244@gmail.com",
+    "sameAs": ["https://github.com/Physic2952"],
+    "knowsAbout": ["Lua", "Luau", "Roblox Studio", "OOP Architecture", "Anti-Exploit", "Game Development"],
+    "offers": {
+      "@type": "Offer",
+      "description": "Roblox game development commissions — systems, security, full games",
+      "priceCurrency": "USD",
+      "price": "10"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── TOKENS ─────────────────────────────────────────────── */
-    :root {
-      --bg:        #080810;
-      --bg2:       #0d0d18;
-      --bg3:       #13131f;
-      --surface:   #161624;
-      --surface2:  #1d1d2e;
-      --border:    rgba(255,255,255,0.07);
-      --border2:   rgba(0,230,200,0.22);
-      --accent:    #00e6c8;
-      --accent2:   #005e54;
+    /* ─── TOKENS — DARK MODE (default) ───────────────────────── */
+    :root,
+    [data-theme="dark"] {
+      --bg:          #080810;
+      --bg2:         #0d0d18;
+      --bg3:         #13131f;
+      --surface:     #161624;
+      --surface2:    #1d1d2e;
+      --border:      rgba(255,255,255,0.07);
+      --border2:     rgba(0,230,200,0.22);
+      --accent:      #00e6c8;
+      --accent2:     #005e54;
       --accent-glow: rgba(0,230,200,0.18);
-      --text:      #e8e8f0;
-      --text2:     #9898b0;
-      --text3:     #5a5a7a;
-      --red:       #ff4d6d;
-      --yellow:    #ffd166;
-      --green:     #06d6a0;
-      --mono:      'Space Mono', monospace;
-      --sans:      'Sora', sans-serif;
-      --r:         10px;
-      --r2:        16px;
-      --r3:        24px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --text:        #e8e8f0;
+      --text2:       #9898b0;
+      --text3:       #5a5a7a;
+      --red:         #ff4d6d;
+      --yellow:      #ffd166;
+      --green:       #06d6a0;
+      --shadow:      0 32px 80px rgba(0,0,0,0.6);
+      --shadow-sm:   0 4px 20px rgba(0,0,0,0.3);
+      --mono:        'Space Mono', monospace;
+      --sans:        'Sora', sans-serif;
+      --r:           10px;
+      --r2:          16px;
+      --r3:          24px;
+      --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+      color-scheme: dark;
     }
 
+    /* ─── TOKENS — LIGHT MODE ─────────────────────────────────── */
+    [data-theme="light"] {
+      --bg:          #f4f4f8;
+      --bg2:         #eaeaf0;
+      --bg3:         #e0e0e8;
+      --surface:     #ffffff;
+      --surface2:    #f0f0f5;
+      --border:      rgba(0,0,0,0.08);
+      --border2:     rgba(0,160,140,0.3);
+      --accent:      #00a88e;
+      --accent2:     #b2f0ea;
+      --accent-glow: rgba(0,168,142,0.15);
+      --text:        #111118;
+      --text2:       #444458;
+      --text3:       #8888a0;
+      --red:         #d62b4a;
+      --yellow:      #b8860b;
+      --green:       #0a8060;
+      --shadow:      0 16px 48px rgba(0,0,0,0.10);
+      --shadow-sm:   0 2px 12px rgba(0,0,0,0.08);
+      color-scheme: light;
+    }
+
+    /* ─── RESET ───────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.7; overflow-x: hidden; }
 
-    body::before {
-      content: ''; position: fixed; inset: 0;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    [data-theme="dark"] body::before {
+      content: '';
+      position: fixed; inset: 0;
       background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px);
       pointer-events: none; z-index: 9998;
     }
 
-    /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
-    h1, h2, h3, h4 { font-family: var(--mono); line-height: 1.15; }
+    /* ─── PRINT STYLES ────────────────────────────────────────── */
+    @media print {
+      nav, .cookie-banner, .back-to-top, .theme-toggle,
+      .hero-terminal, .testimonials-wrapper, .scroll-hint,
+      .status-banner, .contact-form { display: none !important; }
+      body { background: #fff; color: #000; font-size: 12pt; }
+      a { color: #000; text-decoration: underline; }
+      h1, h2, h3 { page-break-after: avoid; }
+      .section { padding: 24pt 0; }
+      .container { max-width: 100%; }
+    }
+
+    /* ─── SKIP TO CONTENT ─────────────────────────────────────── */
+    .skip-link {
+      position: fixed; top: -100%; left: 16px;
+      background: var(--accent); color: #080810;
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
+      padding: 10px 20px; border-radius: 0 0 var(--r) var(--r);
+      z-index: 9999; text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--mono); line-height: 1.15; color: var(--text); }
     h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); font-weight: 700; }
     h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 700; }
     h3 { font-size: clamp(1rem, 2vw, 1.3rem); font-weight: 700; }
@@ -59,8 +167,8 @@
     a  { color: inherit; text-decoration: none; }
     .accent { color: var(--accent); }
 
-    /* ─── LAYOUT ─────────────────────────────────────────────── */
-    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    /* ─── LAYOUT ──────────────────────────────────────────────── */
+    .container  { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     .section    { padding: 100px 0; }
     .section-alt { background: var(--bg2); }
 
@@ -74,26 +182,72 @@
     .section-title { margin-bottom: 14px; }
     .section-sub { max-width: 560px; color: var(--text2); font-size: 1rem; margin-bottom: 56px; }
 
-    /* ─── NAVIGATION ─────────────────────────────────────────── */
+    /* ─── NAVIGATION ──────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      background: rgba(8,8,16,0.8);
+      background: rgba(8,8,16,0.85);
       backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
       border-bottom: 1px solid var(--border);
       transition: all var(--transition);
+    }
+    [data-theme="light"] nav {
+      background: rgba(244,244,248,0.88);
+    }
+    nav.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    }
+    [data-theme="light"] nav.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.08);
     }
     .nav-inner {
       max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 24px; height: 64px; gap: 16px;
     }
-    .nav-logo { font-family: var(--mono); font-size: 1rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .nav-logo {
+      font-family: var(--mono); font-size: 1rem; font-weight: 700;
+      color: var(--text); white-space: nowrap;
+    }
     .nav-logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 22px; list-style: none; }
-    .nav-links a { font-family: var(--mono); font-size: 0.74rem; color: var(--text2); letter-spacing: 0.05em; transition: color var(--transition); }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a {
+      font-family: var(--mono); font-size: 0.74rem; color: var(--text2);
+      letter-spacing: 0.05em; transition: color var(--transition);
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--accent);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+
+    /* ── Theme Toggle ─────────────────────────────────────────── */
+    .theme-toggle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text2); cursor: pointer; display: flex;
+      align-items: center; justify-content: center; font-size: 1rem;
+      transition: all var(--transition); flex-shrink: 0;
+      position: relative; overflow: hidden;
+    }
+    .theme-toggle:hover {
+      border-color: var(--border2); color: var(--accent);
+      transform: rotate(20deg);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 2px;
+    }
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { transition: opacity 0.2s, transform 0.3s; position: absolute; }
+    [data-theme="dark"]  .icon-sun  { opacity: 1; transform: rotate(0deg); }
+    [data-theme="dark"]  .icon-moon { opacity: 0; transform: rotate(90deg); }
+    [data-theme="light"] .icon-sun  { opacity: 0; transform: rotate(-90deg); }
+    [data-theme="light"] .icon-moon { opacity: 1; transform: rotate(0deg); }
 
     .nav-status {
       display: inline-flex; align-items: center; gap: 6px;
@@ -102,16 +256,19 @@
       border: 1px solid; font-weight: 700; text-transform: uppercase;
     }
     .nav-status-dot { width: 6px; height: 6px; border-radius: 50%; animation: pulse 2s infinite; }
-    .nav-status.open { color: var(--green); border-color: rgba(6,214,160,0.35); background: rgba(6,214,160,0.08); }
-    .nav-status.open .nav-status-dot { background: var(--green); }
-    .nav-status.limited { color: var(--yellow); border-color: rgba(255,209,102,0.35); background: rgba(255,209,102,0.08); }
+    .nav-status.open    { color: var(--green);  border-color: rgba(6,214,160,0.35);   background: rgba(6,214,160,0.08);  }
+    .nav-status.limited { color: var(--yellow); border-color: rgba(255,209,102,0.35); background: rgba(255,209,102,0.08);}
+    .nav-status.closed  { color: var(--red);    border-color: rgba(255,77,109,0.35);  background: rgba(255,77,109,0.08); }
+    .nav-status.open    .nav-status-dot { background: var(--green);  }
     .nav-status.limited .nav-status-dot { background: var(--yellow); }
-    .nav-status.closed { color: var(--red); border-color: rgba(255,77,109,0.35); background: rgba(255,77,109,0.08); }
-    .nav-status.closed .nav-status-dot { background: var(--red); }
+    .nav-status.closed  .nav-status-dot { background: var(--red);    }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
     .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     .mobile-menu {
       display: none; position: fixed; top: 64px; left: 0; right: 0;
@@ -119,10 +276,10 @@
       z-index: 199; padding: 20px 24px; flex-direction: column; gap: 4px;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-family: var(--mono); font-size: 0.9rem; color: var(--text2); padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu a { font-family: var(--mono); font-size: 0.9rem; color: var(--text2); padding: 10px 0; border-bottom: 1px solid var(--border); transition: color var(--transition); }
     .mobile-menu a:hover { color: var(--accent); }
 
-    /* ─── BUTTONS ────────────────────────────────────────────── */
+    /* ─── BUTTONS ─────────────────────────────────────────────── */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--mono); font-size: 0.78rem; font-weight: 700;
@@ -130,125 +287,247 @@
       border: none; cursor: pointer; transition: all var(--transition);
       text-decoration: none; white-space: nowrap;
     }
+    .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     .btn-primary { background: var(--accent); color: #080810; }
     .btn-primary:hover { background: #fff; box-shadow: 0 0 28px var(--accent-glow); transform: translateY(-2px); }
+    [data-theme="light"] .btn-primary:hover { background: #00806b; color: #fff; }
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border2); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,230,200,0.06); transform: translateY(-2px); }
     .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
     .btn-ghost:hover { border-color: var(--text3); color: var(--text); transform: translateY(-2px); }
 
-    /* ─── HERO ───────────────────────────────────────────────── */
+    /* ─── BACK TO TOP ─────────────────────────────────────────── */
+    .back-to-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 100;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: #080810;
+      border: none; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.1rem; box-shadow: 0 4px 20px var(--accent-glow);
+      opacity: 0; transform: translateY(12px) scale(0.8);
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+    }
+    .back-to-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+    .back-to-top:hover { transform: translateY(-3px) scale(1.08); box-shadow: 0 8px 28px var(--accent-glow); }
+    .back-to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+    /* ─── PROGRESS BAR ────────────────────────────────────────── */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), #00b4a0);
+      z-index: 9999; width: 0%; transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
     .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 64px; }
-    .hero::after { content: ''; position: absolute; width: 900px; height: 900px; background: radial-gradient(ellipse, rgba(0,230,200,0.07) 0%, transparent 70%); top: -200px; right: -200px; pointer-events: none; }
+    .hero::after {
+      content: ''; position: absolute;
+      width: 900px; height: 900px;
+      background: radial-gradient(ellipse, rgba(0,230,200,0.07) 0%, transparent 70%);
+      top: -200px; right: -200px; pointer-events: none;
+    }
+    [data-theme="light"] .hero::after {
+      background: radial-gradient(ellipse, rgba(0,168,142,0.08) 0%, transparent 70%);
+    }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
-    .hero-eyebrow { font-family: var(--mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.75rem; color: var(--accent);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
     .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
     .hero h1 { margin-bottom: 20px; }
     .hero h1 em { color: var(--accent); font-style: normal; }
     .hero-desc { font-size: 1.05rem; color: var(--text2); margin-bottom: 40px; max-width: 480px; line-height: 1.85; }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .hero-terminal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,230,200,0.06); }
-    .terminal-bar { display: flex; align-items: center; gap: 8px; background: var(--surface2); padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .hero-terminal {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
+      box-shadow: var(--shadow), 0 0 0 1px rgba(0,230,200,0.06);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface2); padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
     .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
     .terminal-dot:nth-child(1) { background: #ff5f56; }
     .terminal-dot:nth-child(2) { background: #febc2e; }
     .terminal-dot:nth-child(3) { background: #28c840; }
     .terminal-title { margin-left: 8px; font-family: var(--mono); font-size: 0.72rem; color: var(--text3); }
     .terminal-body { padding: 28px; font-family: var(--mono); font-size: 0.82rem; line-height: 2; }
-    .t-comment { color: var(--text3); } .t-kw { color: #c792ea; } .t-str { color: #c3e88d; }
-    .t-fn { color: #82aaff; } .t-acc { color: var(--accent); } .t-num { color: var(--yellow); }
-    .t-cursor { display: inline-block; width: 8px; height: 1em; background: var(--accent); margin-left: 2px; animation: blink 1s step-end infinite; vertical-align: text-bottom; }
+    .t-comment { color: var(--text3); }
+    .t-kw  { color: #c792ea; }
+    .t-str { color: #c3e88d; }
+    .t-fn  { color: #82aaff; }
+    .t-acc { color: var(--accent); }
+    .t-num { color: var(--yellow); }
+    [data-theme="light"] .t-kw  { color: #7c3aed; }
+    [data-theme="light"] .t-str { color: #16a34a; }
+    [data-theme="light"] .t-fn  { color: #2563eb; }
+    [data-theme="light"] .t-num { color: #b45309; }
+    .t-cursor {
+      display: inline-block; width: 8px; height: 1em;
+      background: var(--accent); margin-left: 2px;
+      animation: blink 1s step-end infinite; vertical-align: text-bottom;
+    }
     @keyframes blink { 50% { opacity: 0; } }
 
-    .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--text3); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; animation: float 2.4s ease-in-out infinite; }
+    .scroll-hint {
+      position: absolute; bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--text3); font-family: var(--mono); font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      animation: float 2.4s ease-in-out infinite;
+    }
     .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--text3), transparent); }
     @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
 
-    /* ─── COMMISSION STATUS BANNER ───────────────────────────── */
+    /* ─── COMMISSION STATUS BANNER ────────────────────────────── */
     .status-banner { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 32px 0; }
     .status-banner-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
     .status-block { display: flex; align-items: center; gap: 20px; }
     .status-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .status-icon.open { background: rgba(6,214,160,0.12); border: 2px solid rgba(6,214,160,0.3); }
+    .status-icon.open    { background: rgba(6,214,160,0.12);   border: 2px solid rgba(6,214,160,0.3);   }
     .status-icon.limited { background: rgba(255,209,102,0.12); border: 2px solid rgba(255,209,102,0.3); }
-    .status-icon.closed { background: rgba(255,77,109,0.12); border: 2px solid rgba(255,77,109,0.3); }
+    .status-icon.closed  { background: rgba(255,77,109,0.12);  border: 2px solid rgba(255,77,109,0.3);  }
     .status-info label { display: block; font-family: var(--mono); font-size: 0.65rem; color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
     .status-value { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; }
-    .status-value.open { color: var(--green); }
+    .status-value.open    { color: var(--green);  }
     .status-value.limited { color: var(--yellow); }
-    .status-value.closed { color: var(--red); }
+    .status-value.closed  { color: var(--red);    }
     .status-note { font-size: 0.9rem; color: var(--text2); max-width: 480px; }
     .status-meta { font-family: var(--mono); font-size: 0.72rem; color: var(--text3); margin-top: 6px; }
 
-    /* ─── SERVICES ───────────────────────────────────────────── */
+    /* ─── SERVICES ────────────────────────────────────────────── */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .service-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
       padding: 28px; position: relative; overflow: hidden;
       transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
     }
-    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); border-radius: var(--r2) var(--r2) 0 0; }
-    .service-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
-    .service-icon { width: 46px; height: 46px; border-radius: var(--r); background: rgba(0,230,200,0.08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: var(--r2) var(--r2) 0 0;
+    }
+    .service-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow); }
+    .service-icon {
+      width: 46px; height: 46px; border-radius: var(--r);
+      background: rgba(0,230,200,0.08); border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 18px;
+    }
     .service-card h3 { margin-bottom: 8px; font-size: 1.05rem; }
-    .service-card p { font-size: 0.88rem; line-height: 1.7; }
+    .service-card p  { font-size: 0.88rem; line-height: 1.7; }
     .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-    .service-tag { font-family: var(--mono); font-size: 0.65rem; padding: 3px 10px; border-radius: 4px; border: 1px solid var(--border); color: var(--text3); background: var(--surface2); }
+    .service-tag {
+      font-family: var(--mono); font-size: 0.65rem; padding: 3px 10px;
+      border-radius: 4px; border: 1px solid var(--border);
+      color: var(--text3); background: var(--surface2);
+    }
 
-    /* ─── ABOUT ──────────────────────────────────────────────── */
+    /* ─── ABOUT ───────────────────────────────────────────────── */
     .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: start; }
-    .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 32px; position: relative; }
-    .about-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: var(--r2) var(--r2) 0 0; background: linear-gradient(90deg, var(--accent), transparent); }
-    .about-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 1.6rem; font-weight: 700; color: #080810; margin-bottom: 20px; }
-    .about-name { font-family: var(--mono); font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+    .about-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 32px; position: relative;
+    }
+    .about-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      border-radius: var(--r2) var(--r2) 0 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    .about-avatar {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 1.6rem; font-weight: 700;
+      color: #080810; margin-bottom: 20px;
+    }
+    .about-name   { font-family: var(--mono); font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
     .about-handle { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 20px; }
-    .about-stat { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .about-stat {
+      border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
     .stat-item label { display: block; font-family: var(--mono); font-size: 0.65rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
     .stat-item value { font-family: var(--mono); font-size: 0.88rem; color: var(--text); }
     .about-text p { margin-bottom: 18px; font-size: 1.01rem; line-height: 1.85; }
     .about-text p:last-child { margin-bottom: 0; }
 
-    /* ─── JOURNEY / TIMELINE ─────────────────────────────────── */
+    /* ─── JOURNEY / TIMELINE ──────────────────────────────────── */
     .timeline { position: relative; padding-left: 32px; max-width: 700px; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent); }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1px; background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
     .tl-item { position: relative; margin-bottom: 48px; opacity:0; transform:translateX(-20px); animation: slideIn 0.6s forwards; }
-    .tl-item:nth-child(1){animation-delay:.1s} .tl-item:nth-child(2){animation-delay:.25s} .tl-item:nth-child(3){animation-delay:.4s} .tl-item:nth-child(4){animation-delay:.55s}
+    .tl-item:nth-child(1){animation-delay:.1s}
+    .tl-item:nth-child(2){animation-delay:.25s}
+    .tl-item:nth-child(3){animation-delay:.4s}
+    .tl-item:nth-child(4){animation-delay:.55s}
     @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-    .tl-item::before { content: ''; position: absolute; left: -36px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
+    .tl-item::before {
+      content: ''; position: absolute; left: -36px; top: 6px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px var(--accent-glow);
+    }
     .tl-year { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 6px; }
-    .tl-item h3 { margin-bottom: 8px; color: var(--text); } .tl-item p { color: var(--text2); }
+    .tl-item h3 { margin-bottom: 8px; color: var(--text); }
+    .tl-item p  { color: var(--text2); }
 
-    /* ─── SKILLS ─────────────────────────────────────────────── */
+    /* ─── SKILLS ──────────────────────────────────────────────── */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .skill-category { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 28px; }
-    .skill-category-label { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .skill-category-label {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+      letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
     .skill-category-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag { font-family: var(--mono); font-size: 0.76rem; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); color: var(--text2); background: var(--surface2); white-space: nowrap; transition: all var(--transition); cursor: default; }
+    .skill-tag {
+      font-family: var(--mono); font-size: 0.76rem; padding: 6px 14px;
+      border-radius: 6px; border: 1px solid var(--border);
+      color: var(--text2); background: var(--surface2); white-space: nowrap;
+      transition: all var(--transition); cursor: default;
+    }
     .skill-tag:hover { border-color: var(--border2); color: var(--accent); }
     .skill-tag.primary { border-color: rgba(0,230,200,0.35); color: var(--accent); background: rgba(0,230,200,0.06); }
+    [data-theme="light"] .skill-tag.primary { background: rgba(0,168,142,0.08); }
 
-    /* ─── PROJECTS ───────────────────────────────────────────── */
+    /* ─── PROJECTS ────────────────────────────────────────────── */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; display: flex; flex-direction: column; transition: all var(--transition); }
-    .project-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--accent2); }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden; display: flex;
+      flex-direction: column; transition: all var(--transition);
+    }
+    .project-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow), 0 0 0 1px var(--accent2); }
     .project-card-top { padding: 28px 28px 0; }
     .project-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     .project-type { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; }
     .project-lang { font-family: var(--mono); font-size: 0.7rem; color: var(--text3); background: var(--surface2); border: 1px solid var(--border); padding: 3px 10px; border-radius: 20px; }
-    .project-card h3 { margin-bottom: 10px; } .project-card p { font-size: 0.9rem; flex: 1; }
+    .project-card h3 { margin-bottom: 10px; }
+    .project-card p  { font-size: 0.9rem; flex: 1; }
     .project-card-bottom { padding: 20px 28px 28px; display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
-    .project-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 0.72rem; color: var(--text2); border: 1px solid var(--border); padding: 6px 14px; border-radius: 6px; transition: all var(--transition); }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 0.72rem; color: var(--text2);
+      border: 1px solid var(--border); padding: 6px 14px; border-radius: 6px;
+      transition: all var(--transition);
+    }
     .project-link:hover { color: var(--accent); border-color: var(--border2); background: rgba(0,230,200,0.06); }
     .project-link svg { width: 12px; height: 12px; }
     .project-card.dm-card { border-style: dashed; border-color: var(--border2); background: linear-gradient(135deg, var(--surface), rgba(0,94,84,0.12)); }
+    [data-theme="light"] .project-card.dm-card { background: linear-gradient(135deg, var(--surface), rgba(0,168,142,0.06)); }
 
-    /* ─── VIDEO BLOCKS ───────────────────────────────────────── */
-    .video-row { margin-bottom: 64px; }
-    .video-row-header { margin-bottom: 28px; }
-    .video-row-title { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-    .video-row-desc { color: var(--text2); font-size: 0.92rem; }
+    /* ─── VIDEO BLOCKS ────────────────────────────────────────── */
     .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .video-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; transition: all var(--transition); }
     .video-item:hover { border-color: var(--border2); transform: translateY(-3px); }
@@ -256,23 +535,33 @@
     .video-thumb iframe { width: 100%; height: 100%; border: none; }
     .video-caption { padding: 16px 20px; }
     .video-caption-title { font-family: var(--mono); font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-    .video-caption-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+    .video-caption-desc  { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
 
-    /* ─── PRICING ────────────────────────────────────────────── */
+    /* ─── PRICING ─────────────────────────────────────────────── */
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .pricing-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2);
-      padding: 32px; position: relative; display: flex; flex-direction: column;
-      transition: all var(--transition);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 32px; position: relative;
+      display: flex; flex-direction: column; transition: all var(--transition);
     }
     .pricing-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-    .pricing-card.featured { border-color: var(--border2); background: linear-gradient(135deg, var(--surface), rgba(0,94,84,0.15)); }
-    .pricing-card.featured::before { content: 'POPULAR'; position: absolute; top: -1px; right: 20px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; background: var(--accent); color: #080810; padding: 4px 10px; border-radius: 0 0 6px 6px; font-weight: 700; }
-    .pricing-tier { font-family: var(--mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
-    .pricing-name { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    [data-theme="light"] .pricing-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .pricing-card.featured {
+      border-color: var(--border2);
+      background: linear-gradient(135deg, var(--surface), rgba(0,94,84,0.15));
+    }
+    [data-theme="light"] .pricing-card.featured { background: linear-gradient(135deg, var(--surface), rgba(0,168,142,0.06)); }
+    .pricing-card.featured::before {
+      content: 'POPULAR'; position: absolute; top: -1px; right: 20px;
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em;
+      background: var(--accent); color: #080810;
+      padding: 4px 10px; border-radius: 0 0 6px 6px; font-weight: 700;
+    }
+    .pricing-tier  { font-family: var(--mono); font-size: 0.65rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+    .pricing-name  { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
     .pricing-price { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; line-height: 1; }
     .pricing-price span { font-size: 0.85rem; font-weight: 400; color: var(--text3); }
-    .pricing-note { font-size: 0.78rem; color: var(--text3); font-family: var(--mono); margin-bottom: 20px; }
+    .pricing-note  { font-size: 0.78rem; color: var(--text3); font-family: var(--mono); margin-bottom: 20px; }
     .pricing-divider { height: 1px; background: var(--border); margin: 20px 0; }
     .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; }
     .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--text2); }
@@ -286,161 +575,166 @@
     .pricing-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text2); }
     .pricing-table tr:last-child td { border-bottom: none; }
     .pricing-table tr:hover td { background: rgba(0,230,200,0.03); color: var(--text); }
-    .pricing-table .price-cell { font-family: var(--mono); font-size: 0.88rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
-    .pricing-table .label-cell { font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
+    [data-theme="light"] .pricing-table tr:hover td { background: rgba(0,168,142,0.04); }
+    .pricing-table .price-cell  { font-family: var(--mono); font-size: 0.88rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
+    .pricing-table .label-cell  { font-family: var(--mono); font-size: 0.8rem; color: var(--text); }
     .table-wrapper { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; margin-bottom: 32px; }
 
-    /* Payment & Delivery */
+    /* ─── DELIVERY & PAYMENT ──────────────────────────────────── */
     .delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .delivery-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 28px; }
     .delivery-card h3 { font-size: 1rem; margin-bottom: 16px; }
     .delivery-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
     .delivery-row:last-child { border-bottom: none; }
     .delivery-label { font-size: 0.88rem; color: var(--text2); }
-    .delivery-val { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); text-align: right; }
+    .delivery-val   { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); text-align: right; }
     .payment-methods { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
     .payment-method { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--surface2); border-radius: var(--r); border: 1px solid var(--border); }
     .payment-method-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(0,230,200,0.08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
     .payment-method-info strong { display: block; font-family: var(--mono); font-size: 0.78rem; color: var(--text); margin-bottom: 2px; }
-    .payment-method-info span { font-size: 0.8rem; color: var(--text3); }
+    .payment-method-info span  { font-size: 0.8rem; color: var(--text3); }
 
-    /* ─── EXPERIENCE ─────────────────────────────────────────── */
+    /* ─── EXPERIENCE ──────────────────────────────────────────── */
     .exp-grid { display: grid; gap: 20px; }
-    .exp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 32px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: start; transition: all var(--transition); }
-    .exp-card:hover { border-color: var(--border2); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .exp-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 32px;
+      display: grid; grid-template-columns: auto 1fr; gap: 24px;
+      align-items: start; transition: all var(--transition);
+    }
+    .exp-card:hover { border-color: var(--border2); box-shadow: var(--shadow-sm); }
     .exp-index { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; color: var(--surface2); line-height: 1; user-select: none; min-width: 48px; }
+    [data-theme="light"] .exp-index { color: var(--bg3); }
     .exp-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
     .exp-title { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; }
     .exp-badge { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); background: rgba(0,230,200,0.08); border: 1px solid rgba(0,230,200,0.25); padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
-    .exp-meta { font-family: var(--mono); font-size: 0.75rem; color: var(--text3); margin-bottom: 14px; }
+    .exp-meta  { font-family: var(--mono); font-size: 0.75rem; color: var(--text3); margin-bottom: 14px; }
     .exp-meta span { color: var(--text2); }
     .exp-desc { font-size: 0.95rem; }
 
-    /* ─── BEYOND ─────────────────────────────────────────────── */
+    /* ─── BEYOND ──────────────────────────────────────────────── */
     .beyond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .beyond-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 28px; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); }
-    .beyond-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .beyond-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 28px;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .beyond-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: var(--shadow); }
     .beyond-icon { width: 44px; height: 44px; border-radius: var(--r); background: rgba(0,230,200,0.08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
-    .beyond-card h3 { margin-bottom: 8px; } .beyond-card p { font-size: 0.92rem; }
+    .beyond-card h3 { margin-bottom: 8px; }
+    .beyond-card p  { font-size: 0.92rem; }
 
-    /* ─── FAQ ────────────────────────────────────────────────── */
+    /* ─── FAQ ─────────────────────────────────────────────────── */
     .faq-list { display: grid; gap: 12px; max-width: 800px; }
     .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; transition: border-color var(--transition); }
     .faq-item.active { border-color: var(--border2); }
-    .faq-question { width: 100%; background: none; border: none; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; font-family: var(--mono); font-size: 0.88rem; font-weight: 700; color: var(--text); text-align: left; transition: color var(--transition); }
+    .faq-question {
+      width: 100%; background: none; border: none;
+      padding: 20px 24px; display: flex; align-items: center;
+      justify-content: space-between; gap: 16px; cursor: pointer;
+      font-family: var(--mono); font-size: 0.88rem; font-weight: 700;
+      color: var(--text); text-align: left; transition: color var(--transition);
+    }
     .faq-question:hover { color: var(--accent); }
+    .faq-question:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
     .faq-chevron { width: 16px; height: 16px; flex-shrink: 0; color: var(--text3); transition: transform var(--transition); }
     .faq-item.active .faq-chevron { transform: rotate(180deg); color: var(--accent); }
     .faq-answer { height: 0; overflow: hidden; transition: height 0.35s cubic-bezier(0.4,0,0.2,1); }
     .faq-answer-inner { padding: 0 24px 20px; font-size: 0.9rem; color: var(--text2); line-height: 1.8; border-top: 1px solid var(--border); padding-top: 16px; }
 
-    /* ─── TESTIMONIALS CAROUSEL ──────────────────────────────── */
+    /* ─── TESTIMONIALS CAROUSEL ───────────────────────────────── */
     .testimonials-wrapper {
-      overflow: hidden; position: relative;
-      padding: 12px 0; margin-top: 8px;
+      overflow: hidden; position: relative; padding: 12px 0; margin-top: 8px;
     }
     .testimonials-wrapper::before, .testimonials-wrapper::after {
       content: ''; position: absolute; top: 0; bottom: 0;
       width: 140px; z-index: 2; pointer-events: none;
     }
-    .testimonials-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
+    .testimonials-wrapper::before { left: 0;  background: linear-gradient(to right, var(--bg2), transparent); }
     .testimonials-wrapper::after  { right: 0; background: linear-gradient(to left,  var(--bg2), transparent); }
-
     .testimonials-track {
-      display: flex; gap: 20px;
-      width: max-content;
+      display: flex; gap: 20px; width: max-content;
       animation: marquee 55s linear infinite;
     }
     .testimonials-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .testimonial-card {
       width: 300px; flex-shrink: 0;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r2); padding: 24px;
-      transition: border-color var(--transition);
+      border-radius: var(--r2); padding: 24px; transition: border-color var(--transition);
     }
     .testimonial-card:hover { border-color: var(--border2); }
-    .testimonial-stars { color: var(--yellow); font-size: 0.72rem; margin-bottom: 12px; letter-spacing: 2px; }
-    .testimonial-quote { font-size: 0.88rem; color: var(--text2); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
+    .testimonial-stars  { color: var(--yellow); font-size: 0.72rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .testimonial-quote  { font-size: 0.88rem; color: var(--text2); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
     .testimonial-author { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding-top: 14px; }
-    .testimonial-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: #080810; flex-shrink: 0; }
+    .testimonial-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      color: #080810; flex-shrink: 0;
+    }
     .testimonial-author-name { font-family: var(--mono); font-size: 0.78rem; font-weight: 700; color: var(--text); }
     .testimonial-author-role { font-size: 0.72rem; color: var(--text3); margin-top: 1px; }
 
-    /* ─── TERMS OF SERVICE ───────────────────────────────────── */
+    /* ─── TERMS OF SERVICE ────────────────────────────────────── */
     .tos-grid { display: grid; gap: 16px; }
     .tos-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 28px; }
     .tos-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .tos-num { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--accent); background: rgba(0,230,200,0.08); border: 1px solid var(--border2); width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tos-num {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+      color: var(--accent); background: rgba(0,230,200,0.08);
+      border: 1px solid var(--border2); width: 36px; height: 36px;
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+    }
     .tos-item h3 { font-size: 1rem; }
-    .tos-item p { font-size: 0.9rem; line-height: 1.8; }
+    .tos-item p  { font-size: 0.9rem; line-height: 1.8; }
     .tos-highlight { background: rgba(0,230,200,0.06); border: 1px solid var(--border2); border-radius: 8px; padding: 12px 16px; margin-top: 10px; font-family: var(--mono); font-size: 0.8rem; color: var(--text2); }
 
-    /* ─── CONTACT ────────────────────────────────────────────── */
+    /* ─── CONTACT ─────────────────────────────────────────────── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
-    .contact-info { display: flex; flex-direction: column; gap: 16px; }
-    .contact-item { display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; transition: all var(--transition); }
+    .contact-info  { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item  { display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 18px 20px; transition: all var(--transition); }
     .contact-item:hover { border-color: var(--border2); background: var(--surface2); }
-    .contact-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(0,230,200,0.08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-icon  { width: 40px; height: 40px; border-radius: 8px; background: rgba(0,230,200,0.08); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
     .contact-item-text label { display: block; font-family: var(--mono); font-size: 0.65rem; color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 3px; }
-    .contact-item-text span { font-family: var(--mono); font-size: 0.88rem; color: var(--text); }
+    .contact-item-text span  { font-family: var(--mono); font-size: 0.88rem; color: var(--text); }
     .copy-btn { margin-left: auto; background: none; border: 1px solid var(--border); color: var(--text3); font-family: var(--mono); font-size: 0.65rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
     .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
-
     .contact-notice { background: rgba(255,209,102,0.06); border: 1px solid rgba(255,209,102,0.2); border-radius: var(--r); padding: 16px 20px; }
     .contact-notice-title { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--yellow); letter-spacing: 0.1em; margin-bottom: 8px; }
-    .contact-notice p { font-size: 0.85rem; line-height: 1.7; }
+    .contact-notice p  { font-size: 0.85rem; line-height: 1.7; }
     .contact-notice ul { padding-left: 16px; margin-top: 6px; }
     .contact-notice ul li { font-size: 0.85rem; color: var(--text2); line-height: 1.7; }
 
-    /* ─── CONTACT FORM ───────────────────────────────────────── */
+    /* ─── CONTACT FORM ────────────────────────────────────────── */
     .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 36px; position: relative; }
     .contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: var(--r2) var(--r2) 0 0; background: linear-gradient(90deg, var(--accent), transparent); }
     .form-title { font-family: var(--mono); font-size: 0.72rem; color: var(--text3); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; }
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--text2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
-    .form-input, .form-textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); color: var(--text); font-family: var(--sans); font-size: 0.92rem; padding: 12px 16px; outline: none; transition: border-color var(--transition), box-shadow var(--transition); }
-    .form-input:focus, .form-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,230,200,0.1); }
-    /* Formspree AJAX aria-invalid styling */
-    .form-input[aria-invalid="true"], .form-textarea[aria-invalid="true"] { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,77,109,0.1); }
+    .form-input, .form-textarea, .form-select {
+      width: 100%; background: var(--bg);
+      border: 1px solid var(--border); border-radius: var(--r);
+      color: var(--text); font-family: var(--sans); font-size: 0.92rem;
+      padding: 12px 16px; outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,230,200,0.1); }
     .form-textarea { resize: vertical; min-height: 130px; }
     ::placeholder { color: var(--text3); }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-select { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--r); color: var(--text2); font-family: var(--sans); font-size: 0.92rem; padding: 12px 16px; outline: none; cursor: pointer; }
-    .form-select:focus { border-color: var(--accent); }
+    .form-select { cursor: pointer; }
     .form-select option { background: var(--bg2); }
-
-    /* Formspree SDK data-attribute elements */
-    [data-fs-success] {
-      display: none;
-      background: rgba(0,230,200,0.08);
-      border: 1px solid rgba(0,230,200,0.3);
-      color: var(--accent);
-      border-radius: var(--r);
-      padding: 12px 16px;
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      margin-top: 14px;
-    }
-    [data-fs-error]:not([data-fs-error=""]) {
-      display: block;
-      color: var(--red);
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      margin-top: 5px;
-    }
-    [data-fs-error] { display: none; }
-
     .form-status { margin-top: 14px; padding: 12px 16px; border-radius: var(--r); font-family: var(--mono); font-size: 0.78rem; display: none; }
     .form-status.success { display: block; background: rgba(0,230,200,0.08); border: 1px solid rgba(0,230,200,0.3); color: var(--accent); }
-    .form-status.error { display: block; background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.3); color: var(--red); }
+    .form-status.error   { display: block; background: rgba(255,77,109,0.08); border: 1px solid rgba(255,77,109,0.3); color: var(--red); }
     .hp-field { display: none; }
+    .char-counter { font-family: var(--mono); font-size: 0.65rem; color: var(--text3); text-align: right; margin-top: 4px; }
+    .char-counter.warn { color: var(--yellow); }
 
-    /* ─── FOOTER ─────────────────────────────────────────────── */
+    /* ─── FOOTER ──────────────────────────────────────────────── */
     footer { background: var(--bg3); border-top: 1px solid var(--border); padding: 64px 0 32px; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
     .footer-logo-text { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
@@ -459,10 +753,10 @@
     .footer-legal a { font-family: var(--mono); font-size: 0.68rem; color: var(--text3); transition: color var(--transition); cursor: pointer; }
     .footer-legal a:hover { color: var(--accent); }
 
-    /* ─── DIVIDER ────────────────────────────────────────────── */
+    /* ─── DIVIDER ─────────────────────────────────────────────── */
     .hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
-    /* ─── MODAL ──────────────────────────────────────────────── */
+    /* ─── MODAL ───────────────────────────────────────────────── */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity var(--transition); backdrop-filter: blur(4px); }
     .modal-overlay.active { opacity: 1; pointer-events: all; }
     .modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--r3); max-width: 680px; width: 100%; max-height: 80vh; display: flex; flex-direction: column; transform: translateY(20px); transition: transform var(--transition); }
@@ -476,12 +770,11 @@
     .modal-body h3:first-child { margin-top: 0; }
     .modal-body p { font-size: 0.88rem; color: var(--text2); line-height: 1.8; margin-bottom: 12px; }
 
-    /* ─── COOKIE BANNER ──────────────────────────────────────── */
+    /* ─── COOKIE BANNER ───────────────────────────────────────── */
     .cookie-banner {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
       background: var(--bg3); border-top: 1px solid var(--border2);
-      padding: 20px 24px; display: none;
-      box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+      padding: 20px 24px; display: none; box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
     }
     .cookie-banner.visible { display: block; }
     .cookie-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
@@ -493,10 +786,21 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width: 1024px) {
-      .footer-top { grid-template-columns: 1fr 1fr; }
+    /* ─── TOOLTIP ─────────────────────────────────────────────── */
+    [data-tooltip] { position: relative; }
+    [data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+      background: var(--surface2); color: var(--text2);
+      font-family: var(--mono); font-size: 0.68rem;
+      padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+      border: 1px solid var(--border); pointer-events: none;
+      opacity: 0; transition: opacity 0.2s ease;
     }
+    [data-tooltip]:hover::after { opacity: 1; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1024px) { .footer-top { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
       .hero-grid, .about-grid, .contact-grid, .delivery-grid { grid-template-columns: 1fr; }
       .hero-terminal { display: none; }
@@ -513,18 +817,29 @@
       .hero-ctas { flex-direction: column; align-items: flex-start; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+      .nav-status span { display: none; }
     }
   </style>
 </head>
 <body>
 
+<!-- ─── PROGRESS BAR ──────────────────────────────────────────── -->
+<div class="progress-bar" id="progressBar" role="progressbar" aria-hidden="true"></div>
+
+<!-- ─── SKIP TO CONTENT ───────────────────────────────────────── -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ─── BACK TO TOP ───────────────────────────────────────────── -->
+<button class="back-to-top" id="backToTop" aria-label="Scroll back to top" title="Back to top">↑</button>
+
 <!-- ─── COOKIE BANNER ────────────────────────────────────────── -->
-<div class="cookie-banner" id="cookieBanner">
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
   <div class="cookie-inner">
     <p class="cookie-text">
       This site uses essential cookies to function properly. By continuing to browse, you agree to our
-      <a onclick="openModal('cookieModal')">Cookie Policy</a> and
-      <a onclick="openModal('privacyModal')">Privacy Policy</a>.
+      <a onclick="openModal('cookieModal')" role="button">Cookie Policy</a> and
+      <a onclick="openModal('privacyModal')" role="button">Privacy Policy</a>.
     </p>
     <div class="cookie-actions">
       <button class="btn btn-ghost" style="padding:8px 18px;font-size:0.74rem;" onclick="declineCookies()">Decline</button>
@@ -533,12 +848,12 @@
   </div>
 </div>
 
-<!-- ─── MODAL: PRIVACY POLICY ───────────────────────────────── -->
-<div class="modal-overlay" id="privacyModal">
+<!-- ─── MODAL: PRIVACY POLICY ────────────────────────────────── -->
+<div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">Privacy Policy</div>
-      <button class="modal-close" onclick="closeModal('privacyModal')">✕</button>
+      <div class="modal-title" id="privacyModalTitle">Privacy Policy</div>
+      <button class="modal-close" onclick="closeModal('privacyModal')" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
       <h3>Data Collection</h3>
@@ -555,12 +870,12 @@
   </div>
 </div>
 
-<!-- ─── MODAL: TERMS OF SERVICE ─────────────────────────────── -->
-<div class="modal-overlay" id="tosModal">
+<!-- ─── MODAL: TERMS OF SERVICE ──────────────────────────────── -->
+<div class="modal-overlay" id="tosModal" role="dialog" aria-modal="true" aria-labelledby="tosModalTitle">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">Terms of Service – Commission Agreement</div>
-      <button class="modal-close" onclick="closeModal('tosModal')">✕</button>
+      <div class="modal-title" id="tosModalTitle">Terms of Service – Commission Agreement</div>
+      <button class="modal-close" onclick="closeModal('tosModal')" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
       <h3>01 · Project Requirements</h3>
@@ -584,12 +899,12 @@
   </div>
 </div>
 
-<!-- ─── MODAL: COOKIE POLICY ────────────────────────────────── -->
-<div class="modal-overlay" id="cookieModal">
+<!-- ─── MODAL: COOKIE POLICY ─────────────────────────────────── -->
+<div class="modal-overlay" id="cookieModal" role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
   <div class="modal">
     <div class="modal-header">
-      <div class="modal-title">Cookie Policy</div>
-      <button class="modal-close" onclick="closeModal('cookieModal')">✕</button>
+      <div class="modal-title" id="cookieModalTitle">Cookie Policy</div>
+      <button class="modal-close" onclick="closeModal('cookieModal')" aria-label="Close">✕</button>
     </div>
     <div class="modal-body">
       <h3>What Are Cookies</h3>
@@ -605,11 +920,11 @@
   </div>
 </div>
 
-<!-- ─── NAV ─────────────────────────────────────────────────── -->
-<nav>
+<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a class="nav-logo" href="#home">Physic<span>91</span>.dev</a>
-    <ul class="nav-links">
+    <a class="nav-logo" href="#home" aria-label="Physic91 – Home">Physic<span>91</span>.dev</a>
+    <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -618,33 +933,40 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status open" id="navStatus">
-        <div class="nav-status-dot"></div>
+      <div class="nav-status open" id="navStatus" aria-live="polite">
+        <div class="nav-status-dot" aria-hidden="true"></div>
         <span id="navStatusText">Open for Work</span>
       </div>
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" data-tooltip="Toggle theme">
+        <span class="icon-sun" aria-hidden="true">☀️</span>
+        <span class="icon-moon" aria-hidden="true">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="#pricing">Pricing</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Contact</a>
+<div class="mobile-menu" id="mobileMenu" role="menu">
+  <a href="#services" role="menuitem">Services</a>
+  <a href="#about"    role="menuitem">About</a>
+  <a href="#pricing"  role="menuitem">Pricing</a>
+  <a href="#projects" role="menuitem">Projects</a>
+  <a href="#experience" role="menuitem">Experience</a>
+  <a href="#faq"      role="menuitem">FAQ</a>
+  <a href="#contact"  role="menuitem">Contact</a>
 </div>
 
+<main id="main-content">
+
 <!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="hero" id="home">
+<section class="hero" id="home" aria-label="Introduction">
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="hero-eyebrow">Roblox Luau Programmer &amp; Game Developer</div>
+        <div class="hero-eyebrow" aria-label="Role">Roblox Luau Programmer &amp; Game Developer</div>
         <h1>Hello,<br>I'm <em>Physic</em>.</h1>
         <p class="hero-desc">
           I build scalable game systems, craft clean Luau architecture,
@@ -653,17 +975,17 @@
         </p>
         <div class="hero-ctas">
           <a href="#projects" class="btn btn-primary">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             View Projects
           </a>
           <a href="#pricing" class="btn btn-outline">Pricing</a>
-          <a href="https://github.com/Physic2952" target="_blank" rel="noopener" class="btn btn-ghost">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
           </a>
         </div>
       </div>
-      <div class="hero-terminal" aria-hidden="true">
+      <div class="hero-terminal" aria-hidden="true" role="presentation">
         <div class="terminal-bar">
           <div class="terminal-dot"></div><div class="terminal-dot"></div><div class="terminal-dot"></div>
           <span class="terminal-title">QuestSystem.luau</span>
@@ -698,11 +1020,11 @@
 </section>
 
 <!-- ─── COMMISSION STATUS BANNER ─────────────────────────────── -->
-<div class="status-banner">
+<div class="status-banner" role="banner">
   <div class="container">
     <div class="status-banner-inner">
       <div class="status-block">
-        <div class="status-icon open" id="statusIconBig">✅</div>
+        <div class="status-icon open" id="statusIconBig" aria-hidden="true">✅</div>
         <div class="status-info">
           <label>Commission Status</label>
           <div class="status-value open" id="statusValueBig">Open for Work</div>
@@ -725,18 +1047,18 @@
 <hr class="hr" />
 
 <!-- ─── SERVICES ─────────────────────────────────────────────── -->
-<section class="section" id="services">
+<section class="section" id="services" aria-labelledby="services-heading">
   <div class="container">
     <div class="section-label">What I Offer</div>
-    <h2 class="section-title">Services</h2>
+    <h2 class="section-title" id="services-heading">Services</h2>
     <p class="section-sub">Specialized Roblox development services — from single systems to complete game builds.</p>
 
     <div class="services-grid">
       <div class="service-card fade-up">
-        <div class="service-icon">⚙️</div>
+        <div class="service-icon" aria-hidden="true">⚙️</div>
         <h3>Game Systems</h3>
         <p>Custom OOP-based systems built to scale — quest engines, inventory, progression loops, and more. Clean architecture, documented code.</p>
-        <div class="service-tags">
+        <div class="service-tags" aria-label="Tags">
           <span class="service-tag">Quest System</span>
           <span class="service-tag">Inventory</span>
           <span class="service-tag">Combat</span>
@@ -744,7 +1066,7 @@
         </div>
       </div>
       <div class="service-card fade-up">
-        <div class="service-icon">🛡️</div>
+        <div class="service-icon" aria-hidden="true">🛡️</div>
         <h3>Anti-Exploit &amp; Security</h3>
         <p>Server-authoritative validation, sanity checks, and exploit mitigation. Protect your game's economy, stats, and gameplay integrity.</p>
         <div class="service-tags">
@@ -755,7 +1077,7 @@
         </div>
       </div>
       <div class="service-card fade-up">
-        <div class="service-icon">⚡</div>
+        <div class="service-icon" aria-hidden="true">⚡</div>
         <h3>Performance Optimization</h3>
         <p>Identify and resolve bottlenecks. Memory management, event efficiency, render optimization, and scalable data flow.</p>
         <div class="service-tags">
@@ -766,9 +1088,9 @@
         </div>
       </div>
       <div class="service-card fade-up">
-        <div class="service-icon">🔄</div>
+        <div class="service-icon" aria-hidden="true">🔄</div>
         <h3>OOP Refactors &amp; Consulting</h3>
-        <p>Bring structure to messy codebases. Refactor towards clean OOP/ESC/DOD patterns, improve maintainability, and set up long-term architecture.</p>
+        <p>Bring structure to messy codebases. Refactor towards clean OOP/ECS/DOD patterns, improve maintainability, and set up long-term architecture.</p>
         <div class="service-tags">
           <span class="service-tag">Refactor</span>
           <span class="service-tag">Code Review</span>
@@ -795,11 +1117,11 @@
 <hr class="hr" />
 
 <!-- ─── ABOUT ─────────────────────────────────────────────────── -->
-<section class="section section-alt" id="about">
+<section class="section section-alt" id="about" aria-labelledby="about-heading">
   <div class="container">
     <div class="about-grid">
       <div class="about-card fade-up">
-        <div class="about-avatar">P</div>
+        <div class="about-avatar" aria-hidden="true">P</div>
         <div class="about-name">Physic</div>
         <div class="about-handle">@Physic91</div>
         <div class="about-stat">
@@ -811,7 +1133,7 @@
       </div>
       <div class="about-text fade-up">
         <div class="section-label">About Me</div>
-        <h2 class="section-title">Who I Am</h2>
+        <h2 class="section-title" id="about-heading">Who I Am</h2>
         <p>Hey, I'm Physic — a Roblox Luau programmer who enjoys building things and understanding how they work. Outside of code you'll find me watching films, listening to music, or just thinking.</p>
         <p>I care about the engineering side of games — the systems and logic underneath the surface. Clean, maintainable code with real architecture: OOP patterns, anti-exploit, performance.</p>
       </div>
@@ -822,10 +1144,10 @@
 <hr class="hr" />
 
 <!-- ─── JOURNEY ────────────────────────────────────────────────── -->
-<section class="section" id="journey">
+<section class="section" id="journey" aria-labelledby="journey-heading">
   <div class="container">
     <div class="section-label">Where It All Started</div>
-    <h2 class="section-title">The Journey</h2>
+    <h2 class="section-title" id="journey-heading">The Journey</h2>
     <p class="section-sub">From playing games to building them — a continuous evolution driven by curiosity.</p>
     <div class="timeline">
       <div class="tl-item">
@@ -855,10 +1177,10 @@
 <hr class="hr" />
 
 <!-- ─── SKILLS ────────────────────────────────────────────────── -->
-<section class="section section-alt" id="skills">
+<section class="section section-alt" id="skills" aria-labelledby="skills-heading">
   <div class="container">
     <div class="section-label">Technical Skills</div>
-    <h2 class="section-title">What I Work With</h2>
+    <h2 class="section-title" id="skills-heading">What I Work With</h2>
     <p class="section-sub">Languages, tools, and domains — organized by category.</p>
     <div class="skills-grid">
       <div class="skill-category fade-up">
@@ -893,53 +1215,24 @@
 
 <hr class="hr" />
 
-<!-- ─── VIDEOS ───────────────────────────────────────────────── -->
-<section class="section" id="videos">
+<!-- ─── VIDEOS ────────────────────────────────────────────────── -->
+<section class="section" id="videos" aria-labelledby="videos-heading">
   <div class="container">
     <div class="section-label">Showcase</div>
-    <h2 class="section-title">Project Video Showcase</h2>
+    <h2 class="section-title" id="videos-heading">Project Video Showcase</h2>
     <p class="section-sub">Systems and projects in action — recorded directly in Roblox Studio or in-game.</p>
-
     <div style="text-align:center; padding: 60px 0;">
       <div style="font-family:var(--mono); font-size:1.1rem; color:var(--accent); margin-bottom:12px;">// Coming Soon</div>
-      <p style="color:var(--text3); font-size:0.9rem;"> Videos will appear here soon. They'll probably be here after you get a coffee 🍸</p>
+      <p style="color:var(--text3); font-size:0.9rem;">Videos will appear here soon. They'll probably be here after you get a coffee 🍸</p>
     </div>
-
-    <!-- ══════════════════════════════════════════════════════════
-         VIDEO TEMPLATE — Kommentare entfernen um Videos anzuzeigen
-         Anleitung: YouTube-URL = https://www.youtube.com/watch?v=ID
-         Die ID (z.B. dQw4w9WgXcW) bei src einsetzen.
-    ═══════════════════════════════════════════════════════════════
-
-    <div class="video-row">
-      <div class="video-row-header">
-        <div class="video-row-title">// Game Systems</div>
-        <p class="video-row-desc">Core mechanics systems built from scratch.</p>
-      </div>
-      <div class="video-grid">
-
-        <div class="video-item">
-          <div class="video-thumb">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID_HIER" title="Titel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div class="video-caption">
-            <div class="video-caption-title">Titel hier</div>
-            <p class="video-caption-desc">Beschreibung hier.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    ══════════════════════════════════════════════════════════ -->
-
   </div>
 </section>
+
 <!-- ─── PROJECTS ──────────────────────────────────────────────── -->
-<section class="section" id="projects">
+<section class="section" id="projects" aria-labelledby="projects-heading">
   <div class="container">
     <div class="section-label">Projects &amp; Resources</div>
-    <h2 class="section-title">What I've Built</h2>
+    <h2 class="section-title" id="projects-heading">What I've Built</h2>
     <p class="section-sub">Open-source systems, reusable Luau modules, and game development resources.</p>
 
     <div class="projects-grid">
@@ -953,8 +1246,8 @@
           <p>A complete, OOP-based quest management system for Roblox. Supports quest assignment, progress tracking, completion callbacks, and clean state management across server and client.</p>
         </div>
         <div class="project-card-bottom">
-          <a href="https://github.com/Physic2952/Quest-System" target="_blank" rel="noopener" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/Physic2952/Quest-System" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
           </a>
         </div>
@@ -970,8 +1263,8 @@
           <p>A reference covering OOP in Luau — inheritance, constructors, and simulated access modifiers. Practical patterns for scalable Roblox architecture.</p>
         </div>
         <div class="project-card-bottom">
-          <a href="https://github.com/Physic2952/OOP-Resources" target="_blank" rel="noopener" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/Physic2952/OOP-Resources" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
           </a>
         </div>
@@ -988,11 +1281,11 @@
         </div>
         <div class="project-card-bottom">
           <a href="#contact" class="project-link">
-            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             Discord DM
           </a>
-          <a href="https://github.com/Physic2952" target="_blank" rel="noopener" class="project-link">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             GitHub
           </a>
         </div>
@@ -1004,21 +1297,21 @@
 <hr class="hr" />
 
 <!-- ─── PRICING ───────────────────────────────────────────────── -->
-<section class="section section-alt" id="pricing">
+<section class="section section-alt" id="pricing" aria-labelledby="pricing-heading">
   <div class="container">
     <div class="section-label">Transparent Pricing</div>
-    <h2 class="section-title">Commission Rates</h2>
+    <h2 class="section-title" id="pricing-heading">Commission Rates</h2>
     <p class="section-sub">Clear, project-based pricing for every scope. All prices are starting points — final quotes depend on complexity.</p>
 
     <h3 style="font-family:var(--mono); font-size:0.88rem; color:var(--text3); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:20px;">Per-Task &amp; Specific Systems</h3>
     <div class="table-wrapper fade-up">
-      <table class="pricing-table">
+      <table class="pricing-table" aria-label="Per-task pricing">
         <thead>
           <tr>
-            <th>Service</th>
-            <th>Description</th>
-            <th>Starting Price</th>
-            <th>Notes</th>
+            <th scope="col">Service</th>
+            <th scope="col">Description</th>
+            <th scope="col">Starting Price</th>
+            <th scope="col">Notes</th>
           </tr>
         </thead>
         <tbody>
@@ -1053,7 +1346,6 @@
         </ul>
         <a href="#contact" class="btn btn-outline pricing-cta">Get a Quote</a>
       </div>
-
       <div class="pricing-card featured fade-up">
         <div class="pricing-tier">Professional</div>
         <div class="pricing-name">Medium Gameplay</div>
@@ -1071,7 +1363,6 @@
         </ul>
         <a href="#contact" class="btn btn-primary pricing-cta">Get a Quote</a>
       </div>
-
       <div class="pricing-card fade-up">
         <div class="pricing-tier">Enterprise</div>
         <div class="pricing-name">Complex Gameplay</div>
@@ -1091,7 +1382,6 @@
         <a href="#contact" class="btn btn-outline pricing-cta">Custom Quote</a>
       </div>
     </div>
-
     <p style="margin-top:24px; font-family:var(--mono); font-size:0.78rem; color:var(--text3); text-align:center;">
       * Revenue share: case-by-case — only if the game has real traction. DM to discuss.&nbsp;&nbsp;
       * USD via bank transfer or PayPal. Robux at DevEx rate via Group Payout only — all taxes covered by client.
@@ -1102,10 +1392,10 @@
 <hr class="hr" />
 
 <!-- ─── DELIVERY & PAYMENT ────────────────────────────────────── -->
-<section class="section" id="delivery">
+<section class="section" id="delivery" aria-labelledby="delivery-heading">
   <div class="container">
     <div class="section-label">Workflow</div>
-    <h2 class="section-title">Delivery &amp; Payment</h2>
+    <h2 class="section-title" id="delivery-heading">Delivery &amp; Payment</h2>
     <p class="section-sub">Clear timelines and flexible payment options — so you always know what to expect.</p>
 
     <div class="delivery-grid fade-up">
@@ -1118,26 +1408,25 @@
         <div class="delivery-row"><span class="delivery-label">Priority Delivery</span><span class="delivery-val">+15–30% fee</span></div>
         <p style="margin-top:16px; font-size:0.82rem; color:var(--text3);">Turnaround depends on scope and current workload. Priority slots are available for faster delivery at an additional fee.</p>
       </div>
-
       <div class="delivery-card">
         <h3>💳 Payment Methods</h3>
         <div class="payment-methods">
           <div class="payment-method">
-            <div class="payment-method-icon">🏦</div>
+            <div class="payment-method-icon" aria-hidden="true">🏦</div>
             <div class="payment-method-info">
               <strong>Bank Transfer</strong>
               <span>Direct bank transfer. All transfer fees must be covered by the client.</span>
             </div>
           </div>
           <div class="payment-method">
-            <div class="payment-method-icon">🅿️</div>
+            <div class="payment-method-icon" aria-hidden="true">🅿️</div>
             <div class="payment-method-info">
               <strong>PayPal</strong>
               <span>Friends &amp; Family preferred to avoid fees. PayPal fees otherwise covered by client.</span>
             </div>
           </div>
           <div class="payment-method">
-            <div class="payment-method-icon">🎮</div>
+            <div class="payment-method-icon" aria-hidden="true">🎮</div>
             <div class="payment-method-info">
               <strong>Robux — Group Payout only</strong>
               <span>Via Group Payout exclusively. No Gamepass. All Roblox taxes covered by client. DevEx rate applies.</span>
@@ -1156,10 +1445,10 @@
 <hr class="hr" />
 
 <!-- ─── EXPERIENCE ────────────────────────────────────────────── -->
-<section class="section section-alt" id="experience">
+<section class="section section-alt" id="experience" aria-labelledby="experience-heading">
   <div class="container">
     <div class="section-label">Past Work</div>
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title" id="experience-heading">Experience</h2>
     <p class="section-sub">Real projects, real teams, real deadlines.</p>
     <div class="exp-grid">
       <article class="exp-card fade-up">
@@ -1183,8 +1472,8 @@
           <div class="exp-meta"><span>Oct 2025 – Present</span> &nbsp;·&nbsp; Roblox Incremental Game</div>
           <p class="exp-desc">Built the entire game from the ground up as the sole scripter. Responsible for designing and implementing every system, mechanic, and feature — from core loop architecture to UI systems and data persistence. An ongoing project under active development.</p>
           <div style="margin-top:16px;">
-            <a href="https://www.roblox.com/games" target="_blank" rel="noopener" class="project-link" style="display:inline-flex;">
-              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <a href="https://www.roblox.com/games" target="_blank" rel="noopener noreferrer" class="project-link" style="display:inline-flex;">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
               Play on Roblox
             </a>
           </div>
@@ -1197,24 +1486,24 @@
 <hr class="hr" />
 
 <!-- ─── BEYOND ────────────────────────────────────────────────── -->
-<section class="section" id="beyond">
+<section class="section" id="beyond" aria-labelledby="beyond-heading">
   <div class="container">
     <div class="section-label">Beyond Roblox</div>
-    <h2 class="section-title">More Than Luau</h2>
+    <h2 class="section-title" id="beyond-heading">More Than Luau</h2>
     <p class="section-sub">My experience extends beyond Roblox Studio — other platforms and languages that shaped my fundamentals.</p>
     <div class="beyond-grid">
       <div class="beyond-card fade-up">
-        <div class="beyond-icon">☕</div>
+        <div class="beyond-icon" aria-hidden="true">☕</div>
         <h3>Java Development</h3>
         <p>Built small applications in Java using Eclipse and VS Code. Working with a statically typed language strengthened my grasp of object-oriented principles and program structure.</p>
       </div>
       <div class="beyond-card fade-up">
-        <div class="beyond-icon">◈</div>
+        <div class="beyond-icon" aria-hidden="true">◈</div>
         <h3>C# &amp; Unity</h3>
         <p>Developed gameplay systems in Unity with C#. Understanding a professional game engine expanded my perspective on how game logic is structured at a higher level.</p>
       </div>
       <div class="beyond-card fade-up">
-        <div class="beyond-icon">⬡</div>
+        <div class="beyond-icon" aria-hidden="true">⬡</div>
         <h3>Cross-Platform Thinking</h3>
         <p>Switching between Roblox/Luau, Unity/C#, and Java/Eclipse taught me adaptability. Core programming concepts transfer — the environment changes, the fundamentals stay.</p>
       </div>
@@ -1225,20 +1514,20 @@
 <hr class="hr" />
 
 <!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
-<section class="section section-alt" id="testimonials">
+<section class="section section-alt" id="testimonials" aria-labelledby="testimonials-heading">
   <div class="container">
     <div class="section-label">Client Feedback</div>
-    <h2 class="section-title">What Clients Say</h2>
+    <h2 class="section-title" id="testimonials-heading">What Clients Say</h2>
     <p class="section-sub">Real feedback from real commissions. Hover to pause.</p>
   </div>
 
-  <div class="testimonials-wrapper">
+  <div class="testimonials-wrapper" aria-label="Testimonials carousel">
     <div class="testimonials-track" id="testimonialsTrack">
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">honestly surprised how clean the code was. commission work is usually a mess to read through. this wasn't. clear structure, worked first try.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">N</div>
+          <div class="testimonial-avatar" aria-hidden="true">N</div>
           <div>
             <div class="testimonial-author-name">N.</div>
             <div class="testimonial-author-role">Roleplay Game · Discord</div>
@@ -1246,10 +1535,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">told him what i needed. got it back faster than expected. no drama, no excuses, no chasing. literally just delivered.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">T</div>
+          <div class="testimonial-avatar" aria-hidden="true">T</div>
           <div>
             <div class="testimonial-author-name">T.</div>
             <div class="testimonial-author-role">Tycoon Game · Discord</div>
@@ -1257,10 +1546,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">bank system and phone system both worked on day one. no weird edge cases, no crashes on launch. exactly what you want from a scripter.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">EB</div>
+          <div class="testimonial-avatar" aria-hidden="true">EB</div>
           <div>
             <div class="testimonial-author-name">Emergency Bristol</div>
             <div class="testimonial-author-role">Roblox Roleplay Game</div>
@@ -1268,10 +1557,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">refactored my entire inventory system. old code was genuinely unreadable. the new version i can actually maintain myself. huge difference.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">M</div>
+          <div class="testimonial-avatar" aria-hidden="true">M</div>
           <div>
             <div class="testimonial-author-name">M.</div>
             <div class="testimonial-author-role">Simulator Dev · Discord</div>
@@ -1279,10 +1568,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">quoted me a fair price and actually stuck to it. didn't creep the scope or add surprise fees. that alone makes him stand out from most.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">J</div>
+          <div class="testimonial-avatar" aria-hidden="true">J</div>
           <div>
             <div class="testimonial-author-name">J.</div>
             <div class="testimonial-author-role">Game Owner · Discord</div>
@@ -1290,10 +1579,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">asked for a datastore system with session locking and versioning. got exactly that, with comments explaining every part. didn't need to ask twice.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-avatar" aria-hidden="true">R</div>
           <div>
             <div class="testimonial-author-name">R.</div>
             <div class="testimonial-author-role">RPG Dev · Discord</div>
@@ -1301,10 +1590,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">anti-exploit he set up actually caught exploiters on launch day. had stats that wouldn't stop logging. fixed in like an hour. worth every penny.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">K</div>
+          <div class="testimonial-avatar" aria-hidden="true">K</div>
           <div>
             <div class="testimonial-author-name">K.</div>
             <div class="testimonial-author-role">PvP Game · Discord</div>
@@ -1312,10 +1601,10 @@
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-stars" aria-label="5 stars">★★★★★</div>
         <p class="testimonial-quote">communicates clearly, doesn't ghost, and actually tells you if something is out of scope instead of just doing it and charging extra. rare.</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">S</div>
+          <div class="testimonial-avatar" aria-hidden="true">S</div>
           <div>
             <div class="testimonial-author-name">S.</div>
             <div class="testimonial-author-role">Studio Owner · Discord</div>
@@ -1329,61 +1618,61 @@
 <hr class="hr" />
 
 <!-- ─── FAQ ───────────────────────────────────────────────────── -->
-<section class="section" id="faq">
+<section class="section" id="faq" aria-labelledby="faq-heading">
   <div class="container">
     <div class="section-label">Got Questions?</div>
-    <h2 class="section-title">Frequently Asked Questions</h2>
+    <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
     <p class="section-sub">Answers to the most common questions about commissions, process, and pricing.</p>
 
-    <div class="faq-list fade-up">
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+    <div class="faq-list fade-up" role="list">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>How do I request a commission?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Reach out via Discord (Physic91) or the contact form on this page. Include a clear description of what you need — scope, systems involved, and any deadlines. I will respond with a quote or follow-up questions within 24 hours.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Reach out via Discord (Physic91) or the contact form on this page. Include a clear description of what you need — scope, systems involved, and any deadlines. I will respond with a quote or follow-up questions within 24 hours.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Do you provide a quote before starting?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes, always. No work starts without an agreed written quote. If your request is vague, I may suggest a paid code review first so I can assess scope accurately and give you a fair price.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Yes, always. No work starts without an agreed written quote. If your request is vague, I may suggest a paid code review first so I can assess scope accurately and give you a fair price.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Can you work with an existing codebase?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes. I regularly work with existing games — whether that's adding new features, refactoring scripts, or fixing bugs. I will need access to the relevant code or the place file before providing a quote.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Yes. I regularly work with existing games — whether that's adding new features, refactoring scripts, or fixing bugs. I will need access to the relevant code or the place file before providing a quote.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>What happens if I need changes after delivery?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Bugs I introduced are fixed free of charge within 24 hours of delivery. Changes in scope or new requirements after delivery are treated as a new commission and quoted accordingly.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Bugs I introduced are fixed free of charge within 24 hours of delivery. Changes in scope or new requirements after delivery are treated as a new commission and quoted accordingly.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Do you offer long-term support or maintenance?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Yes. For ongoing projects I offer retainer-based agreements covering maintenance, updates, and priority support. Reach out to discuss a custom plan tailored to your game's needs.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Yes. For ongoing projects I offer retainer-based agreements covering maintenance, updates, and priority support. Reach out to discuss a custom plan tailored to your game's needs.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Who owns the code after the commission?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Once full payment is received, you own the code outright. You may use it in your game, modify it, or redistribute it however you choose. I may showcase non-confidential work in my portfolio unless we agree otherwise in writing.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Once full payment is received, you own the code outright. You may use it in your game, modify it, or redistribute it however you choose. I may showcase non-confidential work in my portfolio unless we agree otherwise in writing.</div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Do you accept revenue share?</span>
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Depends on the game. If the project already has real traction — players, revenue, something to show — I'm open to discussing it. I don't do revshare on games that don't exist yet or have no audience. DM me and we can talk.</div></div>
+        <div class="faq-answer" role="region"><div class="faq-answer-inner">Depends on the game. If the project already has real traction — players, revenue, something to show — I'm open to discussing it. I don't do revshare on games that don't exist yet or have no audience. DM me and we can talk.</div></div>
       </div>
     </div>
   </div>
@@ -1392,45 +1681,45 @@
 <hr class="hr" />
 
 <!-- ─── TERMS OF SERVICE ──────────────────────────────────────── -->
-<section class="section section-alt" id="tos">
+<section class="section section-alt" id="tos" aria-labelledby="tos-heading">
   <div class="container">
     <div class="section-label">Legal &amp; Agreement</div>
-    <h2 class="section-title">Terms of Service</h2>
+    <h2 class="section-title" id="tos-heading">Terms of Service</h2>
     <p class="section-sub">By commissioning me, you confirm you have read and accept these terms. They exist to protect both parties.</p>
 
     <div class="tos-grid">
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">01</div><h3>Project Requirements</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">01</div><h3>Project Requirements</h3></div>
         <p>A clear, written specification is required before work begins. Vague requests will be asked to clarify or offered a paid scoping session. Requirements that change mid-development are treated as separate tasks with a new quote.</p>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">02</div><h3>Payment Policy</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">02</div><h3>Payment Policy</h3></div>
         <p>50% upfront, 50% on delivery. The agreed price is final — you cover all applicable taxes and transfer fees. Work begins only after the upfront payment has been received and cleared.</p>
         <div class="tos-highlight">Fast-settlement methods (Wise, Remitly) are strongly preferred to avoid ambiguity about when funds have cleared and work can begin.</div>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">03</div><h3>Refunds</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">03</div><h3>Refunds</h3></div>
         <p>No cancellations once a commission is confirmed and the upfront payment is made. Upfront payments are non-refundable except where I am personally unable to complete the agreed work. Defaulting on the final payment may result in work being withheld and amounts paid being forfeited.</p>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">04</div><h3>Bug Fixes</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">04</div><h3>Bug Fixes</h3></div>
         <p>Bugs in my own code are fixed at no charge. Report issues within 24 hours of delivery — after that window, problems are assumed to result from your own edits. What counts as a "bug" is defined as a failure to meet the agreed specification, not a change in requirements.</p>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">05</div><h3>Ownership &amp; License</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">05</div><h3>Ownership &amp; License</h3></div>
         <p>Once 100% of the agreed payment is received, you own the commission outright and may use, resell, or modify it freely. Before full payment, I retain the right to withhold the final handoff. I may display non-confidential work in my portfolio unless we agree otherwise in writing. Please only send me assets or code you are legally permitted to use.</p>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">06</div><h3>Communication &amp; 72-Hour Inactivity</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">06</div><h3>Communication &amp; 72-Hour Inactivity</h3></div>
         <p>Timely replies matter on both sides. If either party does not respond for 72 consecutive hours during negotiation, the commission may be treated as abandoned. Once confirmed, prolonged silence may indicate abandonment; I may pause or stop work, require reconfirmation, or apply the payment terms as described.</p>
         <div class="tos-highlight">This clause exists to reduce wasted time and protect both parties against bad-faith arrangements.</div>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">07</div><h3>Scope Changes &amp; Disputes</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">07</div><h3>Scope Changes &amp; Disputes</h3></div>
         <p>Requests outside the originally agreed scope are new work and quoted separately. Quality disputes must cite specific, reproducible issues in writing within the 24-hour bug fix window. These terms constitute the entire agreement unless both parties sign something additional in writing.</p>
       </div>
       <div class="tos-item fade-up">
-        <div class="tos-header"><div class="tos-num">08</div><h3>Liability</h3></div>
+        <div class="tos-header"><div class="tos-num" aria-hidden="true">08</div><h3>Liability</h3></div>
         <p>Work is provided "as is" to the maximum extent permitted by applicable law. I am not liable for indirect, consequential, or lost-profit damages, nor for issues caused by your modifications, third-party assets, or changes to the Roblox platform. Total liability for any claim is capped at the fees paid for that specific commission.</p>
       </div>
     </div>
@@ -1449,15 +1738,15 @@
 <hr class="hr" />
 
 <!-- ─── CONTACT ───────────────────────────────────────────────── -->
-<section class="section" id="contact">
+<section class="section" id="contact" aria-labelledby="contact-heading">
   <div class="container">
     <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Contact &amp; Commissions</h2>
+    <h2 class="section-title" id="contact-heading">Contact &amp; Commissions</h2>
     <p class="section-sub">Have a project in mind? I'm reachable. Read the note below before sending.</p>
 
     <div class="contact-grid">
       <div class="contact-info">
-        <div class="contact-notice">
+        <div class="contact-notice" role="note">
           <div class="contact-notice-title">⚠ BEFORE YOU MESSAGE</div>
           <p>Include your project details in your first message. Messages that only say "Hi" or "Are you open for commissions?" without context will be ignored.</p>
           <p style="margin-top:8px;">For an accurate quote, provide:</p>
@@ -1470,68 +1759,56 @@
         </div>
 
         <div class="contact-item">
-          <div class="contact-icon">💬</div>
+          <div class="contact-icon" aria-hidden="true">💬</div>
           <div class="contact-item-text">
             <label>Discord (fastest reply)</label>
             <span>Physic91</span>
           </div>
-          <button class="copy-btn" onclick="copyText('Physic91', this)">Copy</button>
+          <button class="copy-btn" onclick="copyText('Physic91', this)" aria-label="Copy Discord username">Copy</button>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">✉️</div>
+          <div class="contact-icon" aria-hidden="true">✉️</div>
           <div class="contact-item-text">
             <label>Email</label>
             <span>Physiclover13244@gmail.com</span>
           </div>
-          <button class="copy-btn" onclick="copyText('Physiclover13244@gmail.com', this)">Copy</button>
+          <button class="copy-btn" onclick="copyText('Physiclover13244@gmail.com', this)" aria-label="Copy email address">Copy</button>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">⚡</div>
+          <div class="contact-icon" aria-hidden="true">⚡</div>
           <div class="contact-item-text">
             <label>GitHub</label>
             <span>github.com/Physic2952</span>
           </div>
-          <a href="https://github.com/Physic2952" target="_blank" rel="noopener" class="copy-btn" style="text-decoration:none;">Open</a>
+          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="copy-btn" style="text-decoration:none;" aria-label="Open GitHub profile">Open</a>
         </div>
 
         <p style="font-size:0.84rem; color:var(--text3);">Discord is the fastest way to reach me. For project inquiries, the form or email works perfectly too.</p>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════════
-           CONTACT FORM — Formspree Vanilla JS Ajax (CDN-free)
-           Guide chosen: Vanilla JS Ajax (custom fetch)
-           Endpoint: https://formspree.io/f/meedzqpe
-           - Uses fetch() + FormData with Accept: application/json
-           - Honeypot field (_gotcha) for spam protection
-           - _replyto hidden field so Formspree threads replies
-           - Client-side rate-limit: 1 submission per 24 h
-           - Full Formspree error array parsing
-           ═══════════════════════════════════════════════════════ -->
+      <!-- CONTACT FORM -->
       <div class="contact-form">
         <div class="form-title">// Send a Message</div>
+        <form id="contactForm" novalidate aria-label="Commission inquiry form">
 
-        <form id="contactForm" novalidate>
-
-          <!-- Honeypot — hidden from humans, read by bots -->
+          <!-- Honeypot -->
           <div class="hp-field" aria-hidden="true">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
           </div>
-
-          <!-- _replyto: Formspree uses this to set Reply-To header -->
           <input type="hidden" name="_replyto" id="cf-replyto" />
 
           <div class="form-grid">
             <div class="form-group">
-              <label for="cf-name">Name</label>
+              <label for="cf-name">Name <span aria-hidden="true" style="color:var(--accent);">*</span></label>
               <input class="form-input" type="text" id="cf-name" name="name"
                      placeholder="Your name" required minlength="2" maxlength="80"
-                     autocomplete="name" />
+                     autocomplete="name" aria-required="true" />
             </div>
             <div class="form-group">
-              <label for="cf-email">Email</label>
+              <label for="cf-email">Email <span aria-hidden="true" style="color:var(--accent);">*</span></label>
               <input class="form-input" type="email" id="cf-email" name="email"
                      placeholder="your@email.com" required maxlength="200"
-                     autocomplete="email" />
+                     autocomplete="email" aria-required="true" />
             </div>
           </div>
 
@@ -1553,25 +1830,41 @@
             </select>
           </div>
 
-          <div class="form-group">
-            <label for="cf-subject">Subject</label>
-            <input class="form-input" type="text" id="cf-subject" name="subject"
-                   placeholder="Project inquiry, Collaboration, …"
-                   required minlength="3" maxlength="120" />
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="cf-subject">Subject <span aria-hidden="true" style="color:var(--accent);">*</span></label>
+              <input class="form-input" type="text" id="cf-subject" name="subject"
+                     placeholder="Project inquiry, Collaboration…"
+                     required minlength="3" maxlength="120" aria-required="true" />
+            </div>
+            <div class="form-group">
+              <label for="cf-budget">Budget (USD)</label>
+              <select class="form-select" id="cf-budget" name="budget">
+                <option value="">Select range…</option>
+                <option>Under $50</option>
+                <option>$50 – $150</option>
+                <option>$150 – $400</option>
+                <option>$400 – $900</option>
+                <option>$900+</option>
+                <option>Let's discuss</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="cf-message">Project Details</label>
+            <label for="cf-message">Project Details <span aria-hidden="true" style="color:var(--accent);">*</span></label>
             <textarea class="form-textarea" id="cf-message" name="message"
                       placeholder="Describe your project: what system is needed, what changes, known issues, deadlines…"
-                      required minlength="20" maxlength="3000"></textarea>
+                      required minlength="20" maxlength="3000"
+                      aria-required="true"
+                      oninput="updateCharCount(this)"></textarea>
+            <div class="char-counter" id="charCounter">0 / 3000</div>
           </div>
 
           <button type="submit" class="btn btn-primary" id="cf-submit"
                   style="width:100%; justify-content:center;">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
             Send Message
           </button>
@@ -1580,12 +1873,14 @@
         </form>
 
         <p style="margin-top:16px; font-size:0.78rem; color:var(--text3); font-family:var(--mono);">
-          ⚙ Via Formspree · Max 1 message per day
+          ⚙ Via Formspree · Max 1 message per day · <span style="color:var(--accent);">*</span> required
         </p>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ─── FOOTER ────────────────────────────────────────────────── -->
 <footer>
@@ -1595,11 +1890,11 @@
         <div class="footer-logo-text">Physic<span>91</span>.dev</div>
         <p class="footer-tagline">Professional Roblox Luau developer specializing in OOP systems, anti-exploit security, and scalable game architecture.</p>
         <div class="footer-social">
-          <a href="https://github.com/Physic2952" target="_blank" rel="noopener" class="footer-social-link" title="GitHub">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub profile" title="GitHub">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           </a>
-          <a href="#contact" class="footer-social-link" title="Discord">💬</a>
-          <a href="mailto:Physiclover13244@gmail.com" class="footer-social-link" title="Email">✉️</a>
+          <a href="#contact" class="footer-social-link" aria-label="Contact via Discord" title="Discord">💬</a>
+          <a href="mailto:Physiclover13244@gmail.com" class="footer-social-link" aria-label="Send email" title="Email">✉️</a>
         </div>
       </div>
 
@@ -1655,8 +1950,44 @@
      ═══════════════════════════════════════════════════════════ -->
 <script>
 /* ════════════════════════════════════════════════════════════
-   COMMISSION STATUS CONFIGURATION
-   Set COMMISSION_STATUS to: 'open' | 'limited' | 'closed'
+   DARK / LIGHT MODE
+   ════════════════════════════════════════════════════════════ */
+const THEME_KEY = 'physic91_theme';
+
+function getSystemTheme() {
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const metaColor = document.getElementById('metaThemeColor');
+  if (metaColor) metaColor.content = theme === 'light' ? '#f4f4f8' : '#080810';
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  try { localStorage.setItem(THEME_KEY, theme); } catch {}
+}
+
+function initTheme() {
+  let saved;
+  try { saved = localStorage.getItem(THEME_KEY); } catch {}
+  applyTheme(saved || getSystemTheme());
+}
+initTheme();
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// Respect system preference changes
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+  let saved;
+  try { saved = localStorage.getItem(THEME_KEY); } catch {}
+  if (!saved) applyTheme(e.matches ? 'light' : 'dark');
+});
+
+/* ════════════════════════════════════════════════════════════
+   COMMISSION STATUS
    ════════════════════════════════════════════════════════════ */
 const COMMISSION_STATUS = 'open';
 const STATUS_CONFIG = {
@@ -1666,233 +1997,254 @@ const STATUS_CONFIG = {
 };
 
 function applyCommissionStatus() {
-  const s     = STATUS_CONFIG[COMMISSION_STATUS] || STATUS_CONFIG.open;
-  const color = COMMISSION_STATUS;
+  const s = STATUS_CONFIG[COMMISSION_STATUS] || STATUS_CONFIG.open;
+  const c = COMMISSION_STATUS;
   const navPill = document.getElementById('navStatus');
   const navText = document.getElementById('navStatusText');
-  if (navPill) navPill.className = 'nav-status ' + color;
+  if (navPill) navPill.className = 'nav-status ' + c;
   if (navText) navText.textContent = s.label;
   const iconBig = document.getElementById('statusIconBig');
   const valBig  = document.getElementById('statusValueBig');
   const meta    = document.getElementById('statusMeta');
-  if (iconBig) { iconBig.className = 'status-icon ' + color; iconBig.textContent = s.icon; }
-  if (valBig)  { valBig.className  = 'status-value ' + color; valBig.textContent  = s.label; }
+  if (iconBig) { iconBig.className = 'status-icon ' + c; iconBig.textContent = s.icon; }
+  if (valBig)  { valBig.className  = 'status-value ' + c; valBig.textContent  = s.label; }
   if (meta)    meta.textContent = s.note;
 }
 applyCommissionStatus();
 
 /* ════════════════════════════════════════════════════════════
+   SCROLL PROGRESS BAR + BACK TO TOP + NAV SHADOW
+   ════════════════════════════════════════════════════════════ */
+const progressBar = document.getElementById('progressBar');
+const backToTop   = document.getElementById('backToTop');
+const mainNav     = document.getElementById('mainNav');
+
+window.addEventListener('scroll', () => {
+  const scrollTop  = window.scrollY;
+  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+  const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  if (progressBar) progressBar.style.width = pct + '%';
+  if (backToTop)  backToTop.classList.toggle('visible', scrollTop > 500);
+  if (mainNav)    mainNav.classList.toggle('scrolled', scrollTop > 10);
+
+  // Active nav link highlight
+  let current = '';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (scrollTop >= s.offsetTop - 90) current = s.id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const active = a.getAttribute('href') === '#' + current;
+    a.classList.toggle('active', active);
+  });
+}, { passive: true });
+
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+/* ════════════════════════════════════════════════════════════
+   CHARACTER COUNTER
+   ════════════════════════════════════════════════════════════ */
+function updateCharCount(el) {
+  const counter = document.getElementById('charCounter');
+  if (!counter) return;
+  const len = el.value.length;
+  const max = parseInt(el.getAttribute('maxlength') || '3000', 10);
+  counter.textContent = len + ' / ' + max;
+  counter.classList.toggle('warn', len > max * 0.85);
+}
+
+/* ════════════════════════════════════════════════════════════
    FORMSPREE CONTACT FORM
-   Guide applied: Vanilla JS Ajax (custom fetch — no bundler needed)
-   Endpoint: https://formspree.io/f/meedzqpe
-
-   Per the Formspree Ajax guide:
-   - POST FormData to the endpoint
-   - Set Accept: application/json to get JSON error responses
-   - On success: res.ok === true
-   - On error:   res.json() → { errors: [{ field, message }] }
-
-   Extra features layered on top:
-   - Honeypot (_gotcha) for bot filtering
-   - _replyto hidden field (mirrors email → Formspree Reply-To)
-   - Client-side 24-hour rate limit via localStorage
    ════════════════════════════════════════════════════════════ */
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meedzqpe';
-
 const cfForm      = document.getElementById('contactForm');
 const cfStatus    = document.getElementById('formStatus');
 const cfSubmitBtn = document.getElementById('cf-submit');
 
-const SUBMIT_ICON = `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-  <line x1="22" y1="2" x2="11" y2="13"/>
-  <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-</svg>`;
-const LOADING_ICON = `<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="10"/>
-  <path d="M12 6v6l4 2"/>
-</svg>`;
+const SUBMIT_HTML  = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+const LOADING_HTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sending…';
 
-/* ── Client-side rate limiting (1 submission per 24 hours) ── */
 const RATE_KEY    = 'physic91_cf_last';
-const RATE_WINDOW = 24 * 60 * 60 * 1000; // 24h in ms
+const RATE_WINDOW = 24 * 60 * 60 * 1000;
 
 function canSubmit() {
-  try {
-    const last = parseInt(localStorage.getItem(RATE_KEY) || '0', 10);
-    return (Date.now() - last) > RATE_WINDOW;
-  } catch { return true; }
+  try { return (Date.now() - parseInt(localStorage.getItem(RATE_KEY) || '0', 10)) > RATE_WINDOW; } catch { return true; }
 }
 function markSubmit() {
   try { localStorage.setItem(RATE_KEY, Date.now().toString()); } catch {}
 }
 function getWaitHours() {
-  try {
-    const last = parseInt(localStorage.getItem(RATE_KEY) || '0', 10);
-    return Math.ceil((RATE_WINDOW - (Date.now() - last)) / 3_600_000);
-  } catch { return 24; }
+  try { return Math.ceil((RATE_WINDOW - (Date.now() - parseInt(localStorage.getItem(RATE_KEY) || '0', 10))) / 3600000); } catch { return 24; }
 }
 
-/* ── Mirror email into _replyto so Formspree sets Reply-To ── */
 document.getElementById('cf-email').addEventListener('input', function () {
   document.getElementById('cf-replyto').value = this.value;
 });
 
-/* ── Form submit handler ────────────────────────────────── */
 cfForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-
-  // Reset status
-  cfStatus.className  = 'form-status';
+  cfStatus.className = 'form-status';
   cfStatus.textContent = '';
 
-  // Honeypot check — bots fill this, humans don't
   const honeypot = cfForm.querySelector('input[name="_gotcha"]');
   if (honeypot && honeypot.value.trim() !== '') return;
 
-  // HTML5 native validation
-  if (!cfForm.checkValidity()) {
-    cfForm.reportValidity();
-    return;
-  }
+  if (!cfForm.checkValidity()) { cfForm.reportValidity(); return; }
 
-  // Client-side rate limit
   if (!canSubmit()) {
     cfStatus.textContent = `⚠ Only 1 message per 24 hours. Try again in ~${getWaitHours()}h, or email Physiclover13244@gmail.com directly.`;
-    cfStatus.className   = 'form-status error';
+    cfStatus.className = 'form-status error';
     return;
   }
 
-  // Disable button & show loading state
-  cfSubmitBtn.disabled   = true;
-  cfSubmitBtn.innerHTML  = LOADING_ICON + ' Sending…';
+  cfSubmitBtn.disabled = true;
+  cfSubmitBtn.innerHTML = LOADING_HTML;
 
   try {
-    // ── Formspree Vanilla JS Ajax submission ──────────────
-    // Per guide: POST FormData, Accept: application/json
     const res = await fetch(FORMSPREE_ENDPOINT, {
-      method:  'POST',
-      body:    new FormData(cfForm),
+      method: 'POST', body: new FormData(cfForm),
       headers: { 'Accept': 'application/json' }
     });
-
     if (res.ok) {
-      // ── Success ──────────────────────────────────────────
       markSubmit();
       cfStatus.textContent = '✓ Message sent! I\'ll get back to you within 24–48 hours.';
-      cfStatus.className   = 'form-status success';
+      cfStatus.className = 'form-status success';
       cfForm.reset();
       document.getElementById('cf-replyto').value = '';
+      document.getElementById('charCounter').textContent = '0 / 3000';
     } else {
-      // ── Formspree error — parse errors array ─────────────
       let errorMsg = 'Submission failed.';
       try {
         const data = await res.json();
-        // Formspree returns: { errors: [{ field, message }] }
-        if (Array.isArray(data.errors) && data.errors.length > 0) {
+        if (Array.isArray(data.errors) && data.errors.length > 0)
           errorMsg = data.errors.map(err => err.message).join(' · ');
-        }
-      } catch { /* JSON parse failed — keep default message */ }
+      } catch {}
       cfStatus.textContent = `✗ ${errorMsg} — email me directly: Physiclover13244@gmail.com`;
-      cfStatus.className   = 'form-status error';
+      cfStatus.className = 'form-status error';
     }
   } catch {
-    // ── Network / fetch error ─────────────────────────────
     cfStatus.textContent = '✗ Network error — please email me directly: Physiclover13244@gmail.com';
-    cfStatus.className   = 'form-status error';
+    cfStatus.className = 'form-status error';
   } finally {
-    cfSubmitBtn.disabled  = false;
-    cfSubmitBtn.innerHTML = SUBMIT_ICON + ' Send Message';
+    cfSubmitBtn.disabled = false;
+    cfSubmitBtn.innerHTML = SUBMIT_HTML;
   }
 });
 
-/* ── Testimonials Carousel — duplicate for seamless loop ─── */
+/* ════════════════════════════════════════════════════════════
+   TESTIMONIALS CAROUSEL
+   ════════════════════════════════════════════════════════════ */
 (function () {
   const track = document.getElementById('testimonialsTrack');
-  if (!track) return;
-  track.innerHTML += track.innerHTML;
+  if (track) track.innerHTML += track.innerHTML;
 })();
 
-/* ── Mobile Nav ─────────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   MOBILE NAV
+   ════════════════════════════════════════════════════════════ */
 const hamburger  = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
 hamburger.addEventListener('click', () => {
   const open = mobileMenu.classList.toggle('open');
   hamburger.setAttribute('aria-expanded', String(open));
+  hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 });
 mobileMenu.querySelectorAll('a').forEach(a =>
   a.addEventListener('click', () => {
     mobileMenu.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open menu');
   })
 );
 
-/* ── Copy to Clipboard ──────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   COPY TO CLIPBOARD
+   ════════════════════════════════════════════════════════════ */
 function copyText(text, btn) {
-  navigator.clipboard.writeText(text).then(() => {
-    const orig = btn.textContent;
+  const orig = btn.textContent;
+  const done = () => {
     btn.textContent = 'Copied!';
     btn.style.color = 'var(--accent)';
     setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
-  }).catch(() => {
-    // Fallback for older browsers
-    const el = document.createElement('textarea');
-    el.value = text;
-    el.style.cssText = 'position:fixed;opacity:0';
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    const orig = btn.textContent;
-    btn.textContent = 'Copied!';
-    setTimeout(() => { btn.textContent = orig; }, 2000);
-  });
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+function fallbackCopy(text, cb) {
+  const el = document.createElement('textarea');
+  el.value = text; el.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(el); el.select();
+  try { document.execCommand('copy'); } catch {}
+  document.body.removeChild(el); cb();
 }
 
-/* ── FAQ Accordion ─────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   FAQ ACCORDION
+   ════════════════════════════════════════════════════════════ */
 function toggleFaq(btn) {
   const item   = btn.closest('.faq-item');
   const answer = item.querySelector('.faq-answer');
   const inner  = answer.querySelector('.faq-answer-inner');
   const isOpen = item.classList.contains('active');
 
-  // Close all open items
   document.querySelectorAll('.faq-item.active').forEach(i => {
     i.classList.remove('active');
     i.querySelector('.faq-answer').style.height = '0';
+    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
   });
 
-  // Open the clicked item if it was closed
   if (!isOpen) {
     item.classList.add('active');
     answer.style.height = inner.offsetHeight + 'px';
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
 
-/* ── Modal ──────────────────────────────────────────────── */
+// Keyboard support
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(btn); }
+  });
+});
+
+/* ════════════════════════════════════════════════════════════
+   MODALS
+   ════════════════════════════════════════════════════════════ */
+let _lastFocus = null;
 function openModal(id) {
-  document.getElementById(id).classList.add('active');
+  _lastFocus = document.activeElement;
+  const overlay = document.getElementById(id);
+  overlay.classList.add('active');
   document.body.style.overflow = 'hidden';
+  // Focus first focusable element
+  const focusable = overlay.querySelector('button, [tabindex]:not([tabindex="-1"])');
+  if (focusable) setTimeout(() => focusable.focus(), 50);
 }
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
   document.body.style.overflow = '';
+  if (_lastFocus) _lastFocus.focus();
 }
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) closeModal(overlay.id);
-  });
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
+  if (e.key === 'Escape')
     document.querySelectorAll('.modal-overlay.active').forEach(o => closeModal(o.id));
-  }
 });
 
-/* ── Cookie Banner ──────────────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   COOKIE BANNER
+   ════════════════════════════════════════════════════════════ */
 function showCookieBanner() {
-  if (!localStorage.getItem('physic91_cookie_consent')) {
+  if (!localStorage.getItem('physic91_cookie_consent'))
     document.getElementById('cookieBanner').classList.add('visible');
-  }
 }
 function acceptCookies() {
   localStorage.setItem('physic91_cookie_consent', 'accepted');
@@ -1904,32 +2256,20 @@ function declineCookies() {
 }
 setTimeout(showCookieBanner, 1000);
 
-/* ── Scroll Fade Animations ─────────────────────────────── */
+/* ════════════════════════════════════════════════════════════
+   SCROLL FADE ANIMATIONS
+   ════════════════════════════════════════════════════════════ */
 const fadeEls = document.querySelectorAll('.fade-up');
 if ('IntersectionObserver' in window) {
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => obs.observe(el));
 } else {
   fadeEls.forEach(el => el.classList.add('visible'));
 }
-
-/* ── Active Nav Highlight ───────────────────────────────── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (pageYOffset >= s.offsetTop - 90) current = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-  });
-}, { passive: true });
 </script>
 
 </body>
