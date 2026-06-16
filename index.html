@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Physic91 – Roblox Luau Programmer</title>
-  <meta name="description" content="Professional Roblox Luau developer specialising in OOP systems, anti-exploit security, and scalable game architecture." />
+  <meta name="description" content="Professional Roblox Luau developer specialising in scalable game systems, anti-exploit security, and game architecture." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -57,6 +57,12 @@
       --orange:      #b86000;
       color-scheme: light;
     }
+
+    /* ── SKY CANVAS ── */
+    #sky-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    [data-theme="light"] #sky-canvas { opacity: 0.18; }
+    /* Ensure all page content sits above canvas */
+    #chrome-spacer, .page, footer { position: relative; z-index: 1; }
 
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -197,7 +203,7 @@
       color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 12px;
     }
-    .section-label::before { content: '//'; color: var(--text3); }
+    .section-label::before { content: ''; display: none; }
     .section-title { margin-bottom: 10px; }
     .section-sub { max-width: 540px; color: var(--text2); font-size: 0.95rem; margin-bottom: 44px; }
 
@@ -578,6 +584,32 @@
     .contact-notice p { font-size: 0.81rem; line-height: 1.7; }
     .contact-notice ul { padding-left: 13px; margin-top: 4px; }
     .contact-notice ul li { font-size: 0.81rem; color: var(--text2); line-height: 1.7; }
+    /* Channel picker */
+    .channel-tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+    .channel-tab {
+      flex: 1; font-family: var(--mono); font-size: 0.67rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 9px 8px; border-radius: var(--r); border: 1px solid var(--border);
+      background: var(--surface2); color: var(--text3);
+      cursor: pointer; transition: all 0.2s var(--ease); text-align: center;
+    }
+    .channel-tab:hover { border-color: var(--border-acc); color: var(--text); }
+    .channel-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(0,224,196,0.07); }
+    .channel-panel { display: none; }
+    .channel-panel.active { display: block; }
+    .channel-cta-box {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 22px; text-align: center;
+    }
+    .channel-cta-icon { font-size: 2rem; margin-bottom: 10px; }
+    .channel-cta-box h3 { font-size: 0.95rem; margin-bottom: 6px; }
+    .channel-cta-box p { font-size: 0.84rem; margin-bottom: 16px; }
+    .channel-cta-handle {
+      font-family: var(--mono); font-size: 0.9rem; font-weight: 700;
+      color: var(--accent); display: block; margin-bottom: 14px;
+    }
+    .channel-cta-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
     .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 30px; position: relative; }
     .contact-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; border-radius: var(--r2) var(--r2) 0 0; background: linear-gradient(90deg, var(--accent), transparent); }
     .form-title { font-family: var(--mono); font-size: 0.65rem; color: var(--text3); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 20px; }
@@ -698,6 +730,61 @@
     .modal-body p { font-size: 0.84rem; color: var(--text2); line-height: 1.8; margin-bottom: 9px; }
 
     /* ═══════════════════════════
+       GAMES
+    ═══════════════════════════ */
+    .games-grid { display: grid; gap: 22px; }
+    .game-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r3); overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .game-card:hover { border-color: var(--border-acc); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .game-card-inner { display: grid; grid-template-columns: 300px 1fr; align-items: start; }
+    .game-thumb-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 16/9; background: var(--surface2);
+    }
+    .game-thumb-placeholder {
+      width: 100%; height: 100%; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; background: linear-gradient(135deg, var(--surface2), var(--bg3));
+      aspect-ratio: 16/9;
+    }
+    .game-thumb-placeholder-icon { font-size: 2.4rem; opacity: 0.4; }
+    .game-thumb-placeholder-label { font-family: var(--mono); font-size: 0.62rem; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
+    .game-thumb-badge {
+      position: absolute; top: 10px; left: 10px;
+      font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .game-thumb-badge.live { background: rgba(6,214,160,0.15); border: 1px solid rgba(6,214,160,0.35); color: var(--green); }
+    .game-thumb-date {
+      position: absolute; top: 10px; right: 10px;
+      font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
+      padding: 3px 9px; border-radius: 4px; letter-spacing: 0.04em;
+      background: rgba(255,255,255,0.93); color: #0a0a1a;
+      border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .game-info { padding: 26px; }
+    .game-title { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .game-genre { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+    .game-desc { font-size: 0.88rem; line-height: 1.8; margin-bottom: 18px; }
+    .game-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .game-stat { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r); padding: 11px 13px; }
+    .game-stat.highlight { border-color: rgba(6,214,160,0.28); background: rgba(6,214,160,0.05); }
+    .game-stat-icon { font-size: 0.9rem; margin-bottom: 4px; }
+    .game-stat-value { font-family: var(--mono); font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 2px; }
+    .game-stat.highlight .game-stat-value { color: var(--green); }
+    .game-stat-label { font-family: var(--mono); font-size: 0.56rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .game-actions { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
+    .games-more {
+      margin-top: 18px; background: var(--surface);
+      border: 1px dashed var(--border-acc); border-radius: var(--r2);
+      padding: 24px; text-align: center;
+    }
+    .games-more p { font-size: 0.88rem; margin-bottom: 12px; }
+
+    /* ═══════════════════════════
        RESPONSIVE
     ═══════════════════════════ */
     @media (max-width: 900px) {
@@ -708,16 +795,20 @@
       .exp-index { display: none; }
       .form-grid { grid-template-columns: 1fr; }
       .quicklinks { grid-template-columns: 1fr 1fr; }
+      .game-card-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .page { padding: 36px 0 56px; }
       .quicklinks { grid-template-columns: 1fr; }
       .tab-btn { padding: 11px 12px; font-size: 0.64rem; }
       .wip-pills { display: none; }
+      #liveClock { display: none !important; }
     }
   </style>
 </head>
 <body>
+
+<canvas id="sky-canvas"></canvas>
 
 <!-- ── BACK TO TOP ── -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
@@ -770,12 +861,6 @@
     <div class="wip-banner-inner">
       <div class="wip-dot"></div>
       <span class="wip-text">Site under construction</span>
-      <div class="wip-pills">
-        <span class="wip-pill">Videos — not uploaded</span>
-        <span class="wip-pill">Prices — example values only</span>
-        <span class="wip-pill">Projects — more coming</span>
-        <span class="wip-pill">Testimonials — to be verified</span>
-      </div>
     </div>
   </div>
 
@@ -784,6 +869,7 @@
     <div class="topnav-inner">
       <div class="nav-logo">Physic<span>91</span>.dev</div>
       <div class="nav-right">
+        <span id="liveClock" style="font-family:var(--mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.08em;padding:5px 11px;border-radius:20px;border:1px solid var(--border-acc);background:rgba(0,224,196,0.05);font-weight:700;display:none;"></span>
         <div class="nav-status open">
           <div class="nav-status-dot"></div>
           <span>Open for Work</span>
@@ -803,6 +889,7 @@
       <button class="tab-btn"         onclick="showTab('services', this)">Services</button>
       <button class="tab-btn"         onclick="showTab('about', this)">About</button>
       <button class="tab-btn"         onclick="showTab('projects', this)">Projects</button>
+      <button class="tab-btn"         onclick="showTab('games', this)">Games</button>
       <button class="tab-btn"         onclick="showTab('pricing', this)">Pricing</button>
       <button class="tab-btn"         onclick="showTab('experience', this)">Experience</button>
       <button class="tab-btn"         onclick="showTab('faq', this)">FAQ</button>
@@ -976,11 +1063,12 @@
     </div>
 
     <div class="not-taking fade-up">
-      <div class="not-taking-label">// What I don't take on</div>
+      <div class="not-taking-label">What I don't take on</div>
       <div class="not-tags">
         <span class="not-tag">Combat Systems</span>
         <span class="not-tag">FPS / Shooter Systems</span>
         <span class="not-tag">Animation Systems</span>
+        <span class="not-tag">Vehicle Systems</span>
         <span class="not-tag">Vague / No-Spec Requests</span>
         <span class="not-tag">Revenue Share on Unreleased Games</span>
       </div>
@@ -992,24 +1080,13 @@
 <!-- ABOUT -->
 <div class="page" id="page-about">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-card fade-up">
-        <div class="about-avatar">P</div>
-        <div class="about-name">Physic</div>
-        <div class="about-handle">@Physic91</div>
-        <div class="about-stat">
-          <div class="stat-item"><label>Started</label><value>2024</value></div>
-          <div class="stat-item"><label>Focus</label><value>Luau / OOP</value></div>
-          <div class="stat-item"><label>Platform</label><value>Roblox</value></div>
-          <div class="stat-item"><label>Contact</label><value>Discord</value></div>
-        </div>
-      </div>
+    <div class="about-grid" style="grid-template-columns:1fr;">
       <div class="fade-up">
         <div class="section-label">About Me</div>
         <h2 class="section-title">Who I Am</h2>
         <div class="about-text">
           <p>Hey, I'm Physic — a Roblox Luau programmer who enjoys building things and understanding how they work. Outside of code you'll find me watching films, listening to music, or just thinking.</p>
-          <p>I care about the engineering side of games — the systems and logic underneath the surface. Clean, maintainable code with real architecture: OOP patterns, anti-exploit, performance.</p>
+          <p>I care about the engineering side of games — the systems and logic underneath the surface. Clean, maintainable code with real architecture, solid security, and good performance.</p>
         </div>
 
         <div class="hr"></div>
@@ -1018,24 +1095,24 @@
         <h2 class="section-title" style="margin-bottom:26px;">The Journey</h2>
         <div class="timeline">
           <div class="tl-item">
-            <div class="tl-year">ORIGIN</div>
-            <h3>Curiosity Sparked</h3>
-            <p>It started with a simple question: how are games actually built? Playing Roblox planted the seed — watching systems in action made me want to understand the mechanics beneath.</p>
-          </div>
-          <div class="tl-item">
             <div class="tl-year">2024</div>
-            <h3>First Lines of Lua</h3>
-            <p>I picked up Lua and quickly fell into it. The ability to create interactive systems, control game logic, and build real features from scratch was immediately addictive.</p>
+            <h3>Diving Deep into Luau</h3>
+            <p>Spent the year diving deep into Luau — studying its advanced type system, building complex systems and modules, and working through resources on architecture and design patterns to get a solid foundation.</p>
           </div>
           <div class="tl-item">
-            <div class="tl-year">2024 → 2025</div>
-            <h3>Systems, Security &amp; OOP</h3>
-            <p>I became passionate about building proper architecture — OOP patterns in Luau, anti-exploit measures, and performance optimisation. Complex bugs became puzzles I actively sought out.</p>
+            <div class="tl-year">MAY 2025</div>
+            <h3>Emergency Bristol</h3>
+            <p>First contracted commission — programmed the bank and phone systems plus several GUI components for a live Roblox roleplay game.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">OCT 2025</div>
+            <h3>Waffle Incremental</h3>
+            <p>Started building an incremental game from scratch as sole scripter — full progression loop, currencies, upgrades, save system, and custom GUI.</p>
           </div>
           <div class="tl-item">
             <div class="tl-year">TODAY</div>
-            <h3>Shipping Real Projects</h3>
-            <p>From quest systems to full game builds, I ship real work, collaborate on live Roblox games, and keep improving every day.</p>
+            <h3>Ongoing Commissions</h3>
+            <p>Continuing to ship systems and take on new commission work, while keeping Waffle Incremental in active development.</p>
           </div>
         </div>
 
@@ -1063,7 +1140,6 @@
           <div class="skill-category fade-up">
             <div class="skill-category-label">Specialisations</div>
             <div class="skill-tags">
-              <span class="skill-tag primary">OOP Architecture</span>
               <span class="skill-tag primary">Anti-Exploit</span>
               <span class="skill-tag primary">Performance Opt.</span>
               <span class="skill-tag">Game Design</span><span class="skill-tag">System Design</span>
@@ -1145,6 +1221,99 @@
           <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
         </div>
       </article>
+    </div>
+  </div>
+</div>
+
+<!-- GAMES -->
+<div class="page" id="page-games">
+  <div class="container">
+    <div class="section-label">Live on Roblox</div>
+    <h2 class="section-title">Games</h2>
+    <p class="section-sub">Roblox games I've built or contributed to as a programmer. Stats update when you open this tab.</p>
+
+    <div class="games-grid">
+
+      <!-- Waffle Incremental -->
+      <div class="game-card fade-up">
+        <div class="game-card-inner">
+          <div class="game-thumb-wrap">
+            <div class="game-thumb-placeholder" style="display:flex;">
+              <div class="game-thumb-placeholder-icon">🧇</div>
+              <div class="game-thumb-placeholder-label">Waffle Incremental</div>
+            </div>
+            <span class="game-thumb-badge live">● Live</span>
+            <span class="game-thumb-date">Oct 2025 – Present</span>
+          </div>
+          <div class="game-info">
+            <div class="game-title">Waffle Incremental</div>
+            <div class="game-genre">Incremental / Idle Game</div>
+            <p class="game-desc">An incremental Roblox game built from scratch as sole scripter. Features a complete progression loop, multi-currency system, upgrade trees, persistent DataStore save/load, and a fully custom GUI — every line of scripting is mine.</p>
+            <div class="game-stats">
+              <div class="game-stat highlight">
+                <div class="game-stat-icon">👥</div>
+                <div class="game-stat-value" id="stat-active">—</div>
+                <div class="game-stat-label">Active Now</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-icon">👁</div>
+                <div class="game-stat-value" id="stat-visits">—</div>
+                <div class="game-stat-label">Total Visits</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-icon">⭐</div>
+                <div class="game-stat-value" id="stat-favs">—</div>
+                <div class="game-stat-label">Favourites</div>
+              </div>
+            </div>
+            <div class="game-actions">
+              <a href="https://www.roblox.com/games/73359353145399/Waffle-Incremental" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Play on Roblox</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Bristol -->
+      <div class="game-card fade-up">
+        <div class="game-card-inner">
+          <div class="game-thumb-wrap">
+            <div class="game-thumb-placeholder" style="display:flex;">
+              <div class="game-thumb-placeholder-icon">🚨</div>
+              <div class="game-thumb-placeholder-label">Emergency Bristol</div>
+            </div>
+            <span class="game-thumb-badge live" style="background:rgba(255,149,0,0.15);border-color:rgba(255,149,0,0.4);color:var(--orange);">Completed</span>
+            <span class="game-thumb-date">May 2025 · Commission</span>
+          </div>
+          <div class="game-info">
+            <div class="game-title">Emergency Bristol</div>
+            <div class="game-genre">Roleplay Game</div>
+            <p class="game-desc">A Roblox emergency services roleplay game. I programmed the bank and phone systems, plus multiple GUI components — building reliable, feature-rich gameplay logic from scratch as a contracted programmer.</p>
+            <div class="game-stats">
+              <div class="game-stat highlight">
+                <div class="game-stat-icon">👥</div>
+                <div class="game-stat-value" id="bristol-stat-active">—</div>
+                <div class="game-stat-label">Active Now</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-icon">👁</div>
+                <div class="game-stat-value" id="bristol-stat-visits">—</div>
+                <div class="game-stat-label">Total Visits</div>
+              </div>
+              <div class="game-stat">
+                <div class="game-stat-icon">⭐</div>
+                <div class="game-stat-value" id="bristol-stat-favs">—</div>
+                <div class="game-stat-label">Favourites</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="games-more fade-up">
+      <p>Working on more games. Additional credits will be uploaded over time.</p>
+      <button class="btn btn-outline" onclick="showTab('contact', null)">Discuss a Project</button>
     </div>
   </div>
 </div>
@@ -1537,66 +1706,120 @@
       </div>
 
       <div class="contact-form">
-        <div class="form-title">// Send a Message</div>
-        <form id="contactForm" novalidate>
-          <div class="hp-field"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
-          <input type="hidden" name="_replyto" id="cf-replyto" />
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="cf-name">Name <span style="color:var(--accent);">*</span></label>
-              <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required minlength="2" maxlength="80" />
+        <div class="form-title">Get in touch</div>
+
+        <!-- Channel picker -->
+        <div class="channel-tabs">
+          <button class="channel-tab active" onclick="switchChannel('form', this)">✉ Email Form</button>
+          <button class="channel-tab" onclick="switchChannel('discord', this)">💬 Discord</button>
+          <button class="channel-tab" onclick="switchChannel('email', this)">📧 Email</button>
+          <button class="channel-tab" onclick="switchChannel('github', this)">⚡ GitHub</button>
+        </div>
+
+        <!-- Email form panel -->
+        <div class="channel-panel active" id="panel-form">
+          <form id="contactForm" novalidate>
+            <div class="hp-field"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+            <input type="hidden" name="_replyto" id="cf-replyto" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cf-name">Name <span style="color:var(--accent);">*</span></label>
+                <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required minlength="2" maxlength="80" />
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email <span style="color:var(--accent);">*</span></label>
+                <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required maxlength="200" />
+              </div>
             </div>
             <div class="form-group">
-              <label for="cf-email">Email <span style="color:var(--accent);">*</span></label>
-              <input class="form-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required maxlength="200" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="cf-type">Project Type</label>
-            <select class="form-select" id="cf-type" name="project_type">
-              <option value="">Select a service…</option>
-              <option>Game System / Feature</option>
-              <option>Full Game Development</option>
-              <option>Anti-Exploit / Security</option>
-              <option>OOP Refactor</option>
-              <option>Performance Optimisation</option>
-              <option>GUI Development</option>
-              <option>DataStore / Save System</option>
-              <option>Bug Fix</option>
-              <option>Code Review / Consulting</option>
-              <option>Long-term Collaboration</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="cf-subject">Subject <span style="color:var(--accent);">*</span></label>
-              <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Project inquiry…" required minlength="3" maxlength="120" />
-            </div>
-            <div class="form-group">
-              <label for="cf-budget">Budget (USD)</label>
-              <select class="form-select" id="cf-budget" name="budget">
-                <option value="">Select range…</option>
-                <option>Under $50</option>
-                <option>$50 – $150</option>
-                <option>$150 – $400</option>
-                <option>$400 – $900</option>
-                <option>$900+</option>
-                <option>Let's discuss</option>
+              <label for="cf-type">Project Type</label>
+              <select class="form-select" id="cf-type" name="project_type">
+                <option value="">Select a service…</option>
+                <option>Game System / Feature</option>
+                <option>Full Game Development</option>
+                <option>Anti-Exploit / Security</option>
+                <option>OOP Refactor</option>
+                <option>Performance Optimisation</option>
+                <option>GUI Development</option>
+                <option>DataStore / Save System</option>
+                <option>Bug Fix</option>
+                <option>Code Review / Consulting</option>
+                <option>Long-term Collaboration</option>
+                <option>Other</option>
               </select>
             </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cf-subject">Subject <span style="color:var(--accent);">*</span></label>
+                <input class="form-input" type="text" id="cf-subject" name="subject" placeholder="Project inquiry…" required minlength="3" maxlength="120" />
+              </div>
+              <div class="form-group">
+                <label for="cf-budget">Budget (USD)</label>
+                <select class="form-select" id="cf-budget" name="budget">
+                  <option value="">Select range…</option>
+                  <option>Under $50</option>
+                  <option>$50 – $150</option>
+                  <option>$150 – $400</option>
+                  <option>$400 – $900</option>
+                  <option>$900+</option>
+                  <option>Let's discuss</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Project Details <span style="color:var(--accent);">*</span></label>
+              <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your project: what system is needed, what changes, known issues, deadlines…" required minlength="20" maxlength="3000" oninput="updateCharCount(this)"></textarea>
+              <div class="char-counter" id="charCounter">0 / 3000</div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%;justify-content:center;">
+              Send Message
+            </button>
+            <div class="form-status" id="formStatus" role="alert"></div>
+          </form>
+          <p style="margin-top:12px;font-size:0.73rem;color:var(--text3);font-family:var(--mono);">Via Formspree · Max 1 message per day</p>
+        </div>
+
+        <!-- Discord panel -->
+        <div class="channel-panel" id="panel-discord">
+          <div class="channel-cta-box">
+            <div class="channel-cta-icon">💬</div>
+            <h3>Discord — Fastest Response</h3>
+            <p>Send a DM with your project details. Usually reply within a few hours.</p>
+            <span class="channel-cta-handle">Physic91</span>
+            <div class="channel-cta-actions">
+              <button class="btn btn-primary" onclick="copyText('Physic91', this)">Copy Username</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="cf-message">Project Details <span style="color:var(--accent);">*</span></label>
-            <textarea class="form-textarea" id="cf-message" name="message" placeholder="Describe your project: what system is needed, what changes, known issues, deadlines…" required minlength="20" maxlength="3000" oninput="updateCharCount(this)"></textarea>
-            <div class="char-counter" id="charCounter">0 / 3000</div>
+        </div>
+
+        <!-- Direct email panel -->
+        <div class="channel-panel" id="panel-email">
+          <div class="channel-cta-box">
+            <div class="channel-cta-icon">📧</div>
+            <h3>Email</h3>
+            <p>Send an email with your project scope, system details, and any deadlines.</p>
+            <span class="channel-cta-handle">Physiclover13244@gmail.com</span>
+            <div class="channel-cta-actions">
+              <a href="mailto:Physiclover13244@gmail.com" class="btn btn-primary">Open Mail</a>
+              <button class="btn btn-outline" onclick="copyText('Physiclover13244@gmail.com', this)">Copy</button>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%;justify-content:center;">
-            Send Message
-          </button>
-          <div class="form-status" id="formStatus" role="alert"></div>
-        </form>
-        <p style="margin-top:12px;font-size:0.73rem;color:var(--text3);font-family:var(--mono);">Via Formspree · Max 1 message per day</p>
+        </div>
+
+        <!-- GitHub panel -->
+        <div class="channel-panel" id="panel-github">
+          <div class="channel-cta-box">
+            <div class="channel-cta-icon">⚡</div>
+            <h3>GitHub</h3>
+            <p>Browse open-source projects, systems, and modules. More uploads ongoing.</p>
+            <span class="channel-cta-handle">github.com/Physic2952</span>
+            <div class="channel-cta-actions">
+              <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open GitHub</a>
+              <button class="btn btn-outline" onclick="copyText('github.com/Physic2952', this)">Copy</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1618,7 +1841,7 @@
         <a href="https://www.youtube.com/watch?v=ZTDsOJvRP5o" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:underline;">Watch on YouTube →</a>
       </p>
       <div class="video-info fade-up">
-        <div class="video-info-label">// About this video</div>
+        <div class="video-info-label">About this video</div>
         <h3>Waffle Incremental — System Showcase</h3>
         <p>A look at <strong>Waffle Incremental</strong>, an ongoing Roblox incremental game where I work as the sole scripter. This showcase highlights several of the interconnected systems built for the project, including the core progression loop, upgrade and currency systems, persistent DataStore-based save/load, and the custom GUI used to tie everything together.</p>
       </div>
@@ -1819,6 +2042,7 @@ function showTab(id, btn) {
   setTimeout(() => {
     if (target) target.querySelectorAll('.fade-up:not(.visible)').forEach(el => el.classList.add('visible'));
   }, 60);
+  if (id === 'games' && typeof fetchGameStats === 'function') fetchGameStats();
 }
 
 /* ── BACK TO TOP ── */
@@ -1945,6 +2169,112 @@ cfForm.addEventListener('submit', async (e) => {
     cfBtn.disabled = false; cfBtn.textContent = 'Send Message';
   }
 });
+
+/* ── SKY CANVAS ── */
+(function() {
+  const canvas = document.getElementById('sky-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const stars = [], nebulas = [], W_ref = { w: 0, h: 0 };
+  function resize() { canvas.width = W_ref.w = window.innerWidth; canvas.height = W_ref.h = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  for (let i = 0; i < 260; i++) stars.push({ x: Math.random(), y: Math.random(), r: rnd(0.3, 1.3), sp: rnd(0.00004, 0.00014), op: rnd(0.2, 0.85), tw: Math.random() * Math.PI * 2 });
+  for (let j = 0; j < 4; j++) nebulas.push({ x: Math.random(), y: Math.random(), r: rnd(0.2, 0.38), h: [175, 185, 200, 160][j], op: rnd(0.03, 0.07) });
+  let t = 0;
+  function draw() {
+    t += 0.5;
+    const { w, h } = W_ref;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (!isLight) {
+      const g = ctx.createLinearGradient(0, 0, 0, h);
+      g.addColorStop(0, 'rgba(2,4,18,1)'); g.addColorStop(0.5, 'rgba(4,5,20,1)'); g.addColorStop(1, 'rgba(6,6,24,1)');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      nebulas.forEach(nb => {
+        const ng = ctx.createRadialGradient(nb.x * w, nb.y * h, 0, nb.x * w, nb.y * h, nb.r * Math.min(w, h));
+        ng.addColorStop(0, `hsla(${nb.h},70%,55%,${nb.op})`); ng.addColorStop(1, `hsla(${nb.h},50%,25%,0)`);
+        ctx.fillStyle = ng; ctx.beginPath(); ctx.arc(nb.x * w, nb.y * h, nb.r * Math.min(w, h), 0, Math.PI * 2); ctx.fill();
+      });
+      stars.forEach(s => {
+        s.x = (s.x + s.sp) % 1;
+        const tw = s.op * (0.5 + 0.5 * Math.sin(t * 0.04 + s.tw));
+        ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(190,230,225,${tw})`; ctx.fill();
+      });
+    } else {
+      const lg = ctx.createLinearGradient(0, 0, 0, h);
+      lg.addColorStop(0, '#e0f7f5'); lg.addColorStop(0.5, '#eef8f7'); lg.addColorStop(1, '#f5faf9');
+      ctx.fillStyle = lg; ctx.fillRect(0, 0, w, h);
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── LIVE CLOCK ── */
+(function() {
+  const badge = document.getElementById('liveClock');
+  if (!badge) return;
+  function tick() {
+    const d = new Date();
+    const h = d.getHours(), m = d.getMinutes(), s = d.getSeconds();
+    const pad = n => (n < 10 ? '0' : '') + n;
+    badge.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+    badge.style.display = 'inline-flex';
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* ── ROBLOX LIVE STATS ── */
+(function() {
+  const WAFFLE_ID = 73359353145399;
+  let cached = null;
+
+  function fmt(n) {
+    n = parseInt(n, 10);
+    if (isNaN(n)) return '—';
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
+    return String(n);
+  }
+
+  function applyWaffle(s) {
+    const a = document.getElementById('stat-active');
+    const v = document.getElementById('stat-visits');
+    const f = document.getElementById('stat-favs');
+    if (a) a.textContent = fmt(s.active);
+    if (v) v.textContent = fmt(s.visits);
+    if (f) f.textContent = fmt(s.favs);
+  }
+
+  function setDashes(ids) {
+    ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '—'; });
+  }
+
+  window.fetchGameStats = function() {
+    if (cached) { applyWaffle(cached); return; }
+    ['stat-active','stat-visits','stat-favs'].forEach(id => {
+      const el = document.getElementById(id); if (el) el.textContent = '…';
+    });
+    fetch('https://games.roblox.com/v1/games?universeIds=' + WAFFLE_ID, { headers: { 'Accept': 'application/json' } })
+      .then(r => r.json())
+      .then(data => {
+        if (data && data.data && data.data[0]) {
+          const g = data.data[0];
+          cached = { active: g.playing, visits: g.visits, favs: g.favoritedCount };
+          applyWaffle(cached);
+        } else {
+          setDashes(['stat-active','stat-visits','stat-favs']);
+        }
+      })
+      .catch(() => setDashes(['stat-active','stat-visits','stat-favs']));
+
+    /* Emergency Bristol has no public universe ID (private commission) */
+    setDashes(['bristol-stat-active','bristol-stat-visits','bristol-stat-favs']);
+  };
+})();
 
 /* ── TESTIMONIALS DUPLICATE ── */
 (function() {
