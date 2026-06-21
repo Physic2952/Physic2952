@@ -12,45 +12,45 @@
   <style>
     /* ── TOKENS ── */
     :root {
-      --bg:          #07070f;
-      --bg2:         #0c0c18;
-      --bg3:         #111120;
-      --surface:     #14142a;
-      --surface2:    #1a1a2e;
-      --border:      rgba(255,255,255,0.07);
-      --border-acc:  rgba(0,224,196,0.22);
-      --accent:      #00e0c4;
-      --accent-dim:  #007a6a;
-      --accent-glow: rgba(0,224,196,0.15);
-      --text:        #e6e6f0;
-      --text2:       #9090a8;
-      --text3:       #52527a;
-      --red:         #ff4d6d;
+      --bg:          #000000;
+      --bg2:         #0a0a0a;
+      --bg3:         #141414;
+      --surface:     #131313;
+      --surface2:    #1c1c1c;
+      --border:      rgba(255,255,255,0.1);
+      --border-acc:  rgba(255,255,255,0.22);
+      --accent:      #ffffff;
+      --accent-dim:  #c4c4c4;
+      --accent-glow: rgba(255,255,255,0.12);
+      --text:        #ffffff;
+      --text2:       #b3b3b3;
+      --text3:       #757575;
+      --red:         #ff5577;
       --yellow:      #ffd166;
-      --green:       #06d6a0;
+      --green:       #3ddc97;
       --orange:      #ff9500;
       --mono:        'IBM Plex Mono', monospace;
       --sans:        'Inter', sans-serif;
-      --r:           8px;
-      --r2:          14px;
-      --r3:          22px;
+      --r:           10px;
+      --r2:          16px;
+      --r3:          24px;
       --ease:        cubic-bezier(0.4,0,0.2,1);
       color-scheme: dark;
     }
     [data-theme="light"] {
-      --bg:          #f2f2f8;
-      --bg2:         #e8e8f0;
-      --bg3:         #dddde8;
+      --bg:          #ffffff;
+      --bg2:         #f7f7f7;
+      --bg3:         #ededed;
       --surface:     #ffffff;
-      --surface2:    #f0f0f8;
-      --border:      rgba(0,0,0,0.09);
-      --border-acc:  rgba(0,160,140,0.28);
-      --accent:      #009e8c;
-      --accent-dim:  #b2ede7;
-      --accent-glow: rgba(0,158,140,0.14);
-      --text:        #0e0e1a;
-      --text2:       #44445a;
-      --text3:       #8888a0;
+      --surface2:    #f2f2f2;
+      --border:      rgba(0,0,0,0.1);
+      --border-acc:  rgba(0,0,0,0.22);
+      --accent:      #000000;
+      --accent-dim:  #4a4a4a;
+      --accent-glow: rgba(0,0,0,0.08);
+      --text:        #0a0a0a;
+      --text2:       #525252;
+      --text3:       #8a8a8a;
       --red:         #c72b4a;
       --yellow:      #a07000;
       --green:       #0a7a50;
@@ -58,9 +58,6 @@
       color-scheme: light;
     }
 
-    /* ── SKY CANVAS ── */
-    #sky-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-    [data-theme="light"] #sky-canvas { opacity: 0.18; }
     /* Ensure all page content sits above canvas */
     #chrome-spacer, .page, footer { position: relative; z-index: 1; }
 
@@ -215,11 +212,11 @@
       border: none; cursor: pointer; transition: all 0.22s var(--ease);
       text-decoration: none; white-space: nowrap;
     }
-    .btn-primary { background: var(--accent); color: #07070f; }
-    .btn-primary:hover { background: #fff; box-shadow: 0 0 24px var(--accent-glow); transform: translateY(-2px); }
-    [data-theme="light"] .btn-primary:hover { background: #006b5e; color: #fff; }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.85; box-shadow: 0 0 24px var(--accent-glow); transform: translateY(-2px); }
+    [data-theme="light"] .btn-primary:hover { opacity: 0.85; }
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-acc); }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,224,196,0.05); transform: translateY(-2px); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); transform: translateY(-2px); }
     .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
     .btn-ghost:hover { border-color: var(--text3); color: var(--text); transform: translateY(-2px); }
 
@@ -261,7 +258,7 @@
     .hero-terminal {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r2); overflow: hidden;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,224,196,0.05);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
     }
     .terminal-bar {
       display: flex; align-items: center; gap: 7px;
@@ -334,7 +331,7 @@
     .service-card:hover { border-color: var(--border-acc); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
     .service-icon {
       width: 40px; height: 40px; border-radius: var(--r);
-      background: rgba(0,224,196,0.07); border: 1px solid var(--border-acc);
+      background: rgba(255,255,255,0.07); border: 1px solid var(--border-acc);
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem; margin-bottom: 14px;
     }
@@ -404,7 +401,7 @@
       transition: all 0.2s; cursor: default;
     }
     .skill-tag:hover { border-color: var(--border-acc); color: var(--accent); }
-    .skill-tag.primary { border-color: rgba(0,224,196,0.32); color: var(--accent); background: rgba(0,224,196,0.06); }
+    .skill-tag.primary { border-color: rgba(255,255,255,0.32); color: var(--accent); background: rgba(255,255,255,0.06); }
 
     /* Beyond */
     .beyond-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
@@ -436,7 +433,7 @@
       border: 1px solid var(--border); padding: 4px 11px; border-radius: 5px;
       transition: all 0.2s; background: none; cursor: pointer;
     }
-    .project-link:hover { color: var(--accent); border-color: var(--border-acc); background: rgba(0,224,196,0.05); }
+    .project-link:hover { color: var(--accent); border-color: var(--border-acc); background: rgba(255,255,255,0.05); }
     .project-card.dm-card { border-style: dashed; border-color: var(--border-acc); background: linear-gradient(135deg, var(--surface), rgba(0,80,70,0.1)); }
 
     /* ═══════════════════════════
@@ -455,7 +452,7 @@
     .pricing-table th { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text3); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); background: var(--surface2); }
     .pricing-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 0.86rem; color: var(--text2); }
     .pricing-table tr:last-child td { border-bottom: none; }
-    .pricing-table tr:hover td { background: rgba(0,224,196,0.025); color: var(--text); }
+    .pricing-table tr:hover td { background: rgba(255,255,255,0.025); color: var(--text); }
     .pricing-table .price-cell { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); font-weight: 700; white-space: nowrap; }
     .pricing-table .label-cell { font-family: var(--mono); font-size: 0.76rem; color: var(--text); }
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
@@ -491,10 +488,10 @@
     .delivery-val { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); }
     .payment-methods { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
     .payment-method { display: flex; align-items: flex-start; gap: 10px; padding: 11px; background: var(--surface2); border-radius: var(--r); border: 1px solid var(--border); }
-    .payment-method-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(0,224,196,0.07); border: 1px solid var(--border-acc); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; font-family: var(--mono); font-size: 0.75rem; color: var(--accent); font-weight: 700; }
+    .payment-method-icon { width: 28px; height: 28px; border-radius: 6px; background: rgba(255,255,255,0.07); border: 1px solid var(--border-acc); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; font-family: var(--mono); font-size: 0.75rem; color: var(--accent); font-weight: 700; }
     .payment-method-info strong { display: block; font-family: var(--mono); font-size: 0.73rem; color: var(--text); margin-bottom: 1px; }
     .payment-method-info span { font-size: 0.76rem; color: var(--text3); }
-    .payment-policy { margin-top: 16px; padding: 12px; background: rgba(0,224,196,0.05); border: 1px solid var(--border-acc); border-radius: var(--r); }
+    .payment-policy { margin-top: 16px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-acc); border-radius: var(--r); }
     .payment-policy-label { font-family: var(--mono); font-size: 0.63rem; color: var(--accent); margin-bottom: 4px; letter-spacing: 0.09em; }
     .payment-policy p { font-size: 0.8rem; line-height: 1.7; }
 
@@ -513,7 +510,7 @@
     [data-theme="light"] .exp-index { color: var(--bg3); }
     .exp-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 7px; margin-bottom: 5px; }
     .exp-title { font-family: var(--mono); font-size: 1rem; font-weight: 700; }
-    .exp-badge { font-family: var(--mono); font-size: 0.63rem; color: var(--accent); background: rgba(0,224,196,0.07); border: 1px solid rgba(0,224,196,0.22); padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+    .exp-badge { font-family: var(--mono); font-size: 0.63rem; color: var(--accent); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.22); padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
     .exp-meta { font-family: var(--mono); font-size: 0.69rem; color: var(--text3); margin-bottom: 11px; }
     .exp-meta span { color: var(--text2); }
     .exp-desc { font-size: 0.9rem; }
@@ -560,11 +557,11 @@
     .tos-grid { display: grid; gap: 13px; }
     .tos-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r2); padding: 22px; }
     .tos-header { display: flex; align-items: center; gap: 11px; margin-bottom: 11px; }
-    .tos-num { font-family: var(--mono); font-size: 0.66rem; font-weight: 700; color: var(--accent); background: rgba(0,224,196,0.07); border: 1px solid var(--border-acc); width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .tos-num { font-family: var(--mono); font-size: 0.66rem; font-weight: 700; color: var(--accent); background: rgba(255,255,255,0.07); border: 1px solid var(--border-acc); width: 30px; height: 30px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .tos-item h3 { font-size: 0.93rem; }
     .tos-item p { font-size: 0.86rem; line-height: 1.8; }
-    .tos-highlight { background: rgba(0,224,196,0.05); border: 1px solid var(--border-acc); border-radius: 6px; padding: 9px 13px; margin-top: 8px; font-family: var(--mono); font-size: 0.76rem; color: var(--text2); }
-    .tos-footer { margin-top: 26px; padding: 17px 20px; background: rgba(0,224,196,0.04); border: 1px solid var(--border-acc); border-radius: var(--r2); }
+    .tos-highlight { background: rgba(255,255,255,0.05); border: 1px solid var(--border-acc); border-radius: 6px; padding: 9px 13px; margin-top: 8px; font-family: var(--mono); font-size: 0.76rem; color: var(--text2); }
+    .tos-footer { margin-top: 26px; padding: 17px 20px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-acc); border-radius: var(--r2); }
     .tos-footer p { font-family: var(--mono); font-size: 0.78rem; color: var(--text2); line-height: 1.8; }
 
     /* ═══════════════════════════
@@ -574,7 +571,7 @@
     .contact-info { display: flex; flex-direction: column; gap: 13px; }
     .contact-item { display: flex; align-items: center; gap: 13px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px; transition: all 0.2s; }
     .contact-item:hover { border-color: var(--border-acc); background: var(--surface2); }
-    .contact-icon { width: 34px; height: 34px; border-radius: 6px; background: rgba(0,224,196,0.07); border: 1px solid var(--border-acc); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .contact-icon { width: 34px; height: 34px; border-radius: 6px; background: rgba(255,255,255,0.07); border: 1px solid var(--border-acc); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
     .contact-item-text label { display: block; font-family: var(--mono); font-size: 0.6rem; color: var(--text3); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1px; }
     .contact-item-text span { font-family: var(--mono); font-size: 0.81rem; color: var(--text); }
     .copy-btn { margin-left: auto; background: none; border: 1px solid var(--border); color: var(--text3); font-family: var(--mono); font-size: 0.6rem; padding: 3px 8px; border-radius: 3px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
@@ -594,7 +591,7 @@
       cursor: pointer; transition: all 0.2s var(--ease); text-align: center;
     }
     .channel-tab:hover { border-color: var(--border-acc); color: var(--text); }
-    .channel-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(0,224,196,0.07); }
+    .channel-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(255,255,255,0.07); }
     .channel-panel { display: none; }
     .channel-panel.active { display: block; }
     .channel-cta-box {
@@ -621,14 +618,14 @@
       padding: 10px 13px; outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(0,224,196,0.09); }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(255,255,255,0.09); }
     .form-textarea { resize: vertical; min-height: 115px; }
     ::placeholder { color: var(--text3); }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     .form-select { cursor: pointer; }
     .form-select option { background: var(--bg2); }
     .form-status { margin-top: 11px; padding: 10px 13px; border-radius: var(--r); font-family: var(--mono); font-size: 0.74rem; display: none; }
-    .form-status.success { display: block; background: rgba(0,224,196,0.07); border: 1px solid rgba(0,224,196,0.28); color: var(--accent); }
+    .form-status.success { display: block; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.28); color: var(--accent); }
     .form-status.error   { display: block; background: rgba(255,77,109,0.07); border: 1px solid rgba(255,77,109,0.28); color: var(--red); }
     .hp-field { display: none; }
     .char-counter { font-family: var(--mono); font-size: 0.6rem; color: var(--text3); text-align: right; margin-top: 2px; }
@@ -732,51 +729,51 @@
     /* ═══════════════════════════
        GAMES
     ═══════════════════════════ */
-    .games-grid { display: grid; gap: 22px; }
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
     .game-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r3); overflow: hidden;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      border-radius: 18px; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
     }
-    .game-card:hover { border-color: var(--border-acc); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
-    .game-card-inner { display: grid; grid-template-columns: 300px 1fr; align-items: start; }
+    .game-card:hover { border-color: var(--border-acc); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
     .game-thumb-wrap {
-      position: relative; overflow: hidden;
-      aspect-ratio: 16/9; background: var(--surface2);
+      position: relative; overflow: hidden; display: block;
+      aspect-ratio: 1/1; min-height: 180px; background: var(--bg2); margin: 6px 6px 0;
+      border-radius: 14px;
     }
+    .game-thumb-wrap img { transition: transform 0.3s var(--ease); border-radius: 14px; }
+    .game-card:hover .game-thumb-wrap img { transform: scale(1.04); }
     .game-thumb-placeholder {
       width: 100%; height: 100%; display: flex;
       flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; background: linear-gradient(135deg, var(--surface2), var(--bg3));
-      aspect-ratio: 16/9;
+      gap: 8px;
+      background: linear-gradient(120deg, var(--bg2) 25%, var(--bg3) 50%, var(--bg2) 75%);
+      background-size: 200% 100%;
+      animation: thumbShimmer 2.4s ease-in-out infinite;
+      position: absolute; inset: 0; z-index: 0; border-radius: 14px;
     }
-    .game-thumb-placeholder-icon { font-size: 2.4rem; opacity: 0.4; }
-    .game-thumb-placeholder-label { font-family: var(--mono); font-size: 0.62rem; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
-    .game-thumb-badge {
-      position: absolute; top: 10px; left: 10px;
-      font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
-      padding: 3px 9px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;
+    @keyframes thumbShimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
-    .game-thumb-badge.live { background: rgba(6,214,160,0.15); border: 1px solid rgba(6,214,160,0.35); color: var(--green); }
-    .game-thumb-date {
-      position: absolute; top: 10px; right: 10px;
-      font-family: var(--mono); font-size: 0.6rem; font-weight: 700;
-      padding: 3px 9px; border-radius: 4px; letter-spacing: 0.04em;
-      background: rgba(255,255,255,0.93); color: #0a0a1a;
-      border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    .game-thumb-placeholder-icon { font-size: 2.2rem; opacity: 0.45; }
+    .game-thumb-placeholder-label { font-family: var(--mono); font-size: 0.6rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
+    .game-info { padding: 14px 12px 12px; }
+    .game-title {
+      display: block; font-family: var(--sans); font-size: 0.95rem; font-weight: 700;
+      color: var(--text); margin-bottom: 12px; line-height: 1.3;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .game-info { padding: 26px; }
-    .game-title { font-family: var(--mono); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-    .game-genre { font-family: var(--mono); font-size: 0.62rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-    .game-desc { font-size: 0.88rem; line-height: 1.8; margin-bottom: 18px; }
-    .game-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-    .game-stat { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r); padding: 11px 13px; }
-    .game-stat.highlight { border-color: rgba(6,214,160,0.28); background: rgba(6,214,160,0.05); }
-    .game-stat-icon { font-size: 0.9rem; margin-bottom: 4px; }
-    .game-stat-value { font-family: var(--mono); font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 2px; }
+    a.game-title:hover { color: var(--accent); }
+    .game-stats { display: flex; flex-direction: column; gap: 6px; }
+    .game-stat {
+      background: var(--bg2); border-radius: 8px;
+      padding: 9px 12px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .game-stat-label { font-family: var(--sans); font-size: 0.78rem; color: var(--text2); }
+    .game-stat-value { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; color: var(--text); }
     .game-stat.highlight .game-stat-value { color: var(--green); }
-    .game-stat-label { font-family: var(--mono); font-size: 0.56rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; }
-    .game-actions { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
     .games-more {
       margin-top: 18px; background: var(--surface);
       border: 1px dashed var(--border-acc); border-radius: var(--r2);
@@ -795,7 +792,6 @@
       .exp-index { display: none; }
       .form-grid { grid-template-columns: 1fr; }
       .quicklinks { grid-template-columns: 1fr 1fr; }
-      .game-card-inner { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .page { padding: 36px 0 56px; }
@@ -807,8 +803,6 @@
   </style>
 </head>
 <body>
-
-<canvas id="sky-canvas"></canvas>
 
 <!-- ── BACK TO TOP ── -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
@@ -869,7 +863,7 @@
     <div class="topnav-inner">
       <div class="nav-logo">Physic<span>91</span>.dev</div>
       <div class="nav-right">
-        <span id="liveClock" style="font-family:var(--mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.08em;padding:5px 11px;border-radius:20px;border:1px solid var(--border-acc);background:rgba(0,224,196,0.05);font-weight:700;display:none;"></span>
+        <span id="liveClock" style="font-family:var(--mono);font-size:0.62rem;color:var(--accent);letter-spacing:0.08em;padding:5px 11px;border-radius:20px;border:1px solid var(--border-acc);background:rgba(255,255,255,0.05);font-weight:700;display:none;"></span>
         <div class="nav-status open">
           <div class="nav-status-dot"></div>
           <span>Open for Work</span>
@@ -891,7 +885,7 @@
       <button class="tab-btn"         onclick="showTab('projects', this)">Projects</button>
       <button class="tab-btn"         onclick="showTab('games', this)">Games</button>
       <button class="tab-btn"         onclick="showTab('pricing', this)">Pricing</button>
-      <button class="tab-btn"         onclick="showTab('experience', this)">Experience</button>
+      <button class="tab-btn"         onclick="showTab('experience', this)">Track Record</button>
       <button class="tab-btn"         onclick="showTab('faq', this)">FAQ</button>
       <button class="tab-btn"         onclick="showTab('tos', this)">Terms</button>
       <button class="tab-btn"         onclick="showTab('contact', this)">Contact</button>
@@ -995,9 +989,9 @@
       </div>
       <div class="quicklink-card fade-up" onclick="showTab('experience', null)">
         <div class="ql-label">Past Work</div>
-        <h3>Experience</h3>
-        <p>Real projects and shipped games.</p>
-        <span class="quicklink-arrow">View Experience →</span>
+        <h3>Track Record</h3>
+        <p>Roles, projects, and what clients say.</p>
+        <span class="quicklink-arrow">View Track Record →</span>
       </div>
       <div class="quicklink-card fade-up" onclick="showTab('faq', null)">
         <div class="ql-label">Questions</div>
@@ -1231,79 +1225,51 @@
     <div class="section-label">Live on Roblox</div>
     <h2 class="section-title">Games</h2>
     <p class="section-sub">Roblox games I've built or contributed to as a programmer. Stats update when you open this tab.</p>
+    <div id="statsNotice" style="display:none;font-family:var(--mono);font-size:0.72rem;color:var(--text3);background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:9px 14px;margin-bottom:24px;margin-top:-24px;">⚠ Live stats couldn't be loaded right now. Visit the game directly on Roblox for current numbers.</div>
 
     <div class="games-grid">
 
       <!-- Waffle Incremental -->
-      <div class="game-card fade-up">
-        <div class="game-card-inner">
-          <div class="game-thumb-wrap">
-            <div class="game-thumb-placeholder" style="display:flex;">
-              <div class="game-thumb-placeholder-icon">🧇</div>
-              <div class="game-thumb-placeholder-label">Waffle Incremental</div>
-            </div>
-            <span class="game-thumb-badge live">● Live</span>
-            <span class="game-thumb-date">Oct 2025 – Present</span>
+      <div class="game-card fade-up" data-game="waffle">
+        <a href="https://www.roblox.com/games/73359353145399/Waffle-Incremental" target="_blank" rel="noopener noreferrer" class="game-thumb-wrap">
+          <div class="game-thumb-placeholder" style="display:flex;">
+            <div class="game-thumb-placeholder-icon">🧇</div>
+            <div class="game-thumb-placeholder-label">Loading…</div>
           </div>
-          <div class="game-info">
-            <div class="game-title">Waffle Incremental</div>
-            <div class="game-genre">Incremental / Idle Game</div>
-            <p class="game-desc">An incremental Roblox game built from scratch as sole scripter. Features a complete progression loop, multi-currency system, upgrade trees, persistent DataStore save/load, and a fully custom GUI — every line of scripting is mine.</p>
-            <div class="game-stats">
-              <div class="game-stat highlight">
-                <div class="game-stat-icon">👥</div>
-                <div class="game-stat-value" id="stat-active">—</div>
-                <div class="game-stat-label">Active Now</div>
-              </div>
-              <div class="game-stat">
-                <div class="game-stat-icon">👁</div>
-                <div class="game-stat-value" id="stat-visits">—</div>
-                <div class="game-stat-label">Total Visits</div>
-              </div>
-              <div class="game-stat">
-                <div class="game-stat-icon">⭐</div>
-                <div class="game-stat-value" id="stat-favs">—</div>
-                <div class="game-stat-label">Favourites</div>
-              </div>
+        </a>
+        <div class="game-info">
+          <a href="https://www.roblox.com/games/73359353145399/Waffle-Incremental" target="_blank" rel="noopener noreferrer" class="game-title">Waffle Incremental</a>
+          <div class="game-stats">
+            <div class="game-stat highlight">
+              <span class="game-stat-label">Playing</span>
+              <span class="game-stat-value" id="stat-active">—</span>
             </div>
-            <div class="game-actions">
-              <a href="https://www.roblox.com/games/73359353145399/Waffle-Incremental" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Play on Roblox</a>
+            <div class="game-stat">
+              <span class="game-stat-label">Plays</span>
+              <span class="game-stat-value" id="stat-visits">—</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Emergency Bristol -->
-      <div class="game-card fade-up">
-        <div class="game-card-inner">
-          <div class="game-thumb-wrap">
-            <div class="game-thumb-placeholder" style="display:flex;">
-              <div class="game-thumb-placeholder-icon">🚨</div>
-              <div class="game-thumb-placeholder-label">Emergency Bristol</div>
-            </div>
-            <span class="game-thumb-badge live" style="background:rgba(255,149,0,0.15);border-color:rgba(255,149,0,0.4);color:var(--orange);">Completed</span>
-            <span class="game-thumb-date">May 2025 · Commission</span>
+      <div class="game-card fade-up" data-game="bristol">
+        <a href="https://www.roblox.com/de/games/126970807075856/Emergency-Bristol" target="_blank" rel="noopener noreferrer" class="game-thumb-wrap">
+          <div class="game-thumb-placeholder" style="display:flex;">
+            <div class="game-thumb-placeholder-icon">🚨</div>
+            <div class="game-thumb-placeholder-label">Loading…</div>
           </div>
-          <div class="game-info">
-            <div class="game-title">Emergency Bristol</div>
-            <div class="game-genre">Roleplay Game</div>
-            <p class="game-desc">A Roblox emergency services roleplay game. I programmed the bank and phone systems, plus multiple GUI components — building reliable, feature-rich gameplay logic from scratch as a contracted programmer.</p>
-            <div class="game-stats">
-              <div class="game-stat highlight">
-                <div class="game-stat-icon">👥</div>
-                <div class="game-stat-value" id="bristol-stat-active">—</div>
-                <div class="game-stat-label">Active Now</div>
-              </div>
-              <div class="game-stat">
-                <div class="game-stat-icon">👁</div>
-                <div class="game-stat-value" id="bristol-stat-visits">—</div>
-                <div class="game-stat-label">Total Visits</div>
-              </div>
-              <div class="game-stat">
-                <div class="game-stat-icon">⭐</div>
-                <div class="game-stat-value" id="bristol-stat-favs">—</div>
-                <div class="game-stat-label">Favourites</div>
-              </div>
+        </a>
+        <div class="game-info">
+          <a href="https://www.roblox.com/de/games/126970807075856/Emergency-Bristol" target="_blank" rel="noopener noreferrer" class="game-title">Emergency Bristol</a>
+          <div class="game-stats">
+            <div class="game-stat highlight">
+              <span class="game-stat-label">Playing</span>
+              <span class="game-stat-value" id="bristol-stat-active">—</span>
+            </div>
+            <div class="game-stat">
+              <span class="game-stat-label">Plays</span>
+              <span class="game-stat-value" id="bristol-stat-visits">—</span>
             </div>
           </div>
         </div>
@@ -1467,8 +1433,8 @@
 <div class="page" id="page-experience">
   <div class="container">
     <div class="section-label">Past Work</div>
-    <h2 class="section-title">Experience</h2>
-    <p class="section-sub">Real projects, real teams, real deadlines.</p>
+    <h2 class="section-title">Track Record</h2>
+    <p class="section-sub">Roles I've held, what I built, and what clients say about working with me.</p>
     <div class="exp-grid">
       <article class="exp-card fade-up">
         <div class="exp-index">01</div>
@@ -1490,11 +1456,6 @@
           </div>
           <div class="exp-meta"><span>Oct 2025 – Present</span> &nbsp;·&nbsp; Roblox Incremental Game</div>
           <p class="exp-desc">Built the entire game from the ground up as the sole scripter. Responsible for designing and implementing every system, mechanic, and feature — from core loop architecture to UI systems and data persistence. An ongoing project under active development.</p>
-          <div style="margin-top:13px;">
-            <a href="https://www.roblox.com/de/games/73359353145399/Waffle-Incremental" target="_blank" rel="noopener noreferrer" class="project-link" style="display:inline-flex;">
-              Play on Roblox
-            </a>
-          </div>
         </div>
       </article>
     </div>
@@ -1679,7 +1640,9 @@
           <p style="margin-top:6px;color:var(--text3);font-size:0.78rem;">No response? Your message likely lacked detail, or I am currently unavailable.</p>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">&#128172;</div>
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          </div>
           <div class="contact-item-text">
             <label>Discord (fastest reply)</label>
             <span>Physic91</span>
@@ -1687,7 +1650,7 @@
           <button class="copy-btn" onclick="copyText('Physic91', this)">Copy</button>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">&#9993;</div>
+          <div class="contact-icon">📩</div>
           <div class="contact-item-text">
             <label>Email</label>
             <span>Physiclover13244@gmail.com</span>
@@ -1695,7 +1658,9 @@
           <button class="copy-btn" onclick="copyText('Physiclover13244@gmail.com', this)">Copy</button>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">&#9889;</div>
+          <div class="contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </div>
           <div class="contact-item-text">
             <label>GitHub</label>
             <span>github.com/Physic2952</span>
@@ -1710,10 +1675,10 @@
 
         <!-- Channel picker -->
         <div class="channel-tabs">
-          <button class="channel-tab active" onclick="switchChannel('form', this)">✉ Email Form</button>
-          <button class="channel-tab" onclick="switchChannel('discord', this)">💬 Discord</button>
-          <button class="channel-tab" onclick="switchChannel('email', this)">📧 Email</button>
-          <button class="channel-tab" onclick="switchChannel('github', this)">⚡ GitHub</button>
+          <button class="channel-tab active" onclick="switchChannel('form', this)">✉️ Email Form</button>
+          <button class="channel-tab" onclick="switchChannel('discord', this)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>Discord
+          </button>
         </div>
 
         <!-- Email form panel -->
@@ -1782,40 +1747,14 @@
         <!-- Discord panel -->
         <div class="channel-panel" id="panel-discord">
           <div class="channel-cta-box">
-            <div class="channel-cta-icon">💬</div>
+            <div class="channel-cta-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="var(--accent)"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </div>
             <h3>Discord — Fastest Response</h3>
             <p>Send a DM with your project details. Usually reply within a few hours.</p>
             <span class="channel-cta-handle">Physic91</span>
             <div class="channel-cta-actions">
               <button class="btn btn-primary" onclick="copyText('Physic91', this)">Copy Username</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Direct email panel -->
-        <div class="channel-panel" id="panel-email">
-          <div class="channel-cta-box">
-            <div class="channel-cta-icon">📧</div>
-            <h3>Email</h3>
-            <p>Send an email with your project scope, system details, and any deadlines.</p>
-            <span class="channel-cta-handle">Physiclover13244@gmail.com</span>
-            <div class="channel-cta-actions">
-              <a href="mailto:Physiclover13244@gmail.com" class="btn btn-primary">Open Mail</a>
-              <button class="btn btn-outline" onclick="copyText('Physiclover13244@gmail.com', this)">Copy</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- GitHub panel -->
-        <div class="channel-panel" id="panel-github">
-          <div class="channel-cta-box">
-            <div class="channel-cta-icon">⚡</div>
-            <h3>GitHub</h3>
-            <p>Browse open-source projects, systems, and modules. More uploads ongoing.</p>
-            <span class="channel-cta-handle">github.com/Physic2952</span>
-            <div class="channel-cta-actions">
-              <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Open GitHub</a>
-              <button class="btn btn-outline" onclick="copyText('github.com/Physic2952', this)">Copy</button>
             </div>
           </div>
         </div>
@@ -1917,7 +1856,7 @@
 
       <div class="wip-card fade-up">
         <div class="wip-card-header">
-          <div class="wip-card-title">Experience</div>
+          <div class="wip-card-title">Track Record</div>
           <span class="wip-badge partial">Growing</span>
         </div>
         <p>Two confirmed credits are listed. More past work will be added as projects ship or are made public.</p>
@@ -1974,7 +1913,7 @@
         <span class="progress-pct">30%</span>
       </div>
       <div class="progress-row">
-        <span class="progress-label">Experience Credits</span>
+        <span class="progress-label">Track Record Credits</span>
         <div class="progress-bar-wrap"><div class="progress-fill" style="width:60%"></div></div>
         <span class="progress-pct">60%</span>
       </div>
@@ -2002,6 +1941,15 @@
      SCRIPTS
      ════════════════════════════════ -->
 <script>
+/* ── CHANNEL SWITCHER ── */
+function switchChannel(id, btn) {
+  document.querySelectorAll('.channel-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.channel-tab').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
 /* ── CHROME HEIGHT ── */
 function updateSpacer() {
   const chrome = document.getElementById('stickyChrome');
@@ -2056,6 +2004,9 @@ if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 
 document.querySelectorAll('#page-home .fade-up').forEach(el => {
   setTimeout(() => el.classList.add('visible'), 80);
 });
+
+/* Pre-fetch stats in background immediately on page load */
+setTimeout(() => { if (typeof fetchGameStats === 'function') fetchGameStats(); }, 500);
 
 /* ── FAQ ── */
 function toggleFaq(btn) {
@@ -2170,48 +2121,6 @@ cfForm.addEventListener('submit', async (e) => {
   }
 });
 
-/* ── SKY CANVAS ── */
-(function() {
-  const canvas = document.getElementById('sky-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const stars = [], nebulas = [], W_ref = { w: 0, h: 0 };
-  function resize() { canvas.width = W_ref.w = window.innerWidth; canvas.height = W_ref.h = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-  function rnd(a, b) { return a + Math.random() * (b - a); }
-  for (let i = 0; i < 260; i++) stars.push({ x: Math.random(), y: Math.random(), r: rnd(0.3, 1.3), sp: rnd(0.00004, 0.00014), op: rnd(0.2, 0.85), tw: Math.random() * Math.PI * 2 });
-  for (let j = 0; j < 4; j++) nebulas.push({ x: Math.random(), y: Math.random(), r: rnd(0.2, 0.38), h: [175, 185, 200, 160][j], op: rnd(0.03, 0.07) });
-  let t = 0;
-  function draw() {
-    t += 0.5;
-    const { w, h } = W_ref;
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    if (!isLight) {
-      const g = ctx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, 'rgba(2,4,18,1)'); g.addColorStop(0.5, 'rgba(4,5,20,1)'); g.addColorStop(1, 'rgba(6,6,24,1)');
-      ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-      nebulas.forEach(nb => {
-        const ng = ctx.createRadialGradient(nb.x * w, nb.y * h, 0, nb.x * w, nb.y * h, nb.r * Math.min(w, h));
-        ng.addColorStop(0, `hsla(${nb.h},70%,55%,${nb.op})`); ng.addColorStop(1, `hsla(${nb.h},50%,25%,0)`);
-        ctx.fillStyle = ng; ctx.beginPath(); ctx.arc(nb.x * w, nb.y * h, nb.r * Math.min(w, h), 0, Math.PI * 2); ctx.fill();
-      });
-      stars.forEach(s => {
-        s.x = (s.x + s.sp) % 1;
-        const tw = s.op * (0.5 + 0.5 * Math.sin(t * 0.04 + s.tw));
-        ctx.beginPath(); ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(190,230,225,${tw})`; ctx.fill();
-      });
-    } else {
-      const lg = ctx.createLinearGradient(0, 0, 0, h);
-      lg.addColorStop(0, '#e0f7f5'); lg.addColorStop(0.5, '#eef8f7'); lg.addColorStop(1, '#f5faf9');
-      ctx.fillStyle = lg; ctx.fillRect(0, 0, w, h);
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
 /* ── LIVE CLOCK ── */
 (function() {
   const badge = document.getElementById('liveClock');
@@ -2227,10 +2136,34 @@ cfForm.addEventListener('submit', async (e) => {
   setInterval(tick, 1000);
 })();
 
-/* ── ROBLOX LIVE STATS ── */
+/* ── ROBLOX LIVE STATS + THUMBNAIL ──
+   Uses a small Cloudflare Worker that fetches Roblox's API server-side
+   (no browser CORS/SSL-trust issues there). See /worker/roblox-stats-worker.js
+   for the ~3-minute free setup. Once deployed, paste your Worker URL below. */
 (function() {
-  const WAFFLE_ID = 73359353145399;
-  let cached = null;
+  /* ⬇⬇⬇ PASTE YOUR CLOUDFLARE WORKER URL HERE (no trailing slash) ⬇⬇⬇ */
+  const WORKER_URL = 'https://roblox-stats.markushollenel.workers.dev';
+  /* ⬆⬆⬆ ── */
+
+  /* Each entry: cardSelector picks the game card in #page-games,
+     statIds map to the <span id> elements for that card's stats. */
+  const GAMES = [
+    {
+      key: 'waffle',
+      cardSelector: '#page-games .game-card[data-game="waffle"]',
+      statIds: { active: 'stat-active', visits: 'stat-visits' },
+      thumbAlt: 'Waffle Incremental',
+    },
+    {
+      key: 'bristol',
+      cardSelector: '#page-games .game-card[data-game="bristol"]',
+      statIds: { active: 'bristol-stat-active', visits: 'bristol-stat-visits' },
+      thumbAlt: 'Emergency Bristol',
+    },
+  ];
+
+  const cache = {}; // per-game cache: { stats: {...}, statsAt: 0, thumbLoaded: bool }
+  const CACHE_TTL = 30000;
 
   function fmt(n) {
     n = parseInt(n, 10);
@@ -2240,39 +2173,99 @@ cfForm.addEventListener('submit', async (e) => {
     return String(n);
   }
 
-  function applyWaffle(s) {
-    const a = document.getElementById('stat-active');
-    const v = document.getElementById('stat-visits');
-    const f = document.getElementById('stat-favs');
+  function applyStats(game, s) {
+    const a = document.getElementById(game.statIds.active);
+    const v = document.getElementById(game.statIds.visits);
     if (a) a.textContent = fmt(s.active);
     if (v) v.textContent = fmt(s.visits);
-    if (f) f.textContent = fmt(s.favs);
   }
 
-  function setDashes(ids) {
-    ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = '—'; });
+  function setDashes(game) {
+    const a = document.getElementById(game.statIds.active);
+    const v = document.getElementById(game.statIds.visits);
+    if (a) a.textContent = '—';
+    if (v) v.textContent = '—';
+  }
+
+  function setLoading(game) {
+    const a = document.getElementById(game.statIds.active);
+    const v = document.getElementById(game.statIds.visits);
+    if (a) a.textContent = '…';
+    if (v) v.textContent = '…';
+  }
+
+  function showStatsNotice() {
+    const el = document.getElementById('statsNotice');
+    if (el) el.style.display = 'block';
+  }
+  function hideStatsNotice() {
+    const el = document.getElementById('statsNotice');
+    if (el) el.style.display = 'none';
+  }
+
+  function setThumb(wrap, placeholder, url, alt) {
+    if (!url || wrap.querySelector('img')) return;
+    const img = document.createElement('img');
+    img.alt = alt || 'Game thumbnail';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;z-index:1;border-radius:14px;';
+    img.onload = () => { if (placeholder) placeholder.style.display = 'none'; };
+    img.onerror = () => { console.warn('[Games thumbnail] image failed to load:', url); img.remove(); };
+    img.src = url;
+    wrap.insertBefore(img, wrap.firstChild);
+  }
+
+  function workerStats(key) {
+    return fetch(`${WORKER_URL}?action=stats&game=${key}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { console.log(`[Games stats:${key}] worker response:`, d); return (d && d.ok) ? { active: d.active, visits: d.visits } : null; });
+  }
+  function workerThumb(key) {
+    return fetch(`${WORKER_URL}?action=thumbnail&game=${key}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { console.log(`[Games thumbnail:${key}] worker response:`, d); return (d && d.ok) ? d.imageUrl : null; });
+  }
+
+  function loadThumbnailFor(game) {
+    if (!WORKER_URL) return;
+    const wrap = document.querySelector(`${game.cardSelector} .game-thumb-wrap`);
+    if (!wrap || wrap.querySelector('img')) return;
+    const placeholder = wrap.querySelector('.game-thumb-placeholder');
+    workerThumb(game.key)
+      .then(url => { if (url) setThumb(wrap, placeholder, url, game.thumbAlt); })
+      .catch(err => console.warn(`[Games thumbnail:${game.key}] worker failed:`, err));
+  }
+
+  function fetchStatsFor(game) {
+    if (!WORKER_URL) { setDashes(game); return; }
+    setLoading(game);
+    workerStats(game.key)
+      .then(s => {
+        if (s) {
+          cache[game.key] = { stats: s, statsAt: Date.now() };
+          applyStats(game, s);
+          hideStatsNotice();
+        } else {
+          setDashes(game);
+          showStatsNotice();
+        }
+      })
+      .catch(err => {
+        console.warn(`[Games stats:${game.key}] worker failed:`, err);
+        setDashes(game);
+        showStatsNotice();
+      });
   }
 
   window.fetchGameStats = function() {
-    if (cached) { applyWaffle(cached); return; }
-    ['stat-active','stat-visits','stat-favs'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.textContent = '…';
+    GAMES.forEach(game => {
+      loadThumbnailFor(game);
+      const c = cache[game.key];
+      if (c && (Date.now() - c.statsAt) < CACHE_TTL) {
+        applyStats(game, c.stats);
+      } else {
+        fetchStatsFor(game);
+      }
     });
-    fetch('https://games.roblox.com/v1/games?universeIds=' + WAFFLE_ID, { headers: { 'Accept': 'application/json' } })
-      .then(r => r.json())
-      .then(data => {
-        if (data && data.data && data.data[0]) {
-          const g = data.data[0];
-          cached = { active: g.playing, visits: g.visits, favs: g.favoritedCount };
-          applyWaffle(cached);
-        } else {
-          setDashes(['stat-active','stat-visits','stat-favs']);
-        }
-      })
-      .catch(() => setDashes(['stat-active','stat-visits','stat-favs']));
-
-    /* Emergency Bristol has no public universe ID (private commission) */
-    setDashes(['bristol-stat-active','bristol-stat-visits','bristol-stat-favs']);
   };
 })();
 
