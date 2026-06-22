@@ -882,7 +882,6 @@
       <button class="tab-btn active"  onclick="showTab('home', this)">Home</button>
       <button class="tab-btn"         onclick="showTab('services', this)">Services</button>
       <button class="tab-btn"         onclick="showTab('about', this)">About</button>
-      <button class="tab-btn"         onclick="showTab('projects', this)">Projects</button>
       <button class="tab-btn"         onclick="showTab('games', this)">Games</button>
       <button class="tab-btn"         onclick="showTab('pricing', this)">Pricing</button>
       <button class="tab-btn"         onclick="showTab('experience', this)">Track Record</button>
@@ -988,9 +987,9 @@
         <span class="quicklink-arrow">View Projects →</span>
       </div>
       <div class="quicklink-card fade-up" onclick="showTab('experience', null)">
-        <div class="ql-label">Past Work</div>
+        <div class="ql-label">Why Hire Me</div>
         <h3>Track Record</h3>
-        <p>Roles, projects, and what clients say.</p>
+        <p>How I work, and what clients say.</p>
         <span class="quicklink-arrow">View Track Record →</span>
       </div>
       <div class="quicklink-card fade-up" onclick="showTab('faq', null)">
@@ -1166,59 +1165,6 @@
 </div>
 
 <!-- PROJECTS -->
-<div class="page" id="page-projects">
-  <div class="container">
-    <div class="section-label">Projects &amp; Resources</div>
-    <h2 class="section-title">What I've Built</h2>
-    <p class="section-sub">Open-source systems, reusable Luau modules, and game development resources.</p>
-
-    <div class="projects-grid">
-      <article class="project-card fade-up">
-        <div class="project-card-top">
-          <div class="project-meta">
-            <span class="project-type">Game System</span>
-            <span class="project-lang">Luau</span>
-          </div>
-          <h3>Quest System</h3>
-          <p>A complete, OOP-based quest management system for Roblox. Supports quest assignment, progress tracking, completion callbacks, and clean state management across server and client.</p>
-        </div>
-        <div class="project-card-bottom">
-          <a href="https://github.com/Physic2952/Quest-System" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project-card fade-up">
-        <div class="project-card-top">
-          <div class="project-meta">
-            <span class="project-type">Resource / Reference</span>
-            <span class="project-lang">Luau</span>
-          </div>
-          <h3>OOP Luau Resources</h3>
-          <p>A reference covering OOP in Luau — inheritance, constructors, and simulated access modifiers. Practical patterns for scalable Roblox architecture.</p>
-        </div>
-        <div class="project-card-bottom">
-          <a href="https://github.com/Physic2952/OOP-Resources" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-        </div>
-      </article>
-
-      <article class="project-card dm-card fade-up">
-        <div class="project-card-top">
-          <div class="project-meta">
-            <span class="project-type">More Work</span>
-            <span class="project-lang">Various</span>
-          </div>
-          <h3>More Projects</h3>
-          <p>VS Code tools, Roblox Studio systems, game-specific modules. More uploads ongoing. DM on Discord for the full catalogue.</p>
-        </div>
-        <div class="project-card-bottom">
-          <button class="project-link" onclick="showTab('contact', null)">Discord DM</button>
-          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</div>
-
 <!-- GAMES -->
 <div class="page" id="page-games">
   <div class="container">
@@ -1280,6 +1226,57 @@
     <div class="games-more fade-up">
       <p>Working on more games. Additional credits will be uploaded over time.</p>
       <button class="btn btn-outline" onclick="showTab('contact', null)">Discuss a Project</button>
+    </div>
+
+    <div class="hr"></div>
+
+    <div class="section-label">Open Source</div>
+    <h2 class="section-title">Code &amp; Resources</h2>
+    <p class="section-sub">Reusable Luau modules and game development resources on GitHub.</p>
+
+    <div class="projects-grid">
+      <article class="project-card fade-up">
+        <div class="project-card-top">
+          <div class="project-meta">
+            <span class="project-type">Game System</span>
+            <span class="project-lang">Luau</span>
+          </div>
+          <h3>Quest System</h3>
+          <p>A complete, OOP-based quest management system for Roblox. Supports quest assignment, progress tracking, completion callbacks, and clean state management across server and client.</p>
+        </div>
+        <div class="project-card-bottom">
+          <a href="https://github.com/Physic2952/Quest-System" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card fade-up">
+        <div class="project-card-top">
+          <div class="project-meta">
+            <span class="project-type">Resource / Reference</span>
+            <span class="project-lang">Luau</span>
+          </div>
+          <h3>OOP Luau Resources</h3>
+          <p>A reference covering OOP in Luau — inheritance, constructors, and simulated access modifiers. Practical patterns for scalable Roblox architecture.</p>
+        </div>
+        <div class="project-card-bottom">
+          <a href="https://github.com/Physic2952/OOP-Resources" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
+        </div>
+      </article>
+
+      <article class="project-card dm-card fade-up">
+        <div class="project-card-top">
+          <div class="project-meta">
+            <span class="project-type">More Work</span>
+            <span class="project-lang">Various</span>
+          </div>
+          <h3>More Projects</h3>
+          <p>VS Code tools, Roblox Studio systems, game-specific modules. More uploads ongoing. DM on Discord for the full catalogue.</p>
+        </div>
+        <div class="project-card-bottom">
+          <button class="project-link" onclick="showTab('contact', null)">Discord DM</button>
+          <a href="https://github.com/Physic2952" target="_blank" rel="noopener noreferrer" class="project-link">GitHub</a>
+        </div>
+      </article>
     </div>
   </div>
 </div>
@@ -1432,30 +1429,31 @@
 <!-- EXPERIENCE -->
 <div class="page" id="page-experience">
   <div class="container">
-    <div class="section-label">Past Work</div>
-    <h2 class="section-title">Track Record</h2>
-    <p class="section-sub">Roles I've held, what I built, and what clients say about working with me.</p>
+    <div class="section-label">Track Record</div>
+    <h2 class="section-title">Why Work With Me</h2>
+    <p class="section-sub">A quick snapshot of how I work, backed by what clients say.</p>
+
     <div class="exp-grid">
       <article class="exp-card fade-up">
         <div class="exp-index">01</div>
         <div>
           <div class="exp-header">
-            <div class="exp-title">Emergency Bristol</div>
-            <span class="exp-badge">Programmer</span>
+            <div class="exp-title">Reliable Delivery</div>
+            <span class="exp-badge">Process</span>
           </div>
-          <div class="exp-meta"><span>May 2025 – July 2025</span> &nbsp;·&nbsp; Roblox Roleplay Game</div>
-          <p class="exp-desc">Programmed the bank and phone systems for this roleplay game, building feature-rich, reliable gameplay logic from scratch. Also developed various GUI components, ensuring smooth, responsive user interfaces throughout the experience.</p>
+          <div class="exp-meta">Clear scope <span>→</span> written quote <span>→</span> build <span>→</span> handoff</div>
+          <p class="exp-desc">Every commission starts with a written spec and an agreed quote before any code is touched. No scope creep, no surprise fees — what's agreed is what gets delivered.</p>
         </div>
       </article>
       <article class="exp-card fade-up">
         <div class="exp-index">02</div>
         <div>
           <div class="exp-header">
-            <div class="exp-title">Waffle Incremental</div>
-            <span class="exp-badge">Sole Scripter</span>
+            <div class="exp-title">Built to Last</div>
+            <span class="exp-badge">Engineering</span>
           </div>
-          <div class="exp-meta"><span>Oct 2025 – Present</span> &nbsp;·&nbsp; Roblox Incremental Game</div>
-          <p class="exp-desc">Built the entire game from the ground up as the sole scripter. Responsible for designing and implementing every system, mechanic, and feature — from core loop architecture to UI systems and data persistence. An ongoing project under active development.</p>
+          <div class="exp-meta">Architecture, security, and performance from day one</div>
+          <p class="exp-desc">Systems are built with proper architecture and server-side validation from the start — not bolted on afterward. Free bug fixes within 24h of delivery if something I built breaks.</p>
         </div>
       </article>
     </div>
